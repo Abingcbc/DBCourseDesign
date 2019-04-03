@@ -2,3 +2,7 @@ language: csharp
 mono:
   - latest
 solution: DBCourseDesign.sln
+
+install: nuget restore DBCourseDesign.sln
+
+script: msbuild /p:Configuration=Release DBCourseDesign.sln
