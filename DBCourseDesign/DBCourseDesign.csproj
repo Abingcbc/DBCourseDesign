@@ -91,6 +91,12 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.18.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -103,6 +109,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -183,11 +190,90 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ACCESSORY.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACCESSORY_STORED.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DISPATCHER.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQ_IN_USE.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQ_STORED.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQ_TYPE.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQ_TYPE_ACCESSORY.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FACTORY.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEMSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEMSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEMSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FEMSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEMSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PATROL.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PATROL_LOG.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PATROL_REGION.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REGION.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REPAIRER.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REPAIRER_REGION.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REPAIR_ORDER.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STAFF.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WAREHOUSE.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WORK_ORDER.cs">
+      <DependentUpon>FEMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\FEMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FEMSModel.Context.cs</LastGenOutput>
+      <DependentUpon>FEMSModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\FEMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FEMSModel.edmx</DependentUpon>
+      <LastGenOutput>FEMSModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -198,10 +284,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\FEMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FEMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FEMSModel.edmx.diagram">
+      <DependentUpon>FEMSModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
