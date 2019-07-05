@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FEMSModelStoreContainer" CdmEntityContainer="FEMSContext">
+    <EntitySetMapping Name="ACCESSORY">
+      <EntityTypeMapping TypeName="FEMSModel.ACCESSORY">
+        <MappingFragment StoreEntitySet="ACCESSORY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="MODEL_NUMBER" ColumnName="MODEL_NUMBER" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="FACTORY_ID" ColumnName="FACTORY_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACCESSORY_STORED">
+      <EntityTypeMapping TypeName="FEMSModel.ACCESSORY_STORED">
+        <MappingFragment StoreEntitySet="ACCESSORY_STORED">
+          <ScalarProperty Name="ACCESSORY_ID" ColumnName="ACCESSORY_ID" />
+          <ScalarProperty Name="WAREHOUSE_ID" ColumnName="WAREHOUSE_ID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISPATCHER">
+      <EntityTypeMapping TypeName="FEMSModel.DISPATCHER">
+        <MappingFragment StoreEntitySet="DISPATCHER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPATCH_START" ColumnName="DISPATCH_START" />
+          <ScalarProperty Name="DISPATCH_STOP" ColumnName="DISPATCH_STOP" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQ_IN_USE">
+      <EntityTypeMapping TypeName="FEMSModel.EQ_IN_USE">
+        <MappingFragment StoreEntitySet="EQ_IN_USE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PRODUCTION_TIME" ColumnName="PRODUCTION_TIME" />
+          <ScalarProperty Name="INSTALL_TIME" ColumnName="INSTALL_TIME" />
+          <ScalarProperty Name="OWNER" ColumnName="OWNER" />
+          <ScalarProperty Name="MANAGER" ColumnName="MANAGER" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+          <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+          <ScalarProperty Name="QR_CODE" ColumnName="QR_CODE" />
+          <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQ_STORED">
+      <EntityTypeMapping TypeName="FEMSModel.EQ_STORED">
+        <MappingFragment StoreEntitySet="EQ_STORED">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PRODUCT_TIME" ColumnName="PRODUCT_TIME" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="EQ_TYPE_ID" ColumnName="EQ_TYPE_ID" />
+          <ScalarProperty Name="WAREHOUSE_ID" ColumnName="WAREHOUSE_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQ_TYPE">
+      <EntityTypeMapping TypeName="FEMSModel.EQ_TYPE">
+        <MappingFragment StoreEntitySet="EQ_TYPE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="MODEL_NUMBER" ColumnName="MODEL_NUMBER" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="FACTORY_ID" ColumnName="FACTORY_ID" />
+          <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQ_TYPE_ACCESSORY">
+      <EntityTypeMapping TypeName="FEMSModel.EQ_TYPE_ACCESSORY">
+        <MappingFragment StoreEntitySet="EQ_TYPE_ACCESSORY">
+          <ScalarProperty Name="EQ_TYPE_ID" ColumnName="EQ_TYPE_ID" />
+          <ScalarProperty Name="ACCESSORY_ID" ColumnName="ACCESSORY_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTORY">
+      <EntityTypeMapping TypeName="FEMSModel.FACTORY">
+        <MappingFragment StoreEntitySet="FACTORY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PRINCIPAL" ColumnName="PRINCIPAL" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATROL">
+      <EntityTypeMapping TypeName="FEMSModel.PATROL">
+        <MappingFragment StoreEntitySet="PATROL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PATROL_START" ColumnName="PATROL_START" />
+          <ScalarProperty Name="PATROL_STOP" ColumnName="PATROL_STOP" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATROL_LOG">
+      <EntityTypeMapping TypeName="FEMSModel.PATROL_LOG">
+        <MappingFragment StoreEntitySet="PATROL_LOG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PATROL_ID" ColumnName="PATROL_ID" />
+          <ScalarProperty Name="EQ_ID" ColumnName="EQ_ID" />
+          <ScalarProperty Name="PATROL_TIME" ColumnName="PATROL_TIME" />
+          <ScalarProperty Name="PATROL_RESULT" ColumnName="PATROL_RESULT" />
+          <ScalarProperty Name="PATROL_PICTURE" ColumnName="PATROL_PICTURE" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATROL_REGION">
+      <EntityTypeMapping TypeName="FEMSModel.PATROL_REGION">
+        <MappingFragment StoreEntitySet="PATROL_REGION">
+          <ScalarProperty Name="PATROL_ID" ColumnName="PATROL_ID" />
+          <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGION">
+      <EntityTypeMapping TypeName="FEMSModel.REGION">
+        <MappingFragment StoreEntitySet="REGION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="COUNTY" ColumnName="COUNTY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPAIR_ORDER">
+      <EntityTypeMapping TypeName="FEMSModel.REPAIR_ORDER">
+        <MappingFragment StoreEntitySet="REPAIR_ORDER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="REPORT_PICTURE" ColumnName="REPORT_PICTURE" />
+          <ScalarProperty Name="REPAIR_TYPE" ColumnName="REPAIR_TYPE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="TEL_NUMBER" ColumnName="TEL_NUMBER" />
+          <ScalarProperty Name="EQ_ID" ColumnName="EQ_ID" />
+          <ScalarProperty Name="DISPATCHER_ID" ColumnName="DISPATCHER_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPAIRER">
+      <EntityTypeMapping TypeName="FEMSModel.REPAIRER">
+        <MappingFragment StoreEntitySet="REPAIRER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPAIRER_REGION">
+      <EntityTypeMapping TypeName="FEMSModel.REPAIRER_REGION">
+        <MappingFragment StoreEntitySet="REPAIRER_REGION">
+          <ScalarProperty Name="REPAIRER_ID" ColumnName="REPAIRER_ID" />
+          <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STAFF">
+      <EntityTypeMapping TypeName="FEMSModel.STAFF">
+        <MappingFragment StoreEntitySet="STAFF">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="TEL_NUMBER" ColumnName="TEL_NUMBER" />
+          <ScalarProperty Name="ID_CARD_NUMBER" ColumnName="ID_CARD_NUMBER" />
+          <ScalarProperty Name="IS_SUPER" ColumnName="IS_SUPER" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAREHOUSE">
+      <EntityTypeMapping TypeName="FEMSModel.WAREHOUSE">
+        <MappingFragment StoreEntitySet="WAREHOUSE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="AREA" ColumnName="AREA" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WORK_ORDER">
+      <EntityTypeMapping TypeName="FEMSModel.WORK_ORDER">
+        <MappingFragment StoreEntitySet="WORK_ORDER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="REPAIRER_ID" ColumnName="REPAIRER_ID" />
+          <ScalarProperty Name="DISPATCHER_ID" ColumnName="DISPATCHER_ID" />
+          <ScalarProperty Name="WORK_PICTURE" ColumnName="WORK_PICTURE" />
+          <ScalarProperty Name="EQ_ID" ColumnName="EQ_ID" />
+          <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+          <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+          <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+          <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
