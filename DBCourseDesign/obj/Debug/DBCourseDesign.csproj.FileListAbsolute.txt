@@ -128,7 +128,6 @@ E:\Project\DBCourseDesign\DBCourseDesign\bin\zh-Hans\System.Web.Razor.resources.
 E:\Project\DBCourseDesign\DBCourseDesign\bin\zh-Hans\System.Web.WebPages.resources.dll
 E:\Project\DBCourseDesign\DBCourseDesign\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 E:\Project\DBCourseDesign\DBCourseDesign\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-E:\Project\DBCourseDesign\DBCourseDesign\obj\Debug\DBCourseDesign.csprojAssemblyReference.cache
 E:\Project\DBCourseDesign\DBCourseDesign\obj\Debug\DBCourseDesign.csproj.CoreCompileInputs.cache
 E:\Project\DBCourseDesign\DBCourseDesign\obj\Debug\DBCourseDesign.csproj.CopyComplete
 E:\Project\DBCourseDesign\DBCourseDesign\obj\Debug\DBCourseDesign.dll

@@ -18,8 +18,8 @@ namespace DBCourseDesign.Models
         public string REGION_ID { get; set; }
         public string INSERT_BY { get; set; }
         public string UPDATE_BY { get; set; }
-        public System.DateTime INSERT_TIME { get; set; }
-        public System.DateTime UPDATE_TIME { get; set; }
+        public Nullable<System.DateTime> INSERT_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
     
         public virtual REGION REGION { get; set; }
         public virtual REPAIRER REPAIRER { get; set; }

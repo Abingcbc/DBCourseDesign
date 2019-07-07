@@ -10,12 +10,14 @@ namespace DBCourseDesign.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
+        //[RequireHttps]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
+        //[RequireHttps]
         public string Get(int id)
         {
             return "value";

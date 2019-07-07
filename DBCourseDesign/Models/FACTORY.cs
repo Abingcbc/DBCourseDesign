@@ -28,8 +28,8 @@ namespace DBCourseDesign.Models
         public string ADDRESS { get; set; }
         public string INSERT_BY { get; set; }
         public string UPDATE_BY { get; set; }
-        public System.DateTime INSERT_TIME { get; set; }
-        public System.DateTime UPDATE_TIME { get; set; }
+        public Nullable<System.DateTime> INSERT_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACCESSORY> ACCESSORY { get; set; }

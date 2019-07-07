@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92518bd603d24d52a8deba43a65baa3f" Name="Diagram1">
+      <Diagram DiagramId="6d41a527ddfb4ee3a68d766f647c9453" Name="Diagram1">
         <EntityTypeShape EntityType="FEMSModel.ACCESSORY" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FEMSModel.ACCESSORY_STORED" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FEMSModel.DISPATCHER" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
@@ -42,8 +42,8 @@
         <AssociationConnector Association="FEMSModel.fk_PATROL" ManuallyRouted="false" />
         <AssociationConnector Association="FEMSModel.FK_PATROL_LOG_PATROL_1" ManuallyRouted="false" />
         <AssociationConnector Association="FEMSModel.FK_PATROL_REGION_PATROL_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSModel.FK_RESPONSIBILITY_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSModel.FK_REGION_REPAIRER_1" ManuallyRouted="false" />
+        <AssociationConnector Association="FEMSModel.FK_STA" ManuallyRouted="false" />
+        <AssociationConnector Association="FEMSModel.FK_REPAI1" ManuallyRouted="false" />
         <AssociationConnector Association="FEMSModel.fk_WAREHOUSE" ManuallyRouted="false" />
         <AssociationConnector Association="FEMSModel.fk_REPAIRER_REGION" ManuallyRouted="false" />
         <AssociationConnector Association="FEMSModel.FK_REPAIRER_STAFF_1" ManuallyRouted="false" />

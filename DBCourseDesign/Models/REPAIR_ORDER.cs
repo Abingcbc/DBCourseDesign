@@ -24,8 +24,8 @@ namespace DBCourseDesign.Models
         public string DISPATCHER_ID { get; set; }
         public string INSERT_BY { get; set; }
         public string UPDATE_BY { get; set; }
-        public System.DateTime INSERT_TIME { get; set; }
-        public System.DateTime UPDATE_TIME { get; set; }
+        public Nullable<System.DateTime> INSERT_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
     
         public virtual DISPATCHER DISPATCHER { get; set; }
         public virtual EQ_IN_USE EQ_IN_USE { get; set; }

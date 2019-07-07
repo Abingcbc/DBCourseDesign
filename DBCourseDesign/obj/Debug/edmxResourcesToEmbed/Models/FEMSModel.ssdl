@@ -9,10 +9,10 @@
     <Property Name="MODEL_NUMBER" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="PRICE" Type="number" Precision="9" Scale="2" Nullable="false" />
     <Property Name="FACTORY_ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="ACCESSORY_STORED">
     <Key>
@@ -22,10 +22,10 @@
     <Property Name="ACCESSORY_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="WAREHOUSE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="QUANTITY" Type="number" Precision="9" Scale="0" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="DISPATCHER">
     <Key>
@@ -34,10 +34,10 @@
     <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="DISPATCH_START" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="DISPATCH_STOP" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="EQ_IN_USE">
     <Key>
@@ -55,10 +55,10 @@
     <Property Name="QR_CODE" Type="varchar2" MaxLength="255" Nullable="false" />
     <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="EQ_STORED">
     <Key>
@@ -69,10 +69,10 @@
     <Property Name="STATUS" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="EQ_TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="WAREHOUSE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="EQ_TYPE">
     <Key>
@@ -84,10 +84,10 @@
     <Property Name="PRICE" Type="number" Precision="9" Scale="2" Nullable="false" />
     <Property Name="FACTORY_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="PICTURE" Type="varchar2" MaxLength="255" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="EQ_TYPE_ACCESSORY">
     <Key>
@@ -96,10 +96,10 @@
     </Key>
     <Property Name="EQ_TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="ACCESSORY_ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="FACTORY">
     <Key>
@@ -110,10 +110,10 @@
     <Property Name="PRINCIPAL" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="PHONE" Type="varchar2" MaxLength="32" />
     <Property Name="ADDRESS" Type="varchar2" MaxLength="128" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="PATROL">
     <Key>
@@ -122,10 +122,10 @@
     <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="PATROL_START" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="PATROL_STOP" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_TIME" Type="date" />
+    <Property Name="INSERT_TIME" Type="date" />
   </EntityType>
   <EntityType Name="PATROL_LOG">
     <Key>
@@ -137,10 +137,10 @@
     <Property Name="PATROL_TIME" Type="date" Nullable="false" />
     <Property Name="PATROL_RESULT" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="PATROL_PICTURE" Type="varchar2" MaxLength="255" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="PATROL_REGION">
     <Key>
@@ -149,10 +149,10 @@
     </Key>
     <Property Name="PATROL_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="REGION">
     <Key>
@@ -175,20 +175,20 @@
     <Property Name="TEL_NUMBER" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="EQ_ID" Type="varchar2" MaxLength="32" />
     <Property Name="DISPATCHER_ID" Type="varchar2" MaxLength="32" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="REPAIRER">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="REPAIRER_REGION">
     <Key>
@@ -197,10 +197,10 @@
     </Key>
     <Property Name="REPAIRER_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="STAFF">
     <Key>
@@ -213,10 +213,10 @@
     <Property Name="TEL_NUMBER" Type="varchar2" MaxLength="32" />
     <Property Name="ID_CARD_NUMBER" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="IS_SUPER" Type="varchar2" MaxLength="32" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_TIME" Type="date" />
+    <Property Name="INSERT_TIME" Type="date" />
   </EntityType>
   <EntityType Name="WAREHOUSE">
     <Key>
@@ -227,10 +227,10 @@
     <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
     <Property Name="LOCATION" Type="varchar2" MaxLength="128" Nullable="false" />
     <Property Name="AREA" Type="number" Precision="9" Scale="0" Nullable="false" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <EntityType Name="WORK_ORDER">
     <Key>
@@ -242,10 +242,10 @@
     <Property Name="DISPATCHER_ID" Type="varchar2" MaxLength="32" />
     <Property Name="WORK_PICTURE" Type="varchar2" MaxLength="255" Nullable="false" />
     <Property Name="EQ_ID" Type="varchar2" MaxLength="32" />
-    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="date" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="date" Nullable="false" />
+    <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
+    <Property Name="INSERT_TIME" Type="date" />
+    <Property Name="UPDATE_TIME" Type="date" />
   </EntityType>
   <Association Name="fk_ACCESSORY">
     <End Role="FACTORY" Type="Self.FACTORY" Multiplicity="1">
@@ -465,7 +465,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_REGION_REPAIRER_1">
+  <Association Name="FK_REPAI1">
     <End Role="REGION" Type="Self.REGION" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -519,7 +519,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_RESPONSIBILITY_1">
+  <Association Name="FK_STA">
     <End Role="REGION" Type="Self.REGION" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -666,7 +666,7 @@
       <End Role="PATROL" EntitySet="PATROL" />
       <End Role="PATROL_REGION" EntitySet="PATROL_REGION" />
     </AssociationSet>
-    <AssociationSet Name="FK_REGION_REPAIRER_1" Association="Self.FK_REGION_REPAIRER_1">
+    <AssociationSet Name="FK_REPAI1" Association="Self.FK_REPAI1">
       <End Role="REGION" EntitySet="REGION" />
       <End Role="REPAIRER_REGION" EntitySet="REPAIRER_REGION" />
     </AssociationSet>
@@ -682,7 +682,7 @@
       <End Role="STAFF" EntitySet="STAFF" />
       <End Role="REPAIRER" EntitySet="REPAIRER" />
     </AssociationSet>
-    <AssociationSet Name="FK_RESPONSIBILITY_1" Association="Self.FK_RESPONSIBILITY_1">
+    <AssociationSet Name="FK_STA" Association="Self.FK_STA">
       <End Role="REGION" EntitySet="REGION" />
       <End Role="PATROL_REGION" EntitySet="PATROL_REGION" />
     </AssociationSet>

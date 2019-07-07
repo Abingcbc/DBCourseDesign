@@ -23,8 +23,8 @@ namespace DBCourseDesign.Models
         public string IS_SUPER { get; set; }
         public string INSERT_BY { get; set; }
         public string UPDATE_BY { get; set; }
-        public System.DateTime UPDATE_TIME { get; set; }
-        public System.DateTime INSERT_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
+        public Nullable<System.DateTime> INSERT_TIME { get; set; }
     
         public virtual DISPATCHER DISPATCHER { get; set; }
         public virtual PATROL PATROL { get; set; }

@@ -9,10 +9,10 @@
     <Property Name="MODEL_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PRICE" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
     <Property Name="FACTORY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="FACTORY" Relationship="Self.fk_ACCESSORY" FromRole="ACCESSORY" ToRole="FACTORY" />
     <NavigationProperty Name="ACCESSORY_STORED" Relationship="Self.fk_ACCESSORY_STORED" FromRole="ACCESSORY" ToRole="ACCESSORY_STORED" />
     <NavigationProperty Name="EQ_TYPE_ACCESSORY" Relationship="Self.fk_EQ_TYPE_ACCESSORY_1" FromRole="ACCESSORY" ToRole="EQ_TYPE_ACCESSORY" />
@@ -25,10 +25,10 @@
     <Property Name="ACCESSORY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="WAREHOUSE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="ACCESSORY" Relationship="Self.fk_ACCESSORY_STORED" FromRole="ACCESSORY_STORED" ToRole="ACCESSORY" />
     <NavigationProperty Name="WAREHOUSE" Relationship="Self.fk_ACCESSORY_STORED_1" FromRole="ACCESSORY_STORED" ToRole="WAREHOUSE" />
   </EntityType>
@@ -39,10 +39,10 @@
     <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DISPATCH_START" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DISPATCH_STOP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="REPAIR_ORDER" Relationship="Self.FK_DISPATCHER_ID" FromRole="DISPATCHER" ToRole="REPAIR_ORDER" />
     <NavigationProperty Name="STAFF" Relationship="Self.FK_DISPATCHER_STAFF_1" FromRole="DISPATCHER" ToRole="STAFF" />
     <NavigationProperty Name="WORK_ORDER" Relationship="Self.FK_WORK_ORDER__DISPATCHER_1" FromRole="DISPATCHER" ToRole="WORK_ORDER" />
@@ -63,10 +63,10 @@
     <Property Name="QR_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="REGION_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TYPE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="REGION" Relationship="Self.FK_EQ_IN_USE_EQ_IN_USE_1" FromRole="EQ_IN_USE" ToRole="REGION" />
     <NavigationProperty Name="EQ_TYPE" Relationship="Self.FK_EQ_IN_USE_EQ_IN_USE_2" FromRole="EQ_IN_USE" ToRole="EQ_TYPE" />
     <NavigationProperty Name="PATROL_LOG" Relationship="Self.FK_PATROL_LOG_EQ_IN_USE_1" FromRole="EQ_IN_USE" ToRole="PATROL_LOG" />
@@ -82,10 +82,10 @@
     <Property Name="STATUS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EQ_TYPE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="WAREHOUSE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="EQ_TYPE" Relationship="Self.fk_EQ_STORED" FromRole="EQ_STORED" ToRole="EQ_TYPE" />
     <NavigationProperty Name="WAREHOUSE" Relationship="Self.fk_EQ_STORED_1" FromRole="EQ_STORED" ToRole="WAREHOUSE" />
   </EntityType>
@@ -99,10 +99,10 @@
     <Property Name="PRICE" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
     <Property Name="FACTORY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PICTURE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="EQ_IN_USE" Relationship="Self.FK_EQ_IN_USE_EQ_IN_USE_2" FromRole="EQ_TYPE" ToRole="EQ_IN_USE" />
     <NavigationProperty Name="EQ_STORED" Relationship="Self.fk_EQ_STORED" FromRole="EQ_TYPE" ToRole="EQ_STORED" />
     <NavigationProperty Name="FACTORY" Relationship="Self.fk_EQ_TYPE" FromRole="EQ_TYPE" ToRole="FACTORY" />
@@ -115,10 +115,10 @@
     </Key>
     <Property Name="EQ_TYPE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ACCESSORY_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="ACCESSORY" Relationship="Self.fk_EQ_TYPE_ACCESSORY_1" FromRole="EQ_TYPE_ACCESSORY" ToRole="ACCESSORY" />
     <NavigationProperty Name="EQ_TYPE" Relationship="Self.fk_EQ_TYPE_ACCESSORY" FromRole="EQ_TYPE_ACCESSORY" ToRole="EQ_TYPE" />
   </EntityType>
@@ -131,10 +131,10 @@
     <Property Name="PRINCIPAL" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PHONE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="ADDRESS" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="ACCESSORY" Relationship="Self.fk_ACCESSORY" FromRole="FACTORY" ToRole="ACCESSORY" />
     <NavigationProperty Name="EQ_TYPE" Relationship="Self.fk_EQ_TYPE" FromRole="FACTORY" ToRole="EQ_TYPE" />
   </EntityType>
@@ -145,10 +145,10 @@
     <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PATROL_START" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PATROL_STOP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
     <NavigationProperty Name="STAFF" Relationship="Self.fk_PATROL" FromRole="PATROL" ToRole="STAFF" />
     <NavigationProperty Name="PATROL_LOG" Relationship="Self.FK_PATROL_LOG_PATROL_1" FromRole="PATROL" ToRole="PATROL_LOG" />
     <NavigationProperty Name="PATROL_REGION" Relationship="Self.FK_PATROL_REGION_PATROL_1" FromRole="PATROL" ToRole="PATROL_REGION" />
@@ -163,10 +163,10 @@
     <Property Name="PATROL_TIME" Type="DateTime" Nullable="false" />
     <Property Name="PATROL_RESULT" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PATROL_PICTURE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="EQ_IN_USE" Relationship="Self.FK_PATROL_LOG_EQ_IN_USE_1" FromRole="PATROL_LOG" ToRole="EQ_IN_USE" />
     <NavigationProperty Name="PATROL" Relationship="Self.FK_PATROL_LOG_PATROL_1" FromRole="PATROL_LOG" ToRole="PATROL" />
   </EntityType>
@@ -177,12 +177,12 @@
     </Key>
     <Property Name="PATROL_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="REGION_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="PATROL" Relationship="Self.FK_PATROL_REGION_PATROL_1" FromRole="PATROL_REGION" ToRole="PATROL" />
-    <NavigationProperty Name="REGION" Relationship="Self.FK_RESPONSIBILITY_1" FromRole="PATROL_REGION" ToRole="REGION" />
+    <NavigationProperty Name="REGION" Relationship="Self.FK_STA" FromRole="PATROL_REGION" ToRole="REGION" />
   </EntityType>
   <EntityType Name="REGION">
     <Key>
@@ -193,8 +193,8 @@
     <Property Name="CITY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="COUNTY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="EQ_IN_USE" Relationship="Self.FK_EQ_IN_USE_EQ_IN_USE_1" FromRole="REGION" ToRole="EQ_IN_USE" />
-    <NavigationProperty Name="PATROL_REGION" Relationship="Self.FK_RESPONSIBILITY_1" FromRole="REGION" ToRole="PATROL_REGION" />
-    <NavigationProperty Name="REPAIRER_REGION" Relationship="Self.FK_REGION_REPAIRER_1" FromRole="REGION" ToRole="REPAIRER_REGION" />
+    <NavigationProperty Name="PATROL_REGION" Relationship="Self.FK_STA" FromRole="REGION" ToRole="PATROL_REGION" />
+    <NavigationProperty Name="REPAIRER_REGION" Relationship="Self.FK_REPAI1" FromRole="REGION" ToRole="REPAIRER_REGION" />
     <NavigationProperty Name="WAREHOUSE" Relationship="Self.fk_WAREHOUSE" FromRole="REGION" ToRole="WAREHOUSE" />
   </EntityType>
   <EntityType Name="REPAIR_ORDER">
@@ -209,10 +209,10 @@
     <Property Name="TEL_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EQ_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="DISPATCHER_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="DISPATCHER" Relationship="Self.FK_DISPATCHER_ID" FromRole="REPAIR_ORDER" ToRole="DISPATCHER" />
     <NavigationProperty Name="EQ_IN_USE" Relationship="Self.FK_REPAIR_ORDER_EQ_TYPES_1" FromRole="REPAIR_ORDER" ToRole="EQ_IN_USE" />
   </EntityType>
@@ -221,10 +221,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="REPAIRER_REGION" Relationship="Self.fk_REPAIRER_REGION" FromRole="REPAIRER" ToRole="REPAIRER_REGION" />
     <NavigationProperty Name="STAFF" Relationship="Self.FK_REPAIRER_STAFF_1" FromRole="REPAIRER" ToRole="STAFF" />
     <NavigationProperty Name="WORK_ORDER" Relationship="Self.FK_WORK_ORDER__REPAIRER_1" FromRole="REPAIRER" ToRole="WORK_ORDER" />
@@ -236,11 +236,11 @@
     </Key>
     <Property Name="REPAIRER_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="REGION_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
-    <NavigationProperty Name="REGION" Relationship="Self.FK_REGION_REPAIRER_1" FromRole="REPAIRER_REGION" ToRole="REGION" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
+    <NavigationProperty Name="REGION" Relationship="Self.FK_REPAI1" FromRole="REPAIRER_REGION" ToRole="REGION" />
     <NavigationProperty Name="REPAIRER" Relationship="Self.fk_REPAIRER_REGION" FromRole="REPAIRER_REGION" ToRole="REPAIRER" />
   </EntityType>
   <EntityType Name="STAFF">
@@ -254,10 +254,10 @@
     <Property Name="TEL_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="ID_CARD_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IS_SUPER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
     <NavigationProperty Name="DISPATCHER" Relationship="Self.FK_DISPATCHER_STAFF_1" FromRole="STAFF" ToRole="DISPATCHER" />
     <NavigationProperty Name="PATROL" Relationship="Self.fk_PATROL" FromRole="STAFF" ToRole="PATROL" />
     <NavigationProperty Name="REPAIRER" Relationship="Self.FK_REPAIRER_STAFF_1" FromRole="STAFF" ToRole="REPAIRER" />
@@ -271,10 +271,10 @@
     <Property Name="REGION_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="LOCATION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="AREA" Type="Int32" Nullable="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="ACCESSORY_STORED" Relationship="Self.fk_ACCESSORY_STORED_1" FromRole="WAREHOUSE" ToRole="ACCESSORY_STORED" />
     <NavigationProperty Name="EQ_STORED" Relationship="Self.fk_EQ_STORED_1" FromRole="WAREHOUSE" ToRole="EQ_STORED" />
     <NavigationProperty Name="REGION" Relationship="Self.fk_WAREHOUSE" FromRole="WAREHOUSE" ToRole="REGION" />
@@ -289,10 +289,10 @@
     <Property Name="DISPATCHER_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="WORK_PICTURE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EQ_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="INSERT_TIME" Type="DateTime" Nullable="false" />
-    <Property Name="UPDATE_TIME" Type="DateTime" Nullable="false" />
+    <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_TIME" Type="DateTime" />
+    <Property Name="UPDATE_TIME" Type="DateTime" />
     <NavigationProperty Name="DISPATCHER" Relationship="Self.FK_WORK_ORDER__DISPATCHER_1" FromRole="WORK_ORDER" ToRole="DISPATCHER" />
     <NavigationProperty Name="EQ_IN_USE" Relationship="Self.fk_WORK_ORDER" FromRole="WORK_ORDER" ToRole="EQ_IN_USE" />
     <NavigationProperty Name="REPAIRER" Relationship="Self.FK_WORK_ORDER__REPAIRER_1" FromRole="WORK_ORDER" ToRole="REPAIRER" />
@@ -551,7 +551,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_RESPONSIBILITY_1">
+  <Association Name="FK_STA">
     <End Role="REGION" Type="Self.REGION" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -565,7 +565,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_REGION_REPAIRER_1">
+  <Association Name="FK_REPAI1">
     <End Role="REGION" Type="Self.REGION" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -728,11 +728,11 @@
       <End Role="PATROL" EntitySet="PATROL" />
       <End Role="PATROL_REGION" EntitySet="PATROL_REGION" />
     </AssociationSet>
-    <AssociationSet Name="FK_RESPONSIBILITY_1" Association="Self.FK_RESPONSIBILITY_1">
+    <AssociationSet Name="FK_STA" Association="Self.FK_STA">
       <End Role="REGION" EntitySet="REGION" />
       <End Role="PATROL_REGION" EntitySet="PATROL_REGION" />
     </AssociationSet>
-    <AssociationSet Name="FK_REGION_REPAIRER_1" Association="Self.FK_REGION_REPAIRER_1">
+    <AssociationSet Name="FK_REPAI1" Association="Self.FK_REPAI1">
       <End Role="REGION" EntitySet="REGION" />
       <End Role="REPAIRER_REGION" EntitySet="REPAIRER_REGION" />
     </AssociationSet>
