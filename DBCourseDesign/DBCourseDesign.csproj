@@ -186,7 +186,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ACCESSORiesController.cs" />
     <Compile Include="Controllers\ACCESSORY_STOREDController.cs" />
@@ -196,7 +195,6 @@
     <Compile Include="Controllers\EQ_TYPEController.cs" />
     <Compile Include="Controllers\EQ_TYPE_ACCESSORYController.cs" />
     <Compile Include="Controllers\FACTORiesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PATROLsController.cs" />
     <Compile Include="Controllers\PATROL_LOGController.cs" />
     <Compile Include="Controllers\PATROL_REGIONController.cs" />
