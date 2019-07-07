@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="FEMSContext-Web.config Connection String" description="FEMSContext 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="metadata=res://*/Models.FEMSModel.csdl|res://*/Models.FEMSModel.ssdl|res://*/Models.FEMSModel.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=DBCOURSEPDB;PASSWORD=sse;PERSIST SECURITY INFO=True;USER ID=FEMS_ADMIN&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="E:\\Project\\DBCourseDesign\\DBCourseDesign\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FEMSContext']/@connectionString" />
-  </parameter>
-</parameters>
