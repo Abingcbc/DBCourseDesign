@@ -63,8 +63,8 @@ namespace DBCourseDesign.Models
         public WAREHOUSEStorageDto()
         {
         }
-        public virtual ICollection<ACCESSORY_STORED> ACCESSORY_STORED { get; set; }
-        public virtual ICollection<EQ_STORED> EQ_STORED { get; set; }
+        public virtual ICollection<ACCESSORYStorageDto> accessory { get; set; }
+        public virtual ICollection<EQStorageDto> equipment { get; set; }
     }
 
 }

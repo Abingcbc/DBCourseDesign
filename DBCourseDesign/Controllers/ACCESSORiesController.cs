@@ -27,7 +27,7 @@ namespace DBCourseDesign.Controllers
         [ResponseType(typeof(ACCESSORY))]
         public async Task<IHttpActionResult> GetACCESSORY(string id)
         {
-            ACCESSORY aCCESSORY = db.ACCESSORY.Find(id);
+            ACCESSORY aCCESSORY = await db.ACCESSORY.FindAsync(id);
             if (aCCESSORY == null)
             {
                 return NotFound();

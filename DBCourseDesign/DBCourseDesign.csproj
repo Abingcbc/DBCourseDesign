@@ -186,7 +186,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\WAREHOUSEController.cs" />
+    <Compile Include="Controllers\defined controllers\workSheetController.cs" />
+    <Compile Include="Controllers\defined controllers\WAREHOUSEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ACCESSORiesController.cs" />
     <Compile Include="Controllers\ACCESSORY_STOREDController.cs" />

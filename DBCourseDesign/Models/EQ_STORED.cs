@@ -27,4 +27,12 @@ namespace DBCourseDesign.Models
         public virtual EQ_TYPE EQ_TYPE { get; set; }
         public virtual WAREHOUSE WAREHOUSE { get; set; }
     }
+
+    public partial class EQStorageDto
+    {
+        public string id { get; set; }
+        public string model { get; set; }
+        public string type { get; set; }
+
+    }
 }

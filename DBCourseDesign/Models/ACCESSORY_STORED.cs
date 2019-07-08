@@ -25,4 +25,26 @@ namespace DBCourseDesign.Models
         public virtual ACCESSORY ACCESSORY { get; set; }
         public virtual WAREHOUSE WAREHOUSE { get; set; }
     }
+    public partial class ACCESSORYStorageDto
+    {
+        public ACCESSORYStorageDto()
+        {
+        }
+        public string id { get; set; }
+        public string model { get; set; }
+        public string type { get; set; }
+        public int number { get; set; }
+    }
+    public partial class ACCESSORYDispatchReceiver
+    {
+        public ACCESSORYDispatchReceiver()
+        {
+        }
+        public string id { get; set; }
+        public string type { get; set; }
+        public string model { get; set; }
+        public string from { get; set; }
+        public string to { get; set; }
+        public int num { get; set; }
+    }
 }

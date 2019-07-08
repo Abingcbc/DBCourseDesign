@@ -29,4 +29,21 @@ namespace DBCourseDesign.Models
         public virtual EQ_IN_USE EQ_IN_USE { get; set; }
         public virtual REPAIRER REPAIRER { get; set; }
     }
+
+    public partial class workSheetDto
+    {
+        public string id { get; set; }
+        public string equipID { get; set; }
+        public string repairerID { get; set; }
+        public string repairArea { get; set; }
+        public string status { get; set; }
+        public string dispatcherID { get; set; }
+        public string work_picture { get; set; }
+    }
+
+    public partial class deleteWorkSheetDto
+    {
+        public ICollection<workSheetDto> data;
+        public string deleteInfo;
+    }
 }
