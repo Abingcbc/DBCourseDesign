@@ -219,6 +219,8 @@
     <Compile Include="Models\DISPATCHER.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\accessoryStorageDto.cs" />
+    <Compile Include="Models\DTO\eqStoredDto.cs" />
     <Compile Include="Models\EQ_IN_USE.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
@@ -276,6 +278,8 @@
     <Compile Include="Models\WAREHOUSE.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\warehouseDto.cs" />
+    <Compile Include="Models\DTO\workSheetDto.cs" />
     <Compile Include="Models\WORK_ORDER.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>

@@ -93,9 +93,12 @@ namespace DBCourseDesign.Controllers
             var warehouseTable = new List<WAREHOUSE>();
             warehouseTable.Add(warehouse);
             var eqs = warehouseTable.Join(db.EQ_STORED, w => w.ID, g => g.WAREHOUSE_ID,
-                (w, g) => new { g.ID, g.EQ_TYPE_ID }).Join(db.EQ_TYPE, w => w.EQ_TYPE_ID, e => e.ID,
+                (w, g) => new { g.ID, g.EQ_TYPE_ID });
+            var temp1 = eqs.ToList();
+            var temp = eqs
+                .Join(db.EQ_TYPE, w => w.EQ_TYPE_ID, e => e.ID,
                 (w, e) => new EQStorageDto() { id = w.ID, model = e.MODEL_NUMBER, type = e.TYPE_NAME }).ToList();
-            return eqs;
+            return temp;
         }
 
         private List<ACCESSORYStorageDto> GetStoredAccessories(WAREHOUSE warehouse)
