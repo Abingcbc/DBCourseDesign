@@ -16,39 +16,40 @@ namespace DBCourseDesign.Controllers
         private FEMSContext db = new FEMSContext();
 
         [HttpPost]
-        [ResponseType(typeof(mobileStaffDto))]
-        public HttpResponseMessage PostLogin(string count_id, string password)
+        [ResponseType(typeof(returnDto<mobileStaffDto>))]
+        public IHttpActionResult PostLogin(MobileStaffReciever mobileStaffReciever)
         {
-            var staff = db.STAFF.Where(s => s.ACCOUNT_ID == count_id && s.PASSWORD == password).First();
+            var staff = db.STAFF.Where(s => s.ACCOUNT_ID == mobileStaffReciever.count_id && 
+            s.PASSWORD == mobileStaffReciever.password).FirstOrDefault();
             if (staff == null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, "");
+                return Ok(new returnDto<mobileStaffDto>(new mobileStaffDto()));
             }
             else
             {
                 var patrol = db.PATROL.Find(staff.ID);
                 if (patrol != null)
                 {
-                    //return Ok(new mobileStaffDto()
-                    //{
-                    //    name = staff.NAME,
-                    //    id = staff.ID,
-                    //    type = "巡检员"
-                    //});
+                    return Ok(new returnDto<mobileStaffDto>(new mobileStaffDto()
+                    {
+                        name = staff.NAME,
+                        id = staff.ID,
+                        type = "巡检员"
+                    }));
                 }
                 var repairer = db.REPAIRER.Find(staff.ID);
                 if (repairer == null)
                 {
-                    //return Ok(new mobileStaffDto());
+                    return Ok(new returnDto<mobileStaffDto>(new mobileStaffDto()));
                 }
                 else
                 {
-                    //return Ok(new mobileStaffDto()
-                    //{
-                    //    name = staff.NAME,
-                    //    id = staff.ID,
-                    //    type = "维修员"
-                    //});
+                    return Ok(new returnDto<mobileStaffDto>(new mobileStaffDto()
+                    {
+                        name = staff.NAME,
+                        id = staff.ID,
+                        type = "维修员"
+                    }));
                 }
             }
         }

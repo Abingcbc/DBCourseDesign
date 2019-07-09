@@ -199,10 +199,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\GetInfoController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\DTO\eqInUseDto.cs" />
     <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
     <Compile Include="Controllers\defined controllers\equipmentController.cs" />
@@ -241,7 +243,11 @@
     </Compile>
     <Compile Include="Models\DTO\accessoryStorageDto.cs" />
     <Compile Include="Models\DTO\eqStoredDto.cs" />
+    <Compile Include="Models\DTO\LoginDto.cs" />
+    <Compile Include="Models\DTO\LoginReciever.cs" />
+    <Compile Include="Models\DTO\LogoutReciever.cs" />
     <Compile Include="Models\DTO\mobileStaffDto.cs" />
+    <Compile Include="Models\DTO\MobileStaffReciever.cs" />
     <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
     <Compile Include="Models\DTO\checkSheetDto.cs" />
