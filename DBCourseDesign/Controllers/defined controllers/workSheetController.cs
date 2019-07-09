@@ -23,7 +23,7 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/sheets/workSheet")]
-        public IQueryable<workSheetDto> GetWorkSheets()
+        public returnDto<IQueryable<workSheetDto>> GetWorkSheets()
         {
             var workSheets = db.WORK_ORDER.Join(db.STAFF, w => w.REPAIRER_ID, s => s.ID, (w, repairer) => new { w, repairer }).Join
                 (db.STAFF, w => w.w.DISPATCHER_ID, s => s.ID, (w, dispatcher) => new { w, dispatcher }).Join
@@ -39,7 +39,7 @@ namespace DBCourseDesign.Controllers
                     repairerName = w.w.repairer.NAME,
                     dispatcherName = w.dispatcher.NAME
                 });
-            return workSheets;
+            return returnHelper.make(workSheets);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("api/sheets/workSheetRow")]
-        [ResponseType(typeof(deleteWorkSheetDto))]
+        [ResponseType(typeof(returnDto<deleteWorkSheetDto>))]
         public async Task<IHttpActionResult> deleteWorkSheet(string id)
         {
             try
@@ -60,7 +60,7 @@ namespace DBCourseDesign.Controllers
                 }
                 db.WORK_ORDER.Remove(wORK_ORDER);
                 await db.SaveChangesAsync();
-                var workSheets = GetWorkSheets().ToList();
+                var workSheets = GetWorkSheets().data.ToList();
                 var result = new deleteWorkSheetDto()
                 {
                     data = workSheets,
@@ -70,10 +70,10 @@ namespace DBCourseDesign.Controllers
             }
             catch (Exception)
             {
-                return Ok(new deleteWorkSheetDto()
+                return Ok(returnHelper.make(new deleteWorkSheetDto()
                 {
                     deleteInfo = "false"
-                });
+                }));
             }
         }
     }

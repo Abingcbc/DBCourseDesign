@@ -96,5 +96,16 @@ namespace DBCourseDesign.Controllers
             await db.SaveChangesAsync();
             return Ok();
         }
+
+        [HttpGet]
+        [Route("api/equipment/allType")]
+        [ResponseType(typeof(returnDto<List<string>>))]
+        public async Task<IHttpActionResult> GetAllTypes()
+        {
+            //without distinct to check errors
+            var result = db.EQ_TYPE.Select(a => a.TYPE_NAME)
+            .OrderBy(item => item).Distinct().ToList();
+            return Ok(returnHelper.make(result));
+        }
     }
 }

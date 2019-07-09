@@ -23,7 +23,7 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/sheets/checkSheet")]
-        public IQueryable<checkSheetDto> GetCheckSheets()
+        public returnDto<IQueryable<checkSheetDto>> GetCheckSheets()
         {
             var checkSheets = db.PATROL_LOG.Join(db.STAFF, p => p.PATROL_ID, s => s.ID, (p, staff) => new { p, staff }).Join
                 (db.EQ_IN_USE, p =>p.p.EQ_ID, e => e.ID, (p, EQ) => new checkSheetDto()
@@ -36,7 +36,7 @@ namespace DBCourseDesign.Controllers
                     patrolID = p.staff.ID,
                     patrolName = p.staff.NAME
                 });
-            return checkSheets;
+            return returnHelper.make(checkSheets);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/sheets/checkSheetRow")]
-        [ResponseType(typeof(deleteCheckSheetDto))]
+        [ResponseType(typeof(returnDto<deleteCheckSheetDto>))]
         public async Task<IHttpActionResult> DeleteCheckSheet(string id)
         {
             try
@@ -57,20 +57,20 @@ namespace DBCourseDesign.Controllers
                 }
                 db.PATROL_LOG.Remove(patrol_log);
                 await db.SaveChangesAsync();
-                var checkSheets = GetCheckSheets().ToList();
+                var checkSheets = GetCheckSheets().data.ToList();
                 var result = new deleteCheckSheetDto()
                 {
                     data = checkSheets,
                     deleteInfo = "ok"
                 };
-                return Ok(result);
+                return Ok(returnHelper.make(result));
             }
             catch (Exception)
             {
-                return Ok(new deleteWorkSheetDto()
+                return Ok(returnHelper.make(new deleteWorkSheetDto()
                 {
                     deleteInfo = "false"
-                });
+                }));
             }
         }
     }

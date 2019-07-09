@@ -97,7 +97,7 @@ namespace DBCourseDesign.Controllers
         public async Task<IHttpActionResult> GetAllAcKind()
         {
             //without distinct to check errors
-            var result = db.ACCESSORY.Select(a => new modelIdMappingDto() { accessory = a.ID, model = a.MODEL_NUMBER}).ToList();
+            var result = db.ACCESSORY.Select(a => new modelIdMappingDto() { accessory = a.ID, model = a.MODEL_NUMBER + "(" + a.TYPE_NAME + ")" }).ToList();
             return Ok(returnHelper.make(result));
         }
     }
