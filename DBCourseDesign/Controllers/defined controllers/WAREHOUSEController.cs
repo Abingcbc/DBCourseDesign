@@ -32,7 +32,7 @@ namespace DBCourseDesign.Controllers
         [ResponseType(typeof(WAREHOUSEDetailDto))]
         public async Task<IHttpActionResult> GetDetail(string id)
         {
-            var warehouse = db.WAREHOUSE.Find(id);
+            var warehouse = await db.WAREHOUSE.FindAsync(id);
             if (warehouse == null)
                 return NotFound();
             db.Entry(warehouse).Reference(p => p.REGION).Load();
@@ -73,7 +73,7 @@ namespace DBCourseDesign.Controllers
         public async Task<IHttpActionResult> GetStorage(string id)
         {
             //without distinct to check errors
-            var warehouse = db.WAREHOUSE.Find(id);
+            var warehouse = await db.WAREHOUSE.FindAsync(id);
             if (warehouse == null)
                 return NotFound();
             var warehouseTable = new List<WAREHOUSE>();
@@ -93,12 +93,9 @@ namespace DBCourseDesign.Controllers
             var warehouseTable = new List<WAREHOUSE>();
             warehouseTable.Add(warehouse);
             var eqs = warehouseTable.Join(db.EQ_STORED, w => w.ID, g => g.WAREHOUSE_ID,
-                (w, g) => new { g.ID, g.EQ_TYPE_ID });
-            var temp1 = eqs.ToList();
-            var temp = eqs
-                .Join(db.EQ_TYPE, w => w.EQ_TYPE_ID, e => e.ID,
+                (w, g) => new { g.ID, g.EQ_TYPE_ID }).Join(db.EQ_TYPE, w => w.EQ_TYPE_ID, e => e.ID,
                 (w, e) => new EQStorageDto() { id = w.ID, model = e.MODEL_NUMBER, type = e.TYPE_NAME }).ToList();
-            return temp;
+            return eqs;
         }
 
         private List<ACCESSORYStorageDto> GetStoredAccessories(WAREHOUSE warehouse)
@@ -118,12 +115,16 @@ namespace DBCourseDesign.Controllers
         public async Task<IHttpActionResult> dispatchAccessory(ACCESSORYDispatchReceiver input)
         {
             WAREHOUSE originalWarehouse;
+            WAREHOUSE targetWarehouse;
             try
             {
                 originalWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.from);
+                targetWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.to);
+                if (originalWarehouse == null || targetWarehouse == null)
+                    throw new ApplicationException();
                 if (input.type.ToLower() == "equipment")
                 {
-                    var record = db.EQ_STORED.Find(input.id);
+                    var record = await db.EQ_STORED.FindAsync(input.id);
                     if (record == null)
                         throw new ApplicationException();
                     db.Entry(record).Reference(e => e.WAREHOUSE).Load();
@@ -131,39 +132,36 @@ namespace DBCourseDesign.Controllers
                     {
                         throw new ApplicationException();
                     }
-                    var targetWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.to);
                     record.WAREHOUSE = targetWarehouse;
                 }
                 else
                 {
-                    if (originalWarehouse == null)
-                        throw new ApplicationException();
+                    //origianl record
                     var record = await db.ACCESSORY_STORED.FirstAsync(e => e.ACCESSORY_ID == input.id && e.WAREHOUSE_ID == originalWarehouse.ID);
                     if (record == null || record.QUANTITY < input.num)
                         throw new ApplicationException();
-                    if (record.QUANTITY == input.num)
-                        db.ACCESSORY_STORED.Remove(record);
-                    else
-                        //not sure if the change will be saved to database
-                        record.QUANTITY -= input.num;
-                    //debug
-                    var temp = db.Entry(record).State;
-                    var targetWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.to);
                     //accessories already in target warehouse
-                    var AccessoriesInTarget = db.ACCESSORY_STORED.First(e => e.WAREHOUSE_ID == targetWarehouse.ID && e.ACCESSORY_ID == input.id);
+                    var AccessoriesInTarget = await db.ACCESSORY_STORED.FirstOrDefaultAsync(e => e.WAREHOUSE_ID == targetWarehouse.ID && e.ACCESSORY_ID == input.id);
                     if (AccessoriesInTarget == null)
                         db.ACCESSORY_STORED.Add(
                             new ACCESSORY_STORED
                             {
                                 ACCESSORY_ID = input.id,
                                 QUANTITY = input.num,
-                                WAREHOUSE_ID = targetWarehouse.ID
+                                WAREHOUSE_ID = targetWarehouse.ID,
+                                INSERT_TIME = record.INSERT_TIME,
+                                INSERT_BY = record.INSERT_BY
                             });
                     else
                         AccessoriesInTarget.QUANTITY += input.num;
+                    //modify record in original warehouse
+                    if (record.QUANTITY == input.num)
+                        db.ACCESSORY_STORED.Remove(record);
+                    else
+                        //not sure if the change will be saved to database
+                        record.QUANTITY -= input.num;
                 }
-                await db.SaveChangesAsync();
-                
+                await db.SaveChangesAsync();  
                 if (input.type.ToLower() == "equipment")
                 {
                     return Ok(GetStoredEQ(originalWarehouse));

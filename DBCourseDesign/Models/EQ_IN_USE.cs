@@ -23,8 +23,8 @@ namespace DBCourseDesign.Models
         }
     
         public string ID { get; set; }
-        public System.DateTime PRODUCTION_TIME { get; set; }
-        public System.DateTime INSTALL_TIME { get; set; }
+        public string PRODUCTION_TIME { get; set; }
+        public string INSTALL_TIME { get; set; }
         public string OWNER { get; set; }
         public string MANAGER { get; set; }
         public string STATUS { get; set; }

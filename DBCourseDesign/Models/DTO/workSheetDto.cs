@@ -12,6 +12,9 @@
         public string status { get; set; }
         public string dispatcherID { get; set; }
         public string work_picture { get; set; }
+        public string dispatcherName { get; set; }
+        public string repairerName { get; set; }
+
     }
 
     public partial class deleteWorkSheetDto

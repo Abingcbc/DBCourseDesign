@@ -17,7 +17,7 @@ namespace DBCourseDesign.Models
         public string ID { get; set; }
         public string PATROL_ID { get; set; }
         public string EQ_ID { get; set; }
-        public System.DateTime PATROL_TIME { get; set; }
+        public string PATROL_TIME { get; set; }
         public string PATROL_RESULT { get; set; }
         public string PATROL_PICTURE { get; set; }
         public string INSERT_BY { get; set; }

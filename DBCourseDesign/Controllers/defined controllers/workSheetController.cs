@@ -25,16 +25,19 @@ namespace DBCourseDesign.Controllers
         [Route("api/sheets/workSheet")]
         public IQueryable<workSheetDto> GetWorkSheets()
         {
-            var workSheets = db.WORK_ORDER.Join(db.EQ_IN_USE, w => w.EQ_ID, e => e.ID,
-                (w, e) => new workSheetDto()
+            var workSheets = db.WORK_ORDER.Join(db.STAFF, w => w.REPAIRER_ID, s => s.ID, (w, repairer) => new { w, repairer }).Join
+                (db.STAFF, w => w.w.DISPATCHER_ID, s => s.ID, (w, dispatcher) => new { w, dispatcher }).Join
+                (db.EQ_IN_USE, w => w.w.w.EQ_ID, e => e.ID, (w, e) => new workSheetDto()
                 {
-                    id = w.ID,
-                    dispatcherID = w.DISPATCHER_ID,
-                    equipID = w.EQ_ID,
+                    id = w.w.w.ID,
+                    dispatcherID = w.w.w.DISPATCHER_ID,
+                    equipID = w.w.w.EQ_ID,
                     repairArea = e.ADDRESS,
-                    repairerID = w.REPAIRER_ID,
-                    status = w.STATUS,
-                    work_picture = w.WORK_PICTURE
+                    repairerID = w.w.w.REPAIRER_ID,
+                    status = w.w.w.STATUS,
+                    work_picture = w.w.w.WORK_PICTURE,
+                    repairerName = w.w.repairer.NAME,
+                    dispatcherName = w.dispatcher.NAME
                 });
             return workSheets;
         }
@@ -44,9 +47,9 @@ namespace DBCourseDesign.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpDelete]
-        [Route("api/sheets/workSheet")]
+        [Route("api/sheets/workSheetRow")]
         [ResponseType(typeof(deleteWorkSheetDto))]
-        public async Task<IHttpActionResult> GetWorkSheet(string id)
+        public async Task<IHttpActionResult> deleteWorkSheet(string id)
         {
             try
             {
@@ -56,6 +59,7 @@ namespace DBCourseDesign.Controllers
                     throw new ApplicationException();
                 }
                 db.WORK_ORDER.Remove(wORK_ORDER);
+                await db.SaveChangesAsync();
                 var workSheets = GetWorkSheets().ToList();
                 var result = new deleteWorkSheetDto()
                 {

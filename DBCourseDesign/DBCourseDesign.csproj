@@ -92,11 +92,11 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.18.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -186,6 +186,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
     <Compile Include="Controllers\defined controllers\workSheetController.cs" />
     <Compile Include="Controllers\defined controllers\WAREHOUSEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -221,6 +222,9 @@
     </Compile>
     <Compile Include="Models\DTO\accessoryStorageDto.cs" />
     <Compile Include="Models\DTO\eqStoredDto.cs" />
+    <Compile Include="Models\DTO\warehouseDto.cs" />
+    <Compile Include="Models\DTO\checkSheetDto.cs" />
+    <Compile Include="Models\DTO\workSheetDto.cs" />
     <Compile Include="Models\EQ_IN_USE.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
@@ -278,8 +282,6 @@
     <Compile Include="Models\WAREHOUSE.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DTO\warehouseDto.cs" />
-    <Compile Include="Models\DTO\workSheetDto.cs" />
     <Compile Include="Models\WORK_ORDER.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
@@ -299,14 +301,14 @@
       <DependentUpon>FEMSModel.edmx</DependentUpon>
       <LastGenOutput>FEMSModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config">
+    <Content Include="Web1.txt">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web1.Debug.txt">
+      <DependentUpon>Web1.txt</DependentUpon>
     </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web1.Release.txt">
+      <DependentUpon>Web1.txt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -320,8 +322,17 @@
     <Content Include="Models\FEMSModel.edmx.diagram">
       <DependentUpon>FEMSModel.edmx</DependentUpon>
     </Content>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

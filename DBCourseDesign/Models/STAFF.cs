@@ -14,6 +14,13 @@ namespace DBCourseDesign.Models
     
     public partial class STAFF
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public STAFF()
+        {
+            this.STAFF1 = new HashSet<STAFF>();
+            this.STAFF11 = new HashSet<STAFF>();
+        }
+    
         public string ID { get; set; }
         public string NAME { get; set; }
         public string ACCOUNT_ID { get; set; }
@@ -29,5 +36,11 @@ namespace DBCourseDesign.Models
         public virtual DISPATCHER DISPATCHER { get; set; }
         public virtual PATROL PATROL { get; set; }
         public virtual REPAIRER REPAIRER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STAFF> STAFF1 { get; set; }
+        public virtual STAFF STAFF2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STAFF> STAFF11 { get; set; }
+        public virtual STAFF STAFF3 { get; set; }
     }
 }

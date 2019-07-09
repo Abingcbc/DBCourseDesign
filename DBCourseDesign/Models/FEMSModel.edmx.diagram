@@ -4,50 +4,52 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="63fa385cbafc4fd998b10951db305433" Name="Diagram1">
-        <EntityTypeShape EntityType="FEMSContext.ACCESSORY" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.ACCESSORY_STORED" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.DISPATCHER" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.EQ_IN_USE" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.EQ_STORED" Width="1.5" PointX="8.25" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.EQ_TYPE" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.EQ_TYPE_ACCESSORY" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.FACTORY" Width="1.5" PointX="1.5" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.PATROL" Width="1.5" PointX="6" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.PATROL_LOG" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.PATROL_REGION" Width="1.5" PointX="6" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.REGION" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.REPAIR_ORDER" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.REPAIRER" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.REPAIRER_REGION" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.STAFF" Width="1.5" PointX="1.5" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.WAREHOUSE" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FEMSContext.WORK_ORDER" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
-        <AssociationConnector Association="FEMSContext.fk_ACCESSORY" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_ACCESSORY_STORED" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_EQ_TYPE_ACCESSORY_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_ACCESSORY_STORED_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_DISPATCHER_ID" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_DISPATCHER_STAFF_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_WORK_ORDER__DISPATCHER_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_EQ_IN_USE_EQ_IN_USE_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_EQ_IN_USE_EQ_IN_USE_2" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_PATROL_LOG_EQ_IN_USE_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_REPAIR_ORDER_EQ_TYPES_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_WORK_ORDER" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_EQ_STORED" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_EQ_STORED_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_EQ_TYPE" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_EQ_TYPE_ACCESSORY" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_PATROL" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_PATROL_LOG_PATROL_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_PATROL_REGION_PATROL_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_STA" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_REPAI1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_WAREHOUSE" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.fk_REPAIRER_REGION" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_REPAIRER_STAFF_1" ManuallyRouted="false" />
-        <AssociationConnector Association="FEMSContext.FK_WORK_ORDER__REPAIRER_1" ManuallyRouted="false" />
+      <Diagram DiagramId="252e4e5ec5bb4ebcb8d1d0bc55dcbe89" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ACCESSORY" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ACCESSORY_STORED" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DISPATCHER" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EQ_IN_USE" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EQ_STORED" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EQ_TYPE" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EQ_TYPE_ACCESSORY" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FACTORY" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PATROL" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PATROL_LOG" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PATROL_REGION" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REGION" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REPAIR_ORDER" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REPAIRER" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REPAIRER_REGION" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STAFF" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WAREHOUSE" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WORK_ORDER" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="Model.fk_ACCESSORY" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_ACCESSORY_STORED" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_EQ_TYPE_ACCESSORY_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_ACCESSORY_STORED_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DISPATCHER_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DISPATCHER_STAFF_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_WORK_ORDER__DISPATCHER_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_EQ_IN_USE_EQ_IN_USE_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_EQ_IN_USE_EQ_IN_USE_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PATROL_LOG_EQ_IN_USE_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REPAIR_ORDER_EQ_TYPES_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_WORK_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_EQ_STORED" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_EQ_STORED_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_EQ_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_EQ_TYPE_ACCESSORY" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_PATROL" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PATROL_LOG_PATROL_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PATROL_REGION_PATROL_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_STA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REPAI1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_WAREHOUSE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_REPAIRER_REGION" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REPAIRER_STAFF_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_WORK_ORDER__REPAIRER_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.STAFF_SUPER_ADMIN__fk" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.STAFF_SUPER_ADMIN__fk_1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
