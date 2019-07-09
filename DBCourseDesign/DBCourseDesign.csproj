@@ -58,12 +58,6 @@
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.4.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
@@ -200,6 +194,9 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
+    <Compile Include="Controllers\defined controllers\workSheetController.cs" />
+    <Compile Include="Controllers\defined controllers\WAREHOUSEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ACCESSORiesController.cs" />
     <Compile Include="Controllers\ACCESSORY_STOREDController.cs" />
@@ -231,6 +228,11 @@
     <Compile Include="Models\DISPATCHER.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\accessoryStorageDto.cs" />
+    <Compile Include="Models\DTO\eqStoredDto.cs" />
+    <Compile Include="Models\DTO\warehouseDto.cs" />
+    <Compile Include="Models\DTO\checkSheetDto.cs" />
+    <Compile Include="Models\DTO\workSheetDto.cs" />
     <Compile Include="Models\EQ_IN_USE.cs">
       <DependentUpon>FEMSModel.tt</DependentUpon>
     </Compile>
@@ -328,8 +330,17 @@
     <Content Include="Models\FEMSModel.edmx.diagram">
       <DependentUpon>FEMSModel.edmx</DependentUpon>
     </Content>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -15,7 +15,7 @@ namespace DBCourseDesign.Models
     public partial class EQ_STORED
     {
         public string ID { get; set; }
-        public System.DateTime PRODUCT_TIME { get; set; }
+        public string PRODUCT_TIME { get; set; }
         public string STATUS { get; set; }
         public string EQ_TYPE_ID { get; set; }
         public string WAREHOUSE_ID { get; set; }

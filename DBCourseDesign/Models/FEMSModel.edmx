@@ -49,14 +49,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
-          <Property Name="PRODUCTION_TIME" Type="date" Nullable="false" />
-          <Property Name="INSTALL_TIME" Type="date" Nullable="false" />
+          <Property Name="PRODUCTION_TIME" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="INSTALL_TIME" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="OWNER" Type="varchar2" MaxLength="128" Nullable="false" />
           <Property Name="MANAGER" Type="varchar2" MaxLength="128" Nullable="false" />
           <Property Name="STATUS" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="ADDRESS" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="LONGITUDE" Type="number" Precision="3" Scale="2" />
-          <Property Name="LATITUDE" Type="number" Precision="3" Scale="2" />
+          <Property Name="LONGITUDE" Type="number" Precision="13" Scale="10" />
+          <Property Name="LATITUDE" Type="number" Precision="13" Scale="10" />
           <Property Name="QR_CODE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
@@ -70,7 +70,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
-          <Property Name="PRODUCT_TIME" Type="date" Nullable="false" />
+          <Property Name="PRODUCT_TIME" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="STATUS" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="EQ_TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="WAREHOUSE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
@@ -139,7 +139,7 @@
           <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="PATROL_ID" Type="varchar2" MaxLength="32" />
           <Property Name="EQ_ID" Type="varchar2" MaxLength="32" />
-          <Property Name="PATROL_TIME" Type="date" Nullable="false" />
+          <Property Name="PATROL_TIME" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="PATROL_RESULT" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="PATROL_PICTURE" Type="varchar2" MaxLength="255" />
           <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
@@ -232,6 +232,8 @@
           <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="LOCATION" Type="varchar2" MaxLength="128" Nullable="false" />
           <Property Name="AREA" Type="number" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="LONGITUDE" Type="number" Precision="13" Scale="10" />
+          <Property Name="LATITUDE" Type="number" Precision="13" Scale="10" />
           <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
           <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
           <Property Name="INSERT_TIME" Type="date" />
@@ -765,14 +767,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PRODUCTION_TIME" Type="DateTime" Nullable="false" />
-          <Property Name="INSTALL_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="PRODUCTION_TIME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="INSTALL_TIME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OWNER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MANAGER" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="STATUS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LONGITUDE" Type="Decimal" Precision="3" Scale="2" />
-          <Property Name="LATITUDE" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="LONGITUDE" Type="Decimal" Precision="13" Scale="10" />
+          <Property Name="LATITUDE" Type="Decimal" Precision="13" Scale="10" />
           <Property Name="QR_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="REGION_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TYPE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
@@ -791,7 +793,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PRODUCT_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="PRODUCT_TIME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="STATUS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EQ_TYPE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="WAREHOUSE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
@@ -873,7 +875,7 @@
           <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PATROL_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="EQ_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="PATROL_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="PATROL_TIME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PATROL_RESULT" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PATROL_PICTURE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
@@ -984,6 +986,8 @@
           <Property Name="REGION_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LOCATION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AREA" Type="Int32" Nullable="false" />
+          <Property Name="LONGITUDE" Type="Decimal" Precision="13" Scale="10" />
+          <Property Name="LATITUDE" Type="Decimal" Precision="13" Scale="10" />
           <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="INSERT_TIME" Type="DateTime" />
@@ -1710,6 +1714,8 @@
                 <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
                 <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
                 <ScalarProperty Name="AREA" ColumnName="AREA" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
                 <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
                 <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
                 <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />

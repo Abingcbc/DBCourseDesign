@@ -13,7 +13,6 @@ namespace DBCourseDesign.Controllers
         //[RequireHttps]
         public IEnumerable<string> Get()
         {
-            NotificationController.
             return new string[] { "value1", "value2" };
         }
 

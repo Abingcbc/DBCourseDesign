@@ -26,6 +26,8 @@ namespace DBCourseDesign.Models
         public string REGION_ID { get; set; }
         public string LOCATION { get; set; }
         public int AREA { get; set; }
+        public Nullable<decimal> LONGITUDE { get; set; }
+        public Nullable<decimal> LATITUDE { get; set; }
         public string INSERT_BY { get; set; }
         public string UPDATE_BY { get; set; }
         public Nullable<System.DateTime> INSERT_TIME { get; set; }

@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/DBCourseDesign/Web1.txt
+/DBCourseDesign/Web1.Release.txt
+/DBCourseDesign/Web1.Debug.txt
