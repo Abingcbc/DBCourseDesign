@@ -187,6 +187,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
+    <Compile Include="Models\DTO\eqInUseDto.cs" />
+    <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
+    <Compile Include="Controllers\defined controllers\equipmentController.cs" />
     <Compile Include="Controllers\defined controllers\workSheetController.cs" />
     <Compile Include="Controllers\defined controllers\WAREHOUSEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
