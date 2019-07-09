@@ -58,13 +58,13 @@ namespace DBCourseDesign.Controllers
 
         [HttpGet]
         [Route("api/WAREHOUSE/allWarehouse")]
-        [ResponseType(typeof(List<string>))]
+        [ResponseType(typeof(returnDto<List<string>>))]
         public async Task<IHttpActionResult> GetAllWarehouses()
         {
             //without distinct to check errors
             var result = db.WAREHOUSE.Select(e => e.NAME)
             .OrderBy(item => item).ToList();
-            return Ok(result);
+            return Ok(returnHelper.make(result));
         }
 
         [HttpPost]

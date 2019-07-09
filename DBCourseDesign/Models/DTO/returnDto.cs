@@ -12,4 +12,11 @@
         }
         public T data { get; set; }
     }
+    public partial class returnHelper
+    {
+        public static returnDto<T> make<T> (T input)
+        {
+            return new returnDto<T>(input);
+        }
+    }
 }

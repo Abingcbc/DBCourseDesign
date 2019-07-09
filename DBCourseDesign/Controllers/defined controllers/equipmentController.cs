@@ -20,27 +20,27 @@ namespace DBCourseDesign.Controllers
         //wyc
         [HttpGet]
         [Route("api/equipment/stored")]
-        public IQueryable<detailedEQStorageDto> GetEqStored()
+        public async Task<IHttpActionResult> GetEqStored()
         {
             var result = db.EQ_STORED.Include(e => e.WAREHOUSE).Include(e => e.EQ_TYPE).Select<EQ_STORED, detailedEQStorageDto>
                 (e => new detailedEQStorageDto
                 {
                     icon = e.EQ_TYPE.PICTURE,
                     id = e.ID,
-                    modelID = e.EQ_TYPE.MODEL_NUMBER,
+                    model = e.EQ_TYPE.MODEL_NUMBER,
                     name = e.EQ_TYPE.TYPE_NAME,
                     price = e.EQ_TYPE.PRICE.ToString(),
                     productTime = e.PRODUCT_TIME,
-                    status = e.STATUS == "正常" ? "0" : "1",
-                    warehouseID = e.WAREHOUSE.NAME
+                    status = e.STATUS,
+                    warehouse = e.WAREHOUSE.NAME
                 });
-            return result;
+            return Ok(returnHelper.make(result));
         }
 
         //wyc
         [HttpGet]
         [Route("api/equipment/using")]
-        public IQueryable<EqInUseDto> GetEqUsing()
+        public async Task<IHttpActionResult> GetEqUsing()
         {
             var result = db.EQ_IN_USE.Include(e => e.EQ_TYPE).Select<EQ_IN_USE, EqInUseDto>
                 (e => new EqInUseDto
@@ -51,13 +51,13 @@ namespace DBCourseDesign.Controllers
                     model = e.EQ_TYPE.MODEL_NUMBER,
                     address = e.ADDRESS
                 });
-            return result;
+            return Ok(returnHelper.make(result));
         }
 
         //wyc
         [HttpPost]
         [Route("api/equipment/detail")]
-        [ResponseType(typeof(detailedEqInUseDto))]
+        [ResponseType(typeof(returnDto<detailedEqInUseDto>))]
         public async Task<IHttpActionResult> GetEqUsingDetail(string id)
         {
             var eq = await db.EQ_IN_USE.Include(e => e.EQ_TYPE).FirstOrDefaultAsync(e => e.ID == id);
@@ -69,27 +69,28 @@ namespace DBCourseDesign.Controllers
                 unit = eq.MANAGER,
                 address = eq.ADDRESS,
                 if_damage = eq.STATUS,
-                QRcode = eq.QR_CODE
-                //order
+                QRcode = eq.QR_CODE,
+                icon = eq.EQ_TYPE.PICTURE
 
             };
-            return Ok(result);
+            return Ok(returnHelper.make(result));
         }
 
         //wyc
         [HttpPost]
-        [Route("api/equipment/using")]
+        [Route("api/equipment/stored")]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> addEqStored(eqStoredReceiver input)
         {
             var type = await db.EQ_TYPE.FirstOrDefaultAsync(e => e.TYPE_NAME == input.name && e.MODEL_NUMBER == input.model);
             var warehouse = await db.WAREHOUSE.FirstOrDefaultAsync(e => e.NAME == input.warehouse);
-            var result = new EQ_STORED
+            var result = new EQ_STORED()
             {
                 PRODUCT_TIME = input.productTime,
                 STATUS = "0",
                 EQ_TYPE_ID = type.ID,
-                WAREHOUSE_ID = warehouse.ID           
+                WAREHOUSE_ID = warehouse.ID,
+                ID = "placeHolder"
             };
             db.EQ_STORED.Add(result);
             await db.SaveChangesAsync();
