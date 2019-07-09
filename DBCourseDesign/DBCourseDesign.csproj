@@ -219,96 +219,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ACCESSORY.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ACCESSORY_STORED.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DISPATCHER.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DTO\accessoryStorageDto.cs" />
     <Compile Include="Models\DTO\eqStoredDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
     <Compile Include="Models\DTO\checkSheetDto.cs" />
     <Compile Include="Models\DTO\workSheetDto.cs" />
-    <Compile Include="Models\EQ_IN_USE.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EQ_STORED.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EQ_TYPE.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EQ_TYPE_ACCESSORY.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FACTORY.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FEMSModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FEMSModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FEMSModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FEMSModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FEMSModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PATROL.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PATROL_LOG.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PATROL_REGION.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\REGION.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\REPAIRER.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\REPAIRER_REGION.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\REPAIR_ORDER.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\STAFF.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WAREHOUSE.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WORK_ORDER.cs">
-      <DependentUpon>FEMSModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequireHttpsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\FEMSModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FEMSModel.edmx</DependentUpon>
-      <LastGenOutput>FEMSModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\FEMSModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FEMSModel.edmx</DependentUpon>
-      <LastGenOutput>FEMSModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -323,24 +244,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\FEMSModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FEMSModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FEMSModel.edmx.diagram">
-      <DependentUpon>FEMSModel.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <Content Include="web.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

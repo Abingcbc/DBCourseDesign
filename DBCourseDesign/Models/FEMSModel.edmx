@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FEMSModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCESSORY">
           <Key>
             <PropertyRef Name="ID" />
@@ -590,7 +590,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FEMSModelStoreContainer">
+        <Association Name="STAFF_SUPER_ADMIN__fk">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STAFF1" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF1">
+              <PropertyRef Name="INSERT_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_SUPER_ADMIN__fk_1">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STAFF1" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF1">
+              <PropertyRef Name="UPDATE_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACCESSORY" EntityType="Self.ACCESSORY" Schema="FEMS_ADMIN" store:Type="Tables" />
           <EntitySet Name="ACCESSORY_STORED" EntityType="Self.ACCESSORY_STORED" Schema="FEMS_ADMIN" store:Type="Tables" />
           <EntitySet Name="DISPATCHER" EntityType="Self.DISPATCHER" Schema="FEMS_ADMIN" store:Type="Tables" />
@@ -709,12 +737,20 @@
             <End Role="REPAIRER" EntitySet="REPAIRER" />
             <End Role="WORK_ORDER" EntitySet="WORK_ORDER" />
           </AssociationSet>
+          <AssociationSet Name="STAFF_SUPER_ADMIN__fk" Association="Self.STAFF_SUPER_ADMIN__fk">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="STAFF1" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_SUPER_ADMIN__fk_1" Association="Self.STAFF_SUPER_ADMIN__fk_1">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="STAFF1" EntitySet="STAFF" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FEMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ACCESSORY">
           <Key>
             <PropertyRef Name="ID" />
@@ -976,6 +1012,10 @@
           <NavigationProperty Name="DISPATCHER" Relationship="Self.FK_DISPATCHER_STAFF_1" FromRole="STAFF" ToRole="DISPATCHER" />
           <NavigationProperty Name="PATROL" Relationship="Self.fk_PATROL" FromRole="STAFF" ToRole="PATROL" />
           <NavigationProperty Name="REPAIRER" Relationship="Self.FK_REPAIRER_STAFF_1" FromRole="STAFF" ToRole="REPAIRER" />
+          <NavigationProperty Name="STAFF1" Relationship="Self.STAFF_SUPER_ADMIN__fk" FromRole="STAFF" ToRole="STAFF1" />
+          <NavigationProperty Name="STAFF2" Relationship="Self.STAFF_SUPER_ADMIN__fk" FromRole="STAFF1" ToRole="STAFF" />
+          <NavigationProperty Name="STAFF11" Relationship="Self.STAFF_SUPER_ADMIN__fk_1" FromRole="STAFF" ToRole="STAFF1" />
+          <NavigationProperty Name="STAFF3" Relationship="Self.STAFF_SUPER_ADMIN__fk_1" FromRole="STAFF1" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="WAREHOUSE">
           <Key>
@@ -1350,6 +1390,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="STAFF_SUPER_ADMIN__fk">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STAFF1" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF1">
+              <PropertyRef Name="INSERT_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_SUPER_ADMIN__fk_1">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STAFF1" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF1">
+              <PropertyRef Name="UPDATE_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FEMSContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ACCESSORY" EntityType="Self.ACCESSORY" />
           <EntitySet Name="ACCESSORY_STORED" EntityType="Self.ACCESSORY_STORED" />
@@ -1469,15 +1537,23 @@
             <End Role="REPAIRER" EntitySet="REPAIRER" />
             <End Role="WORK_ORDER" EntitySet="WORK_ORDER" />
           </AssociationSet>
+          <AssociationSet Name="STAFF_SUPER_ADMIN__fk" Association="Self.STAFF_SUPER_ADMIN__fk">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="STAFF1" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_SUPER_ADMIN__fk_1" Association="Self.STAFF_SUPER_ADMIN__fk_1">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="STAFF1" EntitySet="STAFF" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FEMSModelStoreContainer" CdmEntityContainer="FEMSContext">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="FEMSContext">
           <EntitySetMapping Name="ACCESSORY">
-            <EntityTypeMapping TypeName="FEMSModel.ACCESSORY">
+            <EntityTypeMapping TypeName="Model.ACCESSORY">
               <MappingFragment StoreEntitySet="ACCESSORY">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
@@ -1492,7 +1568,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACCESSORY_STORED">
-            <EntityTypeMapping TypeName="FEMSModel.ACCESSORY_STORED">
+            <EntityTypeMapping TypeName="Model.ACCESSORY_STORED">
               <MappingFragment StoreEntitySet="ACCESSORY_STORED">
                 <ScalarProperty Name="ACCESSORY_ID" ColumnName="ACCESSORY_ID" />
                 <ScalarProperty Name="WAREHOUSE_ID" ColumnName="WAREHOUSE_ID" />
@@ -1505,7 +1581,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DISPATCHER">
-            <EntityTypeMapping TypeName="FEMSModel.DISPATCHER">
+            <EntityTypeMapping TypeName="Model.DISPATCHER">
               <MappingFragment StoreEntitySet="DISPATCHER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DISPATCH_START" ColumnName="DISPATCH_START" />
@@ -1518,7 +1594,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EQ_IN_USE">
-            <EntityTypeMapping TypeName="FEMSModel.EQ_IN_USE">
+            <EntityTypeMapping TypeName="Model.EQ_IN_USE">
               <MappingFragment StoreEntitySet="EQ_IN_USE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PRODUCTION_TIME" ColumnName="PRODUCTION_TIME" />
@@ -1540,7 +1616,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EQ_STORED">
-            <EntityTypeMapping TypeName="FEMSModel.EQ_STORED">
+            <EntityTypeMapping TypeName="Model.EQ_STORED">
               <MappingFragment StoreEntitySet="EQ_STORED">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PRODUCT_TIME" ColumnName="PRODUCT_TIME" />
@@ -1555,7 +1631,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EQ_TYPE">
-            <EntityTypeMapping TypeName="FEMSModel.EQ_TYPE">
+            <EntityTypeMapping TypeName="Model.EQ_TYPE">
               <MappingFragment StoreEntitySet="EQ_TYPE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
@@ -1571,7 +1647,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EQ_TYPE_ACCESSORY">
-            <EntityTypeMapping TypeName="FEMSModel.EQ_TYPE_ACCESSORY">
+            <EntityTypeMapping TypeName="Model.EQ_TYPE_ACCESSORY">
               <MappingFragment StoreEntitySet="EQ_TYPE_ACCESSORY">
                 <ScalarProperty Name="EQ_TYPE_ID" ColumnName="EQ_TYPE_ID" />
                 <ScalarProperty Name="ACCESSORY_ID" ColumnName="ACCESSORY_ID" />
@@ -1583,7 +1659,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FACTORY">
-            <EntityTypeMapping TypeName="FEMSModel.FACTORY">
+            <EntityTypeMapping TypeName="Model.FACTORY">
               <MappingFragment StoreEntitySet="FACTORY">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1598,7 +1674,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PATROL">
-            <EntityTypeMapping TypeName="FEMSModel.PATROL">
+            <EntityTypeMapping TypeName="Model.PATROL">
               <MappingFragment StoreEntitySet="PATROL">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PATROL_START" ColumnName="PATROL_START" />
@@ -1611,7 +1687,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PATROL_LOG">
-            <EntityTypeMapping TypeName="FEMSModel.PATROL_LOG">
+            <EntityTypeMapping TypeName="Model.PATROL_LOG">
               <MappingFragment StoreEntitySet="PATROL_LOG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PATROL_ID" ColumnName="PATROL_ID" />
@@ -1627,7 +1703,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PATROL_REGION">
-            <EntityTypeMapping TypeName="FEMSModel.PATROL_REGION">
+            <EntityTypeMapping TypeName="Model.PATROL_REGION">
               <MappingFragment StoreEntitySet="PATROL_REGION">
                 <ScalarProperty Name="PATROL_ID" ColumnName="PATROL_ID" />
                 <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
@@ -1639,7 +1715,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REGION">
-            <EntityTypeMapping TypeName="FEMSModel.REGION">
+            <EntityTypeMapping TypeName="Model.REGION">
               <MappingFragment StoreEntitySet="REGION">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
@@ -1649,7 +1725,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REPAIR_ORDER">
-            <EntityTypeMapping TypeName="FEMSModel.REPAIR_ORDER">
+            <EntityTypeMapping TypeName="Model.REPAIR_ORDER">
               <MappingFragment StoreEntitySet="REPAIR_ORDER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="REPORT_PICTURE" ColumnName="REPORT_PICTURE" />
@@ -1667,7 +1743,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REPAIRER">
-            <EntityTypeMapping TypeName="FEMSModel.REPAIRER">
+            <EntityTypeMapping TypeName="Model.REPAIRER">
               <MappingFragment StoreEntitySet="REPAIRER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
@@ -1678,7 +1754,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REPAIRER_REGION">
-            <EntityTypeMapping TypeName="FEMSModel.REPAIRER_REGION">
+            <EntityTypeMapping TypeName="Model.REPAIRER_REGION">
               <MappingFragment StoreEntitySet="REPAIRER_REGION">
                 <ScalarProperty Name="REPAIRER_ID" ColumnName="REPAIRER_ID" />
                 <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
@@ -1690,7 +1766,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STAFF">
-            <EntityTypeMapping TypeName="FEMSModel.STAFF">
+            <EntityTypeMapping TypeName="Model.STAFF">
               <MappingFragment StoreEntitySet="STAFF">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1707,7 +1783,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WAREHOUSE">
-            <EntityTypeMapping TypeName="FEMSModel.WAREHOUSE">
+            <EntityTypeMapping TypeName="Model.WAREHOUSE">
               <MappingFragment StoreEntitySet="WAREHOUSE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1724,7 +1800,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WORK_ORDER">
-            <EntityTypeMapping TypeName="FEMSModel.WORK_ORDER">
+            <EntityTypeMapping TypeName="Model.WORK_ORDER">
               <MappingFragment StoreEntitySet="WORK_ORDER">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
