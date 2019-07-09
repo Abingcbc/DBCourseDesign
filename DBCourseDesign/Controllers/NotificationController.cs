@@ -15,14 +15,14 @@ namespace DBCourseDesign.Controllers
 {
     public class NotificationController : ApiController
     {
-        private static ConcurrentBag<StreamWriter> clients;
+        public static ConcurrentBag<StreamWriter> clients;
 
         static NotificationController()
         {
             clients = new ConcurrentBag<StreamWriter>();
         }
         
-        private async Task NotificationCallbackMsg(string s)
+        public static async Task NotificationCallbackMsg(string s)
         {
             foreach (var client in clients)
             {

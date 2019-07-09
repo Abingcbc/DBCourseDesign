@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebApiThrottle;
 
 namespace DBCourseDesign
 {
@@ -20,6 +21,17 @@ namespace DBCourseDesign
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //Endpoint throttling based on IP
+            config.MessageHandlers.Add(new ThrottlingHandler()
+            {
+                Policy = new ThrottlePolicy(perSecond: 2, perMinute: 30)
+                {
+                    IpThrottling = true,
+                    EndpointThrottling = true
+                },
+                Repository = new CacheRepository()
+            });
         }
     }
 }
