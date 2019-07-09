@@ -203,6 +203,9 @@
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
+    <Compile Include="Models\DTO\eqInUseDto.cs" />
+    <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
+    <Compile Include="Controllers\defined controllers\equipmentController.cs" />
     <Compile Include="Controllers\defined controllers\workSheetController.cs" />
     <Compile Include="Controllers\defined controllers\WAREHOUSEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -239,6 +242,7 @@
     <Compile Include="Models\DTO\accessoryStorageDto.cs" />
     <Compile Include="Models\DTO\eqStoredDto.cs" />
     <Compile Include="Models\DTO\mobileStaffDto.cs" />
+    <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
     <Compile Include="Models\DTO\checkSheetDto.cs" />
     <Compile Include="Models\DTO\workSheetDto.cs" />
