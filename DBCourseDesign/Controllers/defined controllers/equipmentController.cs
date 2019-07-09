@@ -69,6 +69,7 @@ namespace DBCourseDesign.Controllers
                 unit = eq.MANAGER,
                 address = eq.ADDRESS,
                 if_damage = eq.STATUS,
+                QRcode = eq.QR_CODE
                 //order
 
             };

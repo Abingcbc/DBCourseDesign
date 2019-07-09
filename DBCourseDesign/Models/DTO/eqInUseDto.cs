@@ -23,6 +23,7 @@
         public string address { get; set; }
         public string if_damage { get; set; }
         public string order { get; set; }
+        public string QRcode { get; set; }
     }
 
     //wyc
