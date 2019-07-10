@@ -16,6 +16,7 @@ namespace DBCourseDesign.Models.DTO
         public int status;
         public int deleted;
         public string roleId { get; set; }
+        public UserRoleDto role = new UserRoleDto();
     }
 
     public class UserRoleDto

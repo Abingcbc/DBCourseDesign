@@ -16,7 +16,7 @@ namespace DBCourseDesign.Controllers
         private FEMSContext db = new FEMSContext();
 
         [HttpPost]
-        [ResponseType(typeof(returnDto<mobileStaffDto>))]
+        [Route("api/mobile/login")]
         public IHttpActionResult PostLogin(MobileStaffReciever mobileStaffReciever)
         {
             var staff = db.STAFF.Where(s => s.ACCOUNT_ID == mobileStaffReciever.count_id && 
@@ -53,5 +53,6 @@ namespace DBCourseDesign.Controllers
                 }
             }
         }
+        
     }
 }

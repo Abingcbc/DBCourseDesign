@@ -13,10 +13,14 @@ namespace DBCourseDesign.Controllers
     {
         private FEMSContext db = new FEMSContext();
 
-        private Dictionary<string, string> token_id = new Dictionary<string, string>();
-        
+        public static Dictionary<string, string> token_id = new Dictionary<string, string>();
+
+        public static string ADMIN_AVATAR = "https://i.loli.net/2019/07/09/5d248db928ee641756.jpg";
+        public static string USER_AVATAR = "https://i.loli.net/2019/07/09/5d248f778b63b46075.png";
+
         //api/auth/login
         [HttpPost]
+        [Route("api/auth/login")]
         public IHttpActionResult PostLogin(LoginReciever loginReciever)
         {
             Dictionary<string, LoginDto> response = new Dictionary<string, LoginDto>();
@@ -30,7 +34,7 @@ namespace DBCourseDesign.Controllers
             {
                 response.Add("result", new LoginDto()
                 {
-                    avatar = "https://i.loli.net/2019/07/09/5d248db928ee641756.jpg",
+                    avatar = ADMIN_AVATAR,
                     deleted = 0,
                     password = "",
                     roleId = "admin",
@@ -49,7 +53,7 @@ namespace DBCourseDesign.Controllers
             {
                 response.Add("result", new LoginDto()
                 {
-                    avatar = "https://i.loli.net/2019/07/09/5d248f778b63b46075.png",
+                    avatar = USER_AVATAR,
                     deleted = 0,
                     password = "",
                     roleId = "admin",
@@ -64,6 +68,7 @@ namespace DBCourseDesign.Controllers
 
         //api/auth/logout
         [HttpPost]
+        [Route("api/auth/logout")]
         public void PostLogout(LogoutReciever logoutReciever)
         {
             token_id.Remove(logoutReciever.token);

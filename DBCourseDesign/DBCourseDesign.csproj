@@ -199,7 +199,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\GetInfoController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
@@ -249,6 +248,7 @@
     <Compile Include="Models\DTO\mobileStaffDto.cs" />
     <Compile Include="Models\DTO\MobileStaffReciever.cs" />
     <Compile Include="Models\DTO\returnDto.cs" />
+    <Compile Include="Models\DTO\UserInfoDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
     <Compile Include="Models\DTO\checkSheetDto.cs" />
     <Compile Include="Models\DTO\workSheetDto.cs" />
