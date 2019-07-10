@@ -45,7 +45,6 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/sheets/checkSheetRow")]
-        [ResponseType(typeof(returnDto<deleteCheckSheetDto>))]
         public async Task<IHttpActionResult> DeleteCheckSheet(string id)
         {
             try
@@ -58,19 +57,11 @@ namespace DBCourseDesign.Controllers
                 db.PATROL_LOG.Remove(patrol_log);
                 await db.SaveChangesAsync();
                 var checkSheets = GetCheckSheets().data.ToList();
-                var result = new deleteCheckSheetDto()
-                {
-                    data = checkSheets,
-                    deleteInfo = "ok"
-                };
-                return Ok(returnHelper.make(result));
+                return Ok(returnHelper.make(checkSheets));
             }
             catch (Exception)
             {
-                return Ok(returnHelper.make(new deleteWorkSheetDto()
-                {
-                    deleteInfo = "false"
-                }));
+                return Ok(returnHelper.fail());
             }
         }
     }

@@ -48,7 +48,6 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("api/sheets/workSheetRow")]
-        [ResponseType(typeof(returnDto<deleteWorkSheetDto>))]
         public async Task<IHttpActionResult> deleteWorkSheet(string id)
         {
             try
@@ -61,19 +60,11 @@ namespace DBCourseDesign.Controllers
                 db.WORK_ORDER.Remove(wORK_ORDER);
                 await db.SaveChangesAsync();
                 var workSheets = GetWorkSheets().data.ToList();
-                var result = new deleteWorkSheetDto()
-                {
-                    data = workSheets,
-                    deleteInfo = "ok"
-                };
-                return Ok(result);
+                return Ok(returnHelper.make(workSheets));
             }
             catch (Exception)
             {
-                return Ok(returnHelper.make(new deleteWorkSheetDto()
-                {
-                    deleteInfo = "false"
-                }));
+                return Ok(returnHelper.fail());
             }
         }
     }

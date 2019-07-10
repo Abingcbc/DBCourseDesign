@@ -15,10 +15,4 @@
         public string dispatcherName { get; set; }
         public string repairerName { get; set; }
     }
-
-    public partial class deleteWorkSheetDto
-    {
-        public ICollection<workSheetDto> data;
-        public string deleteInfo;
-    }
 }
