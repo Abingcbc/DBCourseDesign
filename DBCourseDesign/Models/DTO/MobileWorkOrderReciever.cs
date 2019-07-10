@@ -11,9 +11,4 @@ namespace DBCourseDesign.Models.DTO
         public string imgURL { get; set; }
         public int status;
     }
-
-    public class MobileWorkOrderGetReciever
-    {
-        public string count_id { get; set; }
-    }
 }

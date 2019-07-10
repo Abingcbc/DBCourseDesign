@@ -8,7 +8,6 @@ using System.Web.Http.Description;
 using DBCourseDesign.Models;
 using DBCourseDesign.Models.DTO;
 using Newtonsoft.Json;
-using AutoMapper;
 
 namespace DBCourseDesign.Controllers
 {
@@ -79,11 +78,11 @@ namespace DBCourseDesign.Controllers
                 db.REPAIR_ORDER.Add(repair_order);
                 db.SaveChanges();
                 //NotificationController.NotificationCallbackMsg("")
-                return Ok(returnHelper.make("success"));
+                return StatusCode(HttpStatusCode.OK);
             }
             catch (Exception)
             {
-                return Ok(returnHelper.make("fail"));
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
         }
 
@@ -94,7 +93,7 @@ namespace DBCourseDesign.Controllers
             var repair_order = db.REPAIR_ORDER.Find(reciever.id);
             if (repair_order == null)
             {
-                return Ok(returnHelper.make("fail"));
+                return StatusCode(HttpStatusCode.NotFound);
             }
             else
             {
@@ -105,7 +104,7 @@ namespace DBCourseDesign.Controllers
                 repair_order.REPAIR_TYPE = reciever.problem_type;
                 repair_order.STATUS = reciever.status.ToString();
                 db.SaveChanges();
-                return Ok(returnHelper.make("success"));
+                return StatusCode(HttpStatusCode.OK);
             }
         }
 
@@ -132,11 +131,11 @@ namespace DBCourseDesign.Controllers
             {
                 db.PATROL_LOG.Add(patrol_log);
                 db.SaveChanges();
-                return Ok(returnHelper.make("success"));
+                return StatusCode(HttpStatusCode.OK);
             }
             catch
             {
-                return Ok(returnHelper.make("fail"));
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
         }
 
@@ -147,7 +146,7 @@ namespace DBCourseDesign.Controllers
             var work_order = db.WORK_ORDER.Find(mobileWorkOrderReciever.id);
             if (work_order == null)
             {
-                return Ok(returnHelper.make("fail"));
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
             else
             {
@@ -156,11 +155,11 @@ namespace DBCourseDesign.Controllers
                     work_order.WORK_PICTURE = mobileWorkOrderReciever.imgURL;
                     work_order.STATUS = mobileWorkOrderReciever.status.ToString();
                     db.SaveChanges();
-                    return Ok(returnHelper.make("success"));
+                    return StatusCode(HttpStatusCode.OK);
                 }
                 catch
                 {
-                    return Ok(returnHelper.make("fail"));
+                    return StatusCode(HttpStatusCode.ExpectationFailed);
                 }
             }
         }
@@ -172,7 +171,7 @@ namespace DBCourseDesign.Controllers
             var repair_order = db.REPAIR_ORDER.Find(reciever.id);
             if (repair_order == null)
             {
-                return Ok(returnHelper.make("fail"));
+                return StatusCode(HttpStatusCode.NotFound);
             }
             else
             {
@@ -180,11 +179,11 @@ namespace DBCourseDesign.Controllers
                 {
                     db.REPAIR_ORDER.Remove(repair_order);
                     db.SaveChanges();
-                    return Ok(returnHelper.make("success"));
+                    return StatusCode(HttpStatusCode.OK);
                 }
                 catch
                 {
-                    return Ok(returnHelper.make("fail"));
+                    return StatusCode(HttpStatusCode.ExpectationFailed);
                 }
             }
         }
@@ -202,7 +201,7 @@ namespace DBCourseDesign.Controllers
             {
                 LinkedList<MobileRepairOrderDto> result = new LinkedList<MobileRepairOrderDto>();
                 foreach (var region in regions){
-                    var repair_orders_all = db.REPAIR_ORDER.Join(db.EQ_IN_USE, r => r.EQ_ID, e => e.ID,
+                    var repair_orders = db.REPAIR_ORDER.Join(db.EQ_IN_USE, r => r.EQ_ID, e => e.ID,
                         (r, e) => new
                         {
                             id = r.ID,
@@ -212,10 +211,8 @@ namespace DBCourseDesign.Controllers
                             longtitude = e.LONGITUDE,
                             url = r.REPORT_PICTURE,
                             detail = r.DESCRIPTION,
-                            phone = r.TEL_NUMBER,
-                            status = r.STATUS
+                            phone = r.TEL_NUMBER
                         });
-                    var repair_orders = repair_orders_all.Where(r => r.status == "0");
                     foreach (var repair_order in repair_orders)
                     {
                         var pos_dic = new Dictionary<string, decimal?>();
@@ -225,7 +222,6 @@ namespace DBCourseDesign.Controllers
                         {
                             id = repair_order.id,
                             device_id = repair_order.device_id,
-                            device_model = db.EQ_TYPE.Find(db.EQ_IN_USE.Find(repair_order.device_id).EQ_TYPE).MODEL_NUMBER,
                             address = repair_order.address,
                             position = pos_dic,
                             url = repair_order.url,
@@ -235,55 +231,6 @@ namespace DBCourseDesign.Controllers
                     }
                 }
                 return Ok(returnHelper.make(result));
-            }
-        }
-
-        [HttpGet]
-        [Route("api/mobile/getWork")]
-        public IHttpActionResult GetWork(MobileWorkOrderGetReciever reciever)
-        {
-            var work_orders = db.WORK_ORDER.Include("EQ_IN_USE").Where(w => w.REPAIRER_ID == reciever.count_id).ToList();
-            if (work_orders == null)
-            {
-                return Ok(returnHelper.make(""));
-            }
-            else
-            {
-                List<MobileWorkOrderDto> result = work_orders.Select(r => new MobileWorkOrderDto(
-                    r.ID, r.EQ_ID, r.EQ_IN_USE.ADDRESS, r.EQ_IN_USE.LONGITUDE, r.EQ_IN_USE.LATITUDE, r.WORK_PICTURE, 
-                    db.EQ_TYPE.Find(r.EQ_IN_USE.EQ_TYPE).TYPE_NAME, db.EQ_TYPE.Find(r.EQ_IN_USE.EQ_TYPE).MODEL_NUMBER)).ToList();
-                return Ok(returnHelper.make(result));
-            }
-        }
-
-        [HttpGet]
-        [Route("api/mobile/accessory")]
-        public IHttpActionResult GetAccessory(MobileRepairGetReciever reciever)
-        {
-            var accessories = db.EQ_TYPE_ACCESSORY.Join(db.ACCESSORY, e => e.ACCESSORY_ID, a => a.ID,
-                (e, a) => a.TYPE_NAME).ToList();
-            if (accessories == null)
-            {
-                return Ok(returnHelper.make(""));
-            }
-            else
-            {
-                return Ok(returnHelper.make(accessories));
-            }
-        }
-
-        [HttpGet]
-        [Route("api/mobile/deviceModel")]
-        public IHttpActionResult GetDeviceModel(MobileDeviceModelReciever reciever)
-        {
-            var device_models = db.ACCESSORY.Where(a => a.TYPE_NAME == reciever.device_type).Select(a => a.MODEL_NUMBER).ToList();
-            if (device_models == null)
-            {
-                return Ok(returnHelper.make(""));
-            }
-            else
-            {
-                return Ok(returnHelper.make(device_models));
             }
         }
         

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using WebApiThrottle;
-using System.Web.Http.Cors;
 
 namespace DBCourseDesign
 {
@@ -14,8 +13,6 @@ namespace DBCourseDesign
             // Web API 配置和服务
             //config.Filters.Add(new RequireHttpsAttribute());
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
             // Web API 路由
             config.MapHttpAttributeRoutes();
 
