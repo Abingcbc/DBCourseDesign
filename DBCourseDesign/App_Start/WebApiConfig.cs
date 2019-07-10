@@ -14,8 +14,8 @@ namespace DBCourseDesign
             // Web API 配置和服务
             //config.Filters.Add(new RequireHttpsAttribute());
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
+            //var cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
             // Web API 路由
             config.MapHttpAttributeRoutes();
 

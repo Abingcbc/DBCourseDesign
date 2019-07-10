@@ -61,7 +61,9 @@ namespace DBCourseDesign.Controllers
                     userInfoDto.role.permissions[0]["permissionId"] = "";
                     userInfoDto.role.permissions[0]["permissionName"] = "部分权限";
                 }
-                return Ok(userInfoDto);
+                Dictionary<string, UserInfoDto> result = new Dictionary<string, UserInfoDto>();
+                result.Add("result", userInfoDto);
+                return Ok(result);
             }
         }
     }
