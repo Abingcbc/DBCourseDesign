@@ -190,16 +190,16 @@ namespace DBCourseDesign.Controllers
 
         [HttpGet]
         [Route("api/mobile/getRepair")]
-        public IHttpActionResult GetRepair(MobileRepairGetReciever reciever)
+        public IHttpActionResult GetRepair(string id)
         {
-            var regions = db.PATROL_REGION.Where(p => p.PATROL_ID == reciever.id).ToList();
+            var regions = db.PATROL_REGION.Where(p => p.PATROL_ID == id).ToList();
             if (regions == null)
             {
                 return Ok(returnHelper.make(new MobileRepairOrderDto[] { }));
             }
             else
             {
-                LinkedList<MobileRepairOrderDto> result = new LinkedList<MobileRepairOrderDto>();
+                List<MobileRepairOrderDto> result = new List<MobileRepairOrderDto>();
                 foreach (var region in regions){
                     var repair_orders_all = db.REPAIR_ORDER.Join(db.EQ_IN_USE, r => r.EQ_ID, e => e.ID,
                         (r, e) => new
@@ -220,11 +220,11 @@ namespace DBCourseDesign.Controllers
                         var pos_dic = new Dictionary<string, decimal?>();
                         pos_dic.Add("latitude", repair_order.latitude);
                         pos_dic.Add("longtitude", repair_order.longtitude);
-                        result.AddLast(new MobileRepairOrderDto()
+                        result.Add(new MobileRepairOrderDto()
                         {
                             id = repair_order.id,
                             device_id = repair_order.device_id,
-                            device_model = db.EQ_TYPE.Find(db.EQ_IN_USE.Find(repair_order.device_id).EQ_TYPE).MODEL_NUMBER,
+                            device_model = db.EQ_TYPE.Find(db.EQ_IN_USE.Find(repair_order.device_id).TYPE_ID).MODEL_NUMBER,
                             address = repair_order.address,
                             position = pos_dic,
                             url = repair_order.url,
@@ -239,9 +239,9 @@ namespace DBCourseDesign.Controllers
 
         [HttpGet]
         [Route("api/mobile/getWork")]
-        public IHttpActionResult GetWork(MobileWorkOrderGetReciever reciever)
+        public IHttpActionResult GetWork(string id)
         {
-            var work_orders = db.WORK_ORDER.Include("EQ_IN_USE").Where(w => w.REPAIRER_ID == reciever.count_id).ToList();
+            var work_orders = db.WORK_ORDER.Include("EQ_IN_USE").Where(w => w.REPAIRER_ID == id).ToList();
             if (work_orders == null)
             {
                 return Ok(returnHelper.make(""));
@@ -257,9 +257,10 @@ namespace DBCourseDesign.Controllers
 
         [HttpGet]
         [Route("api/mobile/accessory")]
-        public IHttpActionResult GetAccessory(MobileRepairGetReciever reciever)
+        public IHttpActionResult GetAccessory(string id)
         {
-            var accessories = db.EQ_TYPE_ACCESSORY.Join(db.ACCESSORY, e => e.ACCESSORY_ID, a => a.ID,
+            var accessories = db.EQ_TYPE_ACCESSORY.Where(e => e.ACCESSORY_ID == id).Join(
+                db.ACCESSORY, e => e.ACCESSORY_ID, a => a.ID,
                 (e, a) => a.TYPE_NAME).ToList();
             if (accessories == null)
             {
@@ -273,9 +274,9 @@ namespace DBCourseDesign.Controllers
 
         [HttpGet]
         [Route("api/mobile/deviceModel")]
-        public IHttpActionResult GetDeviceModel(MobileDeviceModelReciever reciever)
+        public IHttpActionResult GetDeviceModel(string device_type)
         {
-            var device_models = db.ACCESSORY.Where(a => a.TYPE_NAME == reciever.device_type).Select(a => a.MODEL_NUMBER).ToList();
+            var device_models = db.ACCESSORY.Where(a => a.TYPE_NAME == device_type).Select(a => a.MODEL_NUMBER).ToList();
             if (device_models == null)
             {
                 return Ok(returnHelper.make(""));
