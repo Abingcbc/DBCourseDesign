@@ -8,7 +8,6 @@ using System.Web.Http.Description;
 using DBCourseDesign.Models;
 using DBCourseDesign.Models.DTO;
 using Newtonsoft.Json;
-using AutoMapper;
 
 namespace DBCourseDesign.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBCourseDesign", "DBCourseDesign\DBCourseDesign.csproj", "{A8D7BD63-EA08-4D97-9FBA-6424C18A3A3E}"
 EndProject
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B889F44A-B061-4453-B55A-6AAE5C40DD07}
+		SolutionGuid = {32DD6F28-239D-491C-939D-016CE3B6BEDE}
 	EndGlobalSection
 EndGlobal

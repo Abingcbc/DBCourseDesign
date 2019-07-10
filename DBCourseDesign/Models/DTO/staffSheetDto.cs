@@ -8,7 +8,7 @@
         public string id { get; set; }
         public string name { get; set; }
         public string accountID { get; set; }
-        public string passwork { get; set; }
+        public string password { get; set; }
         public string status { get; set; }
         public List<StaffItem> detail { get; set; }
     }

@@ -101,6 +101,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -170,6 +173,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApiThrottle, Version=1.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebApiThrottle.1.5.4\lib\net45\WebApiThrottle.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Diagnostics.DiagnosticSource">
@@ -185,11 +194,26 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\defined controllers\repairSheetController.cs" />
     <Compile Include="Controllers\defined controllers\staffSheetController.cs" />
     <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
     <Compile Include="Controllers\defined controllers\MapController.cs" />
+    <Compile Include="Controllers\MobileController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\DTO\loginDto.cs" />
+    <Compile Include="Models\DTO\LoginReciever.cs" />
+    <Compile Include="Models\DTO\LogoutReciever.cs" />
+    <Compile Include="Models\DTO\MobilePatrolOrderReciever.cs" />
+    <Compile Include="Models\DTO\MobileRepairOrderDto.cs" />
+    <Compile Include="Models\DTO\MobileRepairOrderReciever.cs" />
+    <Compile Include="Models\DTO\mobileStaffDto.cs" />
+    <Compile Include="Models\DTO\mobileStaffReciever.cs" />
+    <Compile Include="Models\DTO\MobileWorkOrderDto.cs" />
+    <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
     <Compile Include="Models\DTO\repairSheetDto.cs" />
     <Compile Include="Models\DTO\staffSheetDto.cs" />
     <Compile Include="Models\DTO\eqInUseDto.cs" />
@@ -232,6 +256,7 @@
     <Compile Include="Models\DTO\eqStoredDto.cs" />
     <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\mapDto.cs" />
+    <Compile Include="Models\DTO\UserInfoDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
     <Compile Include="Models\DTO\checkSheetDto.cs" />
     <Compile Include="Models\DTO\workSheetDto.cs" />
@@ -310,15 +335,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FEMSModel.edmx</DependentUpon>
       <LastGenOutput>FEMSModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web1.txt">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web1.Debug.txt">
-      <DependentUpon>Web1.txt</DependentUpon>
-    </Content>
-    <Content Include="Web1.Release.txt">
-      <DependentUpon>Web1.txt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
