@@ -11,8 +11,9 @@ namespace DBCourseDesign.Controllers
     {
         // GET api/values
         //[RequireHttps]
-        public IEnumerable<string> Get()
+        public  IEnumerable<string> Get()
         {
+            NotificationController.NotificationCallbackMsg("value");
             return new string[] { "value1", "value2" };
         }
 
