@@ -205,7 +205,6 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
-    <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\defined controllers\repairSheetController.cs" />
     <Compile Include="Controllers\defined controllers\staffSheetController.cs" />
