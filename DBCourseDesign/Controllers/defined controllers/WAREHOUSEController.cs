@@ -20,16 +20,16 @@ namespace DBCourseDesign.Controllers
         // GET: api/WAREHOUSE/
         [HttpGet]
         [Route("api/WAREHOUSE/preview")]
-        public IQueryable<WAREHOUSEPreviewDto> GetPriveiw()
+        public returnDto<IQueryable<WAREHOUSEPreviewDto>> GetPriveiw()
         {
             var warehouse = db.WAREHOUSE.Include(b => b.AREA).Select<WAREHOUSE, WAREHOUSEPreviewDto>
                 (e => new WAREHOUSEPreviewDto { id = e.ID, name = e.NAME, address = e.REGION.COUNTY });
-            return warehouse;
+            return returnHelper.make(warehouse);
         }
 
         [HttpPost]
         [Route("api/WAREHOUSE/DETAIL")]
-        [ResponseType(typeof(WAREHOUSEDetailDto))]
+        [ResponseType(typeof(returnDto<WAREHOUSEDetailDto>))]
         public async Task<IHttpActionResult> GetDetail(string id)
         {
             var warehouse = await db.WAREHOUSE.FindAsync(id);
@@ -42,34 +42,34 @@ namespace DBCourseDesign.Controllers
                 address = warehouse.REGION.COUNTY,
                 detailedAddress = warehouse.LOCATION
             };
-            return Ok(dto);
+            return Ok(returnHelper.make(dto));
         }
 
         [HttpGet]
         [Route("api/WAREHOUSE/allAddress")]
-        [ResponseType(typeof(List<string>))]
+        [ResponseType(typeof(returnDto<List<string>>))]
         public async Task<IHttpActionResult> GetAllCountiesWithWarehouse()
         {
             var result = db.WAREHOUSE
             .Join(db.REGION, w => w.REGION_ID, g => g.ID, (w, g) => g.COUNTY)
             .OrderBy(item => item).Distinct().ToList();
-            return Ok(result);
+            return Ok(returnHelper.make(result));
         }
 
         [HttpGet]
         [Route("api/WAREHOUSE/allWarehouse")]
-        [ResponseType(typeof(List<string>))]
+        [ResponseType(typeof(returnDto<List<string>>))]
         public async Task<IHttpActionResult> GetAllWarehouses()
         {
             //without distinct to check errors
             var result = db.WAREHOUSE.Select(e => e.NAME)
             .OrderBy(item => item).ToList();
-            return Ok(result);
+            return Ok(returnHelper.make(result));
         }
 
         [HttpPost]
         [Route("api/WAREHOUSE/goods")]
-        [ResponseType(typeof(WAREHOUSEStorageDto))]
+        [ResponseType(typeof(returnDto<WAREHOUSEStorageDto>))]
         public async Task<IHttpActionResult> GetStorage(string id)
         {
             //without distinct to check errors
@@ -85,7 +85,7 @@ namespace DBCourseDesign.Controllers
                 accessory = accessories,
                 equipment = eqs
             };
-            return Ok(dto);
+            return Ok(returnHelper.make(dto));
         }
 
         private List<EQStorageDto> GetStoredEQ(WAREHOUSE warehouse)
@@ -111,7 +111,7 @@ namespace DBCourseDesign.Controllers
 
         [HttpPost]
         [Route("api/WAREHOUSE/schedule")]
-        [ResponseType(typeof(WAREHOUSEStorageDto))]
+        [ResponseType(typeof(returnDto<WAREHOUSEStorageDto>))]
         public async Task<IHttpActionResult> dispatchAccessory(ACCESSORYDispatchReceiver input)
         {
             WAREHOUSE originalWarehouse;
@@ -164,11 +164,11 @@ namespace DBCourseDesign.Controllers
                 await db.SaveChangesAsync();  
                 if (input.type.ToLower() == "equipment")
                 {
-                    return Ok(GetStoredEQ(originalWarehouse));
+                    return Ok(returnHelper.make(GetStoredEQ(originalWarehouse)));
                 }
                 else
                 {
-                    return Ok(GetStoredAccessories(originalWarehouse));
+                    return Ok(returnHelper.make(GetStoredAccessories(originalWarehouse)));
                 }
             }
             catch(Exception)

@@ -19,8 +19,8 @@
         public string icon { get; set; }
         public string productTime { get; set; }
         public string status { get; set; }
-        public string modelID { get; set; }
+        public string model{ get; set; }
         public string price { get; set; }
-        public string warehouseID { get; set; }
+        public string warehouse { get; set; }
     }
 }
