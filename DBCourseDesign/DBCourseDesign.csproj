@@ -245,8 +245,11 @@
     <Compile Include="Models\DTO\LoginDto.cs" />
     <Compile Include="Models\DTO\LoginReciever.cs" />
     <Compile Include="Models\DTO\LogoutReciever.cs" />
+    <Compile Include="Models\DTO\MobilePatrolOrderReciever.cs" />
     <Compile Include="Models\DTO\mobileStaffDto.cs" />
     <Compile Include="Models\DTO\MobileStaffReciever.cs" />
+    <Compile Include="Models\DTO\MobileRepairOrderReciever.cs" />
+    <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
     <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\UserInfoDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
