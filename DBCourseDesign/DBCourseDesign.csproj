@@ -207,6 +207,12 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\defined controllers\repairSheetController.cs" />
+    <Compile Include="Controllers\defined controllers\staffSheetController.cs" />
+    <Compile Include="Controllers\defined controllers\checkSheetController.cs" />
+    <Compile Include="Controllers\defined controllers\MapController.cs" />
+    <Compile Include="Models\DTO\repairSheetDto.cs" />
+    <Compile Include="Models\DTO\staffSheetDto.cs" />
     <Compile Include="Models\DTO\eqInUseDto.cs" />
     <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
     <Compile Include="Controllers\defined controllers\equipmentController.cs" />
@@ -257,6 +263,7 @@
     <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
     <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\UserInfoDto.cs" />
+    <Compile Include="Models\DTO\mapDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
     <Compile Include="Models\DTO\checkSheetDto.cs" />
     <Compile Include="Models\DTO\workSheetDto.cs" />

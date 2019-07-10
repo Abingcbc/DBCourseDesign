@@ -18,7 +18,6 @@ namespace DBCourseDesign.Models
         public FEMSContext()
             : base("name=FEMSContext")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
