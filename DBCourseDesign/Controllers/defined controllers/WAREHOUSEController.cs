@@ -30,9 +30,9 @@ namespace DBCourseDesign.Controllers
         [HttpPost]
         [Route("api/WAREHOUSE/DETAIL")]
         [ResponseType(typeof(returnDto<WAREHOUSEDetailDto>))]
-        public async Task<IHttpActionResult> GetDetail(string id)
+        public async Task<IHttpActionResult> GetDetail(stringReceiver sR)
         {
-            var warehouse = await db.WAREHOUSE.FindAsync(id);
+            var warehouse = await db.WAREHOUSE.FindAsync(sR.id);
             if (warehouse == null)
                 return NotFound();
             db.Entry(warehouse).Reference(p => p.REGION).Load();
@@ -70,10 +70,10 @@ namespace DBCourseDesign.Controllers
         [HttpPost]
         [Route("api/WAREHOUSE/goods")]
         [ResponseType(typeof(returnDto<WAREHOUSEStorageDto>))]
-        public async Task<IHttpActionResult> GetStorage(string id)
+        public async Task<IHttpActionResult> GetStorage(stringReceiver sR)
         {
             //without distinct to check errors
-            var warehouse = await db.WAREHOUSE.FindAsync(id);
+            var warehouse = await db.WAREHOUSE.FindAsync(sR.id);
             if (warehouse == null)
                 return NotFound();
             var warehouseTable = new List<WAREHOUSE>();

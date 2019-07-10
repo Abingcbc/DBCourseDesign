@@ -215,6 +215,7 @@
     <Compile Include="Models\DTO\MobileWorkOrderDto.cs" />
     <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
     <Compile Include="Models\DTO\repairSheetDto.cs" />
+    <Compile Include="Models\DTO\StringReceiver.cs" />
     <Compile Include="Models\DTO\staffSheetDto.cs" />
     <Compile Include="Models\DTO\eqInUseDto.cs" />
     <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
@@ -339,6 +340,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\FEMSModel.edmx">

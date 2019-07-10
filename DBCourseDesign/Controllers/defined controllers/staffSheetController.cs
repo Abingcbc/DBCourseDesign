@@ -42,7 +42,7 @@ namespace DBCourseDesign.Controllers
                     id = r.ID,
                     name = r.STAFF.NAME,
                     accountID = r.STAFF.ACCOUNT_ID,
-                    passwork = r.STAFF.PASSWORD,
+                    password = r.STAFF.PASSWORD,
                     status = "1",
                     detail = StaffItem.makeRow(r.STAFF.TEL_NUMBER, r.STAFF.ID_CARD_NUMBER,
                      r.STAFF.INSERT_TIME.ToString(), r.STAFF.UPDATE_TIME.ToString(),
@@ -57,7 +57,7 @@ namespace DBCourseDesign.Controllers
                     id = r.ID,
                     name = r.STAFF.NAME,
                     accountID = r.STAFF.ACCOUNT_ID,
-                    passwork = r.STAFF.PASSWORD,
+                    password = r.STAFF.PASSWORD,
                     status = "0",
                     detail = StaffItem.makeRow(r.STAFF.TEL_NUMBER, r.STAFF.ID_CARD_NUMBER, r.STAFF.INSERT_TIME.ToString(), r.STAFF.UPDATE_TIME.ToString(), r.PATROL_START, r.PATROL_STOP)
                 });
@@ -69,7 +69,7 @@ namespace DBCourseDesign.Controllers
                     id = r.ID,
                     name = r.STAFF.NAME,
                     accountID = r.STAFF.ACCOUNT_ID,
-                    passwork = r.STAFF.PASSWORD,
+                    password = r.STAFF.PASSWORD,
                     status = "2",
                     detail = StaffItem.makeRow(r.STAFF.TEL_NUMBER, r.STAFF.ID_CARD_NUMBER, r.STAFF.INSERT_TIME.ToString(), r.STAFF.UPDATE_TIME.ToString(), r.DISPATCH_START, r.DISPATCH_START)
                 });
@@ -119,7 +119,6 @@ namespace DBCourseDesign.Controllers
                     throw new Exception();
 
                 staff.NAME = input.name;
-                staff.ACCOUNT_ID = input.accountID;
                 staff.PASSWORD = input.password;
                 staff.TEL_NUMBER = input.telNumber;
                 staff.ID_CARD_NUMBER = input.idCardNumber;

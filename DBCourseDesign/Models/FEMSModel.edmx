@@ -213,7 +213,7 @@
           </Key>
           <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="varchar2" MaxLength="128" Nullable="false" />
-          <Property Name="ACCOUNT_ID" Type="varchar2" MaxLength="32" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="ACCOUNT_ID" Type="varchar2" MaxLength="32" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PASSWORD" Type="varchar2" MaxLength="18" Nullable="false" />
           <Property Name="TEL_NUMBER" Type="varchar2" MaxLength="32" />
           <Property Name="ID_CARD_NUMBER" Type="varchar2" MaxLength="32" Nullable="false" />
@@ -1000,7 +1000,7 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACCOUNT_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ACCOUNT_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PASSWORD" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TEL_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="ID_CARD_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
