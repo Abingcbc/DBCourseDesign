@@ -51,28 +51,28 @@ namespace DBCourseDesign.Controllers
         //        db.Entry(repairSheet).Reference(e => e.EQ_IN_USE).Load();
         //        var oldEq = repairSheet.EQ_IN_USE;
         //        decimal?[] oldEqLocation = new decimal?[2] { repairSheet.EQ_IN_USE.LATITUDE, repairSheet.EQ_IN_USE.LONGITUDE };
-        //        foreach(var requirement in input.ls)
+        //        foreach (var requirement in input.ls)
         //        {
-        //            if(requirement.statue == "器材")
+        //            if (requirement.statue == "器材")
         //            {
         //                var neededEqType = await db.EQ_TYPE.FirstOrDefaultAsync(e => e.TYPE_NAME == requirement.type && e.MODEL_NUMBER == requirement.model);
         //                string neededEqTypeId = neededEqType.ID;
         //                var availableList = db.EQ_STORED.Where(e => e.EQ_TYPE_ID == neededEqTypeId).Include(e => e.WAREHOUSE).ToList();
         //                availableList.OrderBy(w => Math.Pow((double)w.WAREHOUSE.LATITUDE - (double)oldEqLocation[0], 2) + Math.Pow((double)w.WAREHOUSE.LONGITUDE - (double)oldEqLocation[1], 2));
-        //                var nearest =  availableList.First();
-        //                var newUsing = new EQ_IN_USE
-        //                {
-        //                    ID = "0",
-        //                    QR_CODE = "null",
-        //                    ADDRESS = old
-        //                }
+        //                var nearest = availableList.First();
+        //                db.EQ_STORED.Remove(nearest);
         //            }
         //            else
         //            {
-
+        //                var neededAcType = await db.EQ_TYPE.FirstOrDefaultAsync(e => e.TYPE_NAME == requirement.type && e.MODEL_NUMBER == requirement.model);
+        //                string neededEqTypeId = neededEqType.ID;
+        //                var availableList = db.EQ_STORED.Where(e => e.EQ_TYPE_ID == neededEqTypeId).Include(e => e.WAREHOUSE).ToList();
+        //                availableList.OrderBy(w => Math.Pow((double)w.WAREHOUSE.LATITUDE - (double)oldEqLocation[0], 2) + Math.Pow((double)w.WAREHOUSE.LONGITUDE - (double)oldEqLocation[1], 2));
+        //                var nearest = availableList.First();
+        //                db.EQ_STORED.Remove(nearest);
         //            }
         //        }
-        //    } 
+        //    }
         //    foreach (var r in db.REPAIR_ORDER)
         //    {
         //        var details = r.DESCRIPTION.Split((char)30);
