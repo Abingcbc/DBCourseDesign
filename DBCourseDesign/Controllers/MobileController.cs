@@ -58,6 +58,11 @@ namespace DBCourseDesign.Controllers
         [Route("api/mobile/postrepairOrder")]
         public IHttpActionResult PostRepairOrder(MobileRepairOrderPutReciever mobileRepairOrderReciever)
         {
+            var eq = db.EQ_IN_USE.Find(mobileRepairOrderReciever.deviceID);
+            if (eq.STATUS == "1")
+            {
+                return Ok(returnHelper.make("fail2"));
+            }
             REPAIR_ORDER repair_order = new REPAIR_ORDER()
             {
                 ID = "0000",//因为数据库中有自增的触发器，所以ID可以随意输入任意字符串
@@ -76,7 +81,6 @@ namespace DBCourseDesign.Controllers
             try
             {
                 db.REPAIR_ORDER.Add(repair_order);
-                var eq = db.EQ_IN_USE.Find(mobileRepairOrderReciever.deviceID);
                 eq.STATUS = "1";
                 db.SaveChanges();
                 NotificationController.NotificationCallbackMsg("增", mobileRepairOrderReciever.id+"添加了保修单");
