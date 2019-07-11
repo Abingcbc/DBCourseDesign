@@ -220,6 +220,7 @@
     <Compile Include="Models\DTO\mobileStaffReciever.cs" />
     <Compile Include="Models\DTO\MobileWorkOrderDto.cs" />
     <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
+    <Compile Include="Models\DTO\NotificationDto.cs" />
     <Compile Include="Models\DTO\repairSheetDto.cs" />
     <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\staffSheetDto.cs" />

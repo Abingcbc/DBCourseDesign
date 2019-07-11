@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Web.Http;
 using Newtonsoft.Json;
+using DBCourseDesign.Models;
+using DBCourseDesign.Models.DTO;
 
 namespace DBCourseDesign.Controllers
 {
@@ -22,14 +24,13 @@ namespace DBCourseDesign.Controllers
             clients = new ConcurrentBag<StreamWriter>();
         }
         
-        public static async Task NotificationCallbackMsg(string s)
+        public static async Task NotificationCallbackMsg(string operation, string description)
         {
             foreach (var client in clients)
             {
                 try
                 {
-                    var data = s;
-                    await client.WriteAsync(data);
+                    await client.WriteAsync(JsonConvert.SerializeObject(returnHelper.make(new NotificationDto(operation, description))));
                     await client.FlushAsync();
                     client.Dispose();
                 }
