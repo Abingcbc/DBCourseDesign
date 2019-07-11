@@ -31,7 +31,7 @@ namespace DBCourseDesign.Controllers
             else
             {
                 UserInfoDto userInfoDto = new UserInfoDto();
-                userInfoDto.id = token;
+                userInfoDto.id = staff.ID;
                 userInfoDto.name = staff.NAME;
                 userInfoDto.username = staff.ACCOUNT_ID;
                 userInfoDto.password = staff.PASSWORD;

@@ -55,7 +55,7 @@ namespace DBCourseDesign.Controllers
         }
 
         [HttpPost]
-        [Route("api/mobile/repairOrder")]
+        [Route("api/mobile/postrepairOrder")]
         public IHttpActionResult PostRepairOrder(MobileRepairOrderPutReciever mobileRepairOrderReciever)
         {
             REPAIR_ORDER repair_order = new REPAIR_ORDER()
@@ -86,8 +86,8 @@ namespace DBCourseDesign.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("api/mobile/repairOrder")]
+        [HttpPost]
+        [Route("api/mobile/putrepairOrder")]
         public IHttpActionResult PutRepairOrder(MobileRepairOrderPutReciever reciever)
         {
             var repair_order = db.REPAIR_ORDER.Find(reciever.id);
@@ -277,7 +277,7 @@ namespace DBCourseDesign.Controllers
         [Route("api/mobile/deviceModel")]
         public IHttpActionResult GetDeviceModel(string device_type)
         {
-            var device_models = db.ACCESSORY.Where(a => a.TYPE_NAME == device_type).Select(a => a.MODEL_NUMBER).ToList();
+            var device_models = db.EQ_TYPE.Where(a => a.TYPE_NAME == device_type).Select(a => a.MODEL_NUMBER).ToList();
             if (device_models == null)
             {
                 return Ok(returnHelper.make(""));
