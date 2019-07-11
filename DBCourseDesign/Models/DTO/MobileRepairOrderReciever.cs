@@ -12,8 +12,8 @@ namespace DBCourseDesign.Models.DTO
         public string detail { get; set; }
         public string phone { get; set; }
         public string problem_type { get; set; }
-        public int status;
-        public string id = "0000";
+        public int status { get; set; }
+        public string id { get; set; }
     }
 
     public class MobileRepairOrderPostReciever
@@ -23,7 +23,7 @@ namespace DBCourseDesign.Models.DTO
         public string detail { get; set; }
         public string phone { get; set; }
         public string problem_type { get; set; }
-        public int status;
+        public int status { get; set; }
     }
 
     public class MobileRepairOrderDeleteReciever

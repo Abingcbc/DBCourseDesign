@@ -9,7 +9,7 @@ namespace DBCourseDesign.Models.DTO
     {
         public string id { get; set; }
         public string imgURL { get; set; }
-        public int status;
+        public int status { get; set; }
     }
 
     public class MobileWorkOrderGetReciever

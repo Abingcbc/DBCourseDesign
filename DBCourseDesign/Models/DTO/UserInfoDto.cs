@@ -13,8 +13,8 @@ namespace DBCourseDesign.Models.DTO
         public string password { get; set; }
         public string telephone { get; set; }
         public string avatar { get; set; }
-        public int status;
-        public int deleted;
+        public int status { get; set; }
+        public int deleted { get; set; }
         public string roleId { get; set; }
         public UserRoleDto role = new UserRoleDto();
     }
@@ -24,8 +24,8 @@ namespace DBCourseDesign.Models.DTO
         public string id { get; set; }
         public string name { get; set; }
         public string describe { get; set; }
-        public int status;
-        public int deleted;
+        public int status { get; set; }
+        public int deleted { get; set; }
         public string start { get; set; }
         public string end { get; set; }
         public Dictionary<string, string>[] permissions = new Dictionary<string, string>[]
