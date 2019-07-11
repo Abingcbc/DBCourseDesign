@@ -12,16 +12,17 @@ namespace DBCourseDesign.Controllers
     public class UserController : ApiController
     {
         FEMSContext db = new FEMSContext();
+
         //api/user/info
-        [HttpPost]
-        //这里用LogoutReciever名字其实有点问题，但是其实内容就是LogoutReciever
-        public IHttpActionResult PostInfo(LogoutReciever reciever)
+        [HttpGet]
+        public IHttpActionResult GetInfo()
         {
-            if (!AuthController.token_id.ContainsKey(reciever.token))
+            string token = this.Request.Headers.GetValues("Access-Token").First();
+            if (!AuthController.token_id.ContainsKey(token))
             {
                 return StatusCode(HttpStatusCode.Unauthorized);
             }
-            string id = AuthController.token_id[reciever.token];
+            string id = AuthController.token_id[token];
             var staff = db.STAFF.Find(id);
             if (staff == null)
             {
@@ -30,7 +31,7 @@ namespace DBCourseDesign.Controllers
             else
             {
                 UserInfoDto userInfoDto = new UserInfoDto();
-                userInfoDto.id = reciever.token;
+                userInfoDto.id = token;
                 userInfoDto.name = staff.NAME;
                 userInfoDto.username = staff.ACCOUNT_ID;
                 userInfoDto.password = staff.PASSWORD;
@@ -39,6 +40,27 @@ namespace DBCourseDesign.Controllers
                 userInfoDto.deleted = 0;
                 userInfoDto.role.status = 1;
                 userInfoDto.role.deleted = 0;
+                var dispathcer = db.DISPATCHER.Find(id);
+                if (dispathcer == null)
+                {
+                    var repairer = db.REPAIRER.Find(id);
+                    if (repairer == null)
+                    {
+                        var patrol = db.PATROL.Find(id);
+                        userInfoDto.role.start = patrol.PATROL_START;
+                        userInfoDto.role.end = patrol.PATROL_STOP;
+                    }
+                    else
+                    {
+                        userInfoDto.role.start = "周一";
+                        userInfoDto.role.end = "周日";
+                    }
+                }
+                else
+                {
+                    userInfoDto.role.start = dispathcer.DISPATCH_START;
+                    userInfoDto.role.end = dispathcer.DISPATCH_STOP;
+                }
                 if (staff.IS_SUPER == "1")
                 {
                     userInfoDto.avatar = AuthController.ADMIN_AVATAR;

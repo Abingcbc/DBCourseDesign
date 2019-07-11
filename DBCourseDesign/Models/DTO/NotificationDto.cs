@@ -15,6 +15,7 @@ namespace DBCourseDesign.Models.DTO
             operation = _operation;
             description = _description;
             time = DateTime.Now.ToString();
+            WebApiConfig.log.Info(operation + " " + description);
         }
     }
 }

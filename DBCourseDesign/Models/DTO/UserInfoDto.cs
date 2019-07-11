@@ -26,6 +26,8 @@ namespace DBCourseDesign.Models.DTO
         public string describe { get; set; }
         public int status;
         public int deleted;
+        public string start { get; set; }
+        public string end { get; set; }
         public Dictionary<string, string>[] permissions = new Dictionary<string, string>[]
         {
             new Dictionary<string, string>()

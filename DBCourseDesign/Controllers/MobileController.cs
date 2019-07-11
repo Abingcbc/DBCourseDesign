@@ -224,6 +224,7 @@ namespace DBCourseDesign.Controllers
                         {
                             id = repair_order.id,
                             device_id = repair_order.device_id,
+                            device_type = db.EQ_TYPE.Find(db.EQ_IN_USE.Find(repair_order.device_id).TYPE_ID).TYPE_NAME,
                             device_model = db.EQ_TYPE.Find(db.EQ_IN_USE.Find(repair_order.device_id).TYPE_ID).MODEL_NUMBER,
                             address = repair_order.address,
                             position = pos_dic,

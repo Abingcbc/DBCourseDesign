@@ -9,6 +9,7 @@ namespace DBCourseDesign.Models.DTO
     {
         public string id { get; set; }
         public string device_id { get; set; }
+        public string device_type { get; set; }
         public string device_model { get; set; }
         public string address { get; set; }
         public Dictionary<string, decimal?> position { get; set; }

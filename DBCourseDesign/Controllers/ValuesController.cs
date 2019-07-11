@@ -10,13 +10,12 @@ namespace DBCourseDesign.Controllers
 {
     public class ValuesController : ApiController
     {
+
         // GET api/values
         //[RequireHttps]
-        public  IEnumerable<string> Get()
+        public IEnumerable<string> Get()
         {
             NotificationController.NotificationCallbackMsg("aaaa", "aaaaa");
-            ILog log = LogManager.GetLogger("FEMS");
-            log.Info("Hello~~~");
             return new string[] { "value1", "value2" };
         }
 

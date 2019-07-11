@@ -4,16 +4,22 @@ using System.Linq;
 using System.Web.Http;
 using WebApiThrottle;
 using System.Web.Http.Cors;
+using log4net;
 
 namespace DBCourseDesign
 {
     public static class WebApiConfig
     {
+
+        public static ILog log = LogManager.GetLogger("FEMS");
+
         public static void Register(HttpConfiguration config)
         {
-            log4net.Config.XmlConfigurator.Configure();
             // Web API 配置和服务
             //config.Filters.Add(new RequireHttpsAttribute());
+            log4net.Config.XmlConfigurator.Configure();
+            log4net.Util.LogLog.InternalDebugging = true;
+            log.Error("!!!!!", new Exception("It wasn't good"));
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             //var cors = new EnableCorsAttribute("*", "*", "*");
             //config.EnableCors(cors);
