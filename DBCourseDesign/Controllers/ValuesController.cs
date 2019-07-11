@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using log4net;
 
 namespace DBCourseDesign.Controllers
 {
@@ -13,7 +14,9 @@ namespace DBCourseDesign.Controllers
         //[RequireHttps]
         public  IEnumerable<string> Get()
         {
-            NotificationController.NotificationCallbackMsg("value");
+            NotificationController.NotificationCallbackMsg("aaaa", "aaaaa");
+            ILog log = LogManager.GetLogger("FEMS");
+            log.Info("Hello~~~");
             return new string[] { "value1", "value2" };
         }
 

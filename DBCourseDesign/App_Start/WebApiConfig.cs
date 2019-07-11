@@ -11,6 +11,7 @@ namespace DBCourseDesign
     {
         public static void Register(HttpConfiguration config)
         {
+            log4net.Config.XmlConfigurator.Configure();
             // Web API 配置和服务
             //config.Filters.Add(new RequireHttpsAttribute());
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
