@@ -230,24 +230,6 @@
     <Compile Include="Controllers\defined controllers\workSheetController.cs" />
     <Compile Include="Controllers\defined controllers\WAREHOUSEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\ACCESSORiesController.cs" />
-    <Compile Include="Controllers\ACCESSORY_STOREDController.cs" />
-    <Compile Include="Controllers\DISPATCHERsController.cs" />
-    <Compile Include="Controllers\EQ_IN_USEController.cs" />
-    <Compile Include="Controllers\EQ_STOREDController.cs" />
-    <Compile Include="Controllers\EQ_TYPEController.cs" />
-    <Compile Include="Controllers\EQ_TYPE_ACCESSORYController.cs" />
-    <Compile Include="Controllers\FACTORiesController.cs" />
-    <Compile Include="Controllers\PATROLsController.cs" />
-    <Compile Include="Controllers\PATROL_LOGController.cs" />
-    <Compile Include="Controllers\PATROL_REGIONController.cs" />
-    <Compile Include="Controllers\REGIONsController.cs" />
-    <Compile Include="Controllers\REPAIRERsController.cs" />
-    <Compile Include="Controllers\REPAIRER_REGIONController.cs" />
-    <Compile Include="Controllers\REPAIR_ORDERController.cs" />
-    <Compile Include="Controllers\STAFFsController.cs" />
-    <Compile Include="Controllers\WAREHOUSEsController.cs" />
-    <Compile Include="Controllers\WORK_ORDERController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

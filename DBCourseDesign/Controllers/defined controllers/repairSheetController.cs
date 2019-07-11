@@ -47,7 +47,7 @@ namespace DBCourseDesign.Controllers
             {
                 input.stfId = input.stfId.Substring(2);
                 input.RSTid = input.RSTid.Substring(2);
-                var repairSheet = await db.REPAIR_ORDER.FindAsync(input);
+                var repairSheet = await db.REPAIR_ORDER.FindAsync(input.RSTid);
                 if (repairSheet == null)
                     throw new Exception();
                 db.Entry(repairSheet).Reference(e => e.EQ_IN_USE).Load();
