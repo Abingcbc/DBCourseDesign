@@ -15,7 +15,7 @@ namespace DBCourseDesign.Controllers
         //[RequireHttps]
         public IEnumerable<string> Post()
         {
-            NotificationController.NotificationCallbackMsg("aaa", "aaaa");
+            NotificationController.NotificationCallbackMsg("操作名", "描述");
             return new string[] { "value1", "value2" };
         }
 

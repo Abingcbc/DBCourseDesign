@@ -22,36 +22,7 @@ namespace DBCourseDesign.Controllers
         
         public static void NotificationCallbackMsg(string operation, string description)
         {
-            foreach (var client in clients)
-            {
-                try
-                {
-                    var a = JsonConvert.SerializeObject(returnHelper.make(new NotificationDto(operation, description)));
-                    client.WriteLine(JsonConvert.SerializeObject(returnHelper.make(new NotificationDto(operation, description))));
-                    client.Flush();
-                    client.Dispose();
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
-        [HttpGet]
-        public HttpResponseMessage Subscribe(HttpRequestMessage request)
-        {
-            var response = request.CreateResponse();
-            response.Content = new PushStreamContent((a, b, c) =>
-            {
-                OnStreamAvailable(a, b, c);
-            }, "text/event-stream");
-            return response;
-        }
-
-        private void OnStreamAvailable (Stream stream, HttpContent content, TransportContext context)
-        {
-            var client = new StreamWriter(stream);
-            clients.Enqueue(client);
+            WebApiConfig.log.Info(operation + " " + description);
         }
 
     }

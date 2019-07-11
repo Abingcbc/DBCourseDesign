@@ -76,8 +76,10 @@ namespace DBCourseDesign.Controllers
             try
             {
                 db.REPAIR_ORDER.Add(repair_order);
+                var eq = db.EQ_IN_USE.Find(mobileRepairOrderReciever.deviceID);
+                eq.STATUS = "1";
                 db.SaveChanges();
-                //NotificationController.NotificationCallbackMsg("")
+                NotificationController.NotificationCallbackMsg("增", mobileRepairOrderReciever.id+"添加了保修单");
                 return Ok(returnHelper.make("success"));
             }
             catch (Exception)
@@ -104,6 +106,7 @@ namespace DBCourseDesign.Controllers
                 repair_order.REPAIR_TYPE = reciever.problem_type;
                 repair_order.STATUS = reciever.status.ToString();
                 db.SaveChanges();
+                NotificationController.NotificationCallbackMsg("改", "更改了保修单");
                 return Ok(returnHelper.make("success"));
             }
         }
@@ -131,6 +134,7 @@ namespace DBCourseDesign.Controllers
             {
                 db.PATROL_LOG.Add(patrol_log);
                 db.SaveChanges();
+                NotificationController.NotificationCallbackMsg("增", reciever.id+"增加了巡检单");
                 return Ok(returnHelper.make("success"));
             }
             catch
@@ -155,6 +159,7 @@ namespace DBCourseDesign.Controllers
                     work_order.WORK_PICTURE = mobileWorkOrderReciever.imgURL;
                     work_order.STATUS = mobileWorkOrderReciever.status.ToString();
                     db.SaveChanges();
+                    NotificationController.NotificationCallbackMsg("改", "更改了工单");
                     return Ok(returnHelper.make("success"));
                 }
                 catch
@@ -177,6 +182,7 @@ namespace DBCourseDesign.Controllers
             {
                 try
                 {
+                    NotificationController.NotificationCallbackMsg("删", repair_order.INSERT_BY+"删除了保修单");
                     db.REPAIR_ORDER.Remove(repair_order);
                     db.SaveChanges();
                     return Ok(returnHelper.make("success"));
@@ -192,7 +198,8 @@ namespace DBCourseDesign.Controllers
         [Route("api/mobile/getRepair")]
         public IHttpActionResult GetRepair(string id)
         {
-            var regions = db.PATROL_REGION.Where(p => p.PATROL_ID == id).ToList();
+            var temp = db.PATROL_REGION.Where(p => p.PATROL_ID == id).ToList();
+            var regions = db.PATROL_REGION.Where(p => p.PATROL_ID == id).Select(r => r.REGION_ID).ToList();
             if (regions == null)
             {
                 return Ok(returnHelper.make(new MobileRepairOrderDto[] { }));
@@ -200,8 +207,7 @@ namespace DBCourseDesign.Controllers
             else
             {
                 List<MobileRepairOrderDto> result = new List<MobileRepairOrderDto>();
-                foreach (var region in regions){
-                    var repair_orders_all = db.REPAIR_ORDER.Join(db.EQ_IN_USE, r => r.EQ_ID, e => e.ID,
+                    var repair_orders_all = db.REPAIR_ORDER.Join(db.EQ_IN_USE.Where(q => regions.Contains(q.REGION_ID)), r => r.EQ_ID, e => e.ID,
                         (r, e) => new
                         {
                             id = r.ID,
@@ -233,7 +239,6 @@ namespace DBCourseDesign.Controllers
                             phone = repair_order.phone
                         });
                     }
-                }
                 return Ok(returnHelper.make(result));
             }
         }
