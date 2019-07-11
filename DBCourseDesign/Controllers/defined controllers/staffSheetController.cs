@@ -39,7 +39,7 @@ namespace DBCourseDesign.Controllers
             {
                 result.Add(new staffDto
                 {
-                    id = r.ID,
+                    id = "ST" + r.ID,
                     name = r.STAFF.NAME,
                     accountID = r.STAFF.ACCOUNT_ID,
                     password = r.STAFF.PASSWORD,
@@ -54,7 +54,7 @@ namespace DBCourseDesign.Controllers
             {
                 result.Add(new staffDto()
                 {
-                    id = r.ID,
+                    id = "ST" + r.ID,
                     name = r.STAFF.NAME,
                     accountID = r.STAFF.ACCOUNT_ID,
                     password = r.STAFF.PASSWORD,
@@ -66,7 +66,7 @@ namespace DBCourseDesign.Controllers
             {
                 result.Add(new staffDto()
                 {
-                    id = r.ID,
+                    id = "ST" + r.ID,
                     name = r.STAFF.NAME,
                     accountID = r.STAFF.ACCOUNT_ID,
                     password = r.STAFF.PASSWORD,
@@ -83,11 +83,11 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/staff/staffSheet")]
-        public async Task<IHttpActionResult> deleteStaffSheetRow(string id)
+        public async Task<IHttpActionResult> deleteStaffSheetRow(stringReceiver id)
         {
             try
             {
-                var staff = await db.STAFF.FindAsync(id);
+                var staff = await db.STAFF.FindAsync(id.decoded());
                 if (staff == null || staff.IS_SUPER != "0")
                     throw new Exception();
                 staff.IS_SUPER = "-1";
@@ -110,7 +110,7 @@ namespace DBCourseDesign.Controllers
         {
             try
             {
-                var staff = await db.STAFF.FindAsync(input.id);
+                var staff = await db.STAFF.FindAsync(input.id.Substring(2));
                 //cannot modify info about a super manager or an expelled
                 if (staff == null || staff.IS_SUPER != "0")
                     throw new Exception();
@@ -119,7 +119,6 @@ namespace DBCourseDesign.Controllers
                     throw new Exception();
 
                 staff.NAME = input.name;
-                staff.ACCOUNT_ID = input.accountID;
                 staff.PASSWORD = input.password;
                 staff.TEL_NUMBER = input.telNumber;
                 staff.ID_CARD_NUMBER = input.idCardNumber;
@@ -159,9 +158,7 @@ namespace DBCourseDesign.Controllers
             }
             catch (Exception)
             {
-                //暂时为了debug
-                throw;
-                //return Ok(returnHelper.fail());
+                return Ok(returnHelper.fail());
             }
         }
 
@@ -227,9 +224,7 @@ namespace DBCourseDesign.Controllers
             }
             catch (Exception)
             {
-                //暂时为了debug
-                throw;
-                //return Ok(returnHelper.fail());
+                return Ok(returnHelper.fail());
             }
         }
     }

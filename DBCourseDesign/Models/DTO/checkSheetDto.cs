@@ -6,8 +6,8 @@
     public partial class checkSheetDto
     {
         public string id { get; set; }
-        public string patrolID { get; set; }
-        public string patrolName { get; set; }
+        public string potrolID { get; set; }
+        public string potrolName { get; set; }
         public string eqID { get; set; }
         public string checkArea { get; set; }
         public string checkTime { get; set; }

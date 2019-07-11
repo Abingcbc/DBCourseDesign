@@ -29,16 +29,18 @@ namespace DBCourseDesign.Controllers
                     lat = e.LATITUDE,
                     lon = e.LONGITUDE,
                     detailedAddress = e.LOCATION,
-                    id = e.ID,
+                    id = "EQ" + e.ID,
                     name = e.NAME
                 }).ToList();
-            result.usingEquipment = db.EQ_IN_USE.Include(e=>e.EQ_TYPE).Select(e => new MapEqDto()
+            result.usingEquipment = db.EQ_IN_USE.Include(e => e.EQ_TYPE).Select(e => new MapEqDto()
             {
                 detailedAddress = e.ADDRESS,
                 lat = e.LATITUDE,
                 lon = e.LONGITUDE,
                 model = e.EQ_TYPE.MODEL_NUMBER,
-                type = e.EQ_TYPE.TYPE_NAME
+                type = e.EQ_TYPE.TYPE_NAME,
+                qrCode = e.QR_CODE,
+                pic = e.EQ_TYPE.PICTURE
             }).ToList();
             return returnHelper.make(result);
         }

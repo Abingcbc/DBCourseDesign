@@ -23,16 +23,16 @@ namespace DBCourseDesign.Controllers
         public returnDto<IQueryable<WAREHOUSEPreviewDto>> GetPriveiw()
         {
             var warehouse = db.WAREHOUSE.Include(b => b.AREA).Select<WAREHOUSE, WAREHOUSEPreviewDto>
-                (e => new WAREHOUSEPreviewDto { id = e.ID, name = e.NAME, address = e.REGION.COUNTY });
+                (e => new WAREHOUSEPreviewDto { id = "WH" + e.ID, name = e.NAME, address = e.REGION.COUNTY });
             return returnHelper.make(warehouse);
         }
 
         [HttpPost]
         [Route("api/WAREHOUSE/DETAIL")]
         [ResponseType(typeof(returnDto<WAREHOUSEDetailDto>))]
-        public async Task<IHttpActionResult> GetDetail(string id)
+        public async Task<IHttpActionResult> GetDetail(stringReceiver sR)
         {
-            var warehouse = await db.WAREHOUSE.FindAsync(id);
+            var warehouse = await db.WAREHOUSE.FindAsync(sR.decoded());
             if (warehouse == null)
                 return NotFound();
             db.Entry(warehouse).Reference(p => p.REGION).Load();
@@ -56,13 +56,14 @@ namespace DBCourseDesign.Controllers
             return Ok(returnHelper.make(result));
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/WAREHOUSE/allWarehouse")]
         [ResponseType(typeof(returnDto<List<string>>))]
-        public async Task<IHttpActionResult> GetAllWarehouses()
+        public async Task<IHttpActionResult> GetAllWarehouses(stringReceiver sR)
         {
+            string id = sR.decoded();
             //without distinct to check errors
-            var result = db.WAREHOUSE.Select(e => e.NAME)
+            var result = db.WAREHOUSE.Where(e=>e.ID != id).Select(e => e.NAME)
             .OrderBy(item => item).ToList();
             return Ok(returnHelper.make(result));
         }
@@ -70,10 +71,10 @@ namespace DBCourseDesign.Controllers
         [HttpPost]
         [Route("api/WAREHOUSE/goods")]
         [ResponseType(typeof(returnDto<WAREHOUSEStorageDto>))]
-        public async Task<IHttpActionResult> GetStorage(string id)
+        public async Task<IHttpActionResult> GetStorage(stringReceiver sR)
         {
             //without distinct to check errors
-            var warehouse = await db.WAREHOUSE.FindAsync(id);
+            var warehouse = await db.WAREHOUSE.FindAsync(sR.decoded());
             if (warehouse == null)
                 return NotFound();
             var warehouseTable = new List<WAREHOUSE>();
@@ -94,7 +95,7 @@ namespace DBCourseDesign.Controllers
             warehouseTable.Add(warehouse);
             var eqs = warehouseTable.Join(db.EQ_STORED, w => w.ID, g => g.WAREHOUSE_ID,
                 (w, g) => new { g.ID, g.EQ_TYPE_ID }).Join(db.EQ_TYPE, w => w.EQ_TYPE_ID, e => e.ID,
-                (w, e) => new EQStorageDto() { id = w.ID, model = e.MODEL_NUMBER, type = e.TYPE_NAME }).ToList();
+                (w, e) => new EQStorageDto() { id = "WH" + w.ID, model = e.MODEL_NUMBER, type = e.TYPE_NAME }).ToList();
             return eqs;
         }
 
@@ -104,7 +105,7 @@ namespace DBCourseDesign.Controllers
             warehouseTable.Add(warehouse);
             var accessories = warehouseTable.Join(db.ACCESSORY_STORED, w => w.ID, g => g.WAREHOUSE_ID,
                 (w, g) => new { g.ACCESSORY_ID, g.QUANTITY }).Join(db.ACCESSORY, w => w.ACCESSORY_ID, a => a.ID,
-                (w, a) => new ACCESSORYStorageDto() { id = w.ACCESSORY_ID, model = a.MODEL_NUMBER, type = a.TYPE_NAME, number = w.QUANTITY }).ToList();
+                (w, a) => new ACCESSORYStorageDto() { id = "AC" + w.ACCESSORY_ID, model = a.MODEL_NUMBER, type = a.TYPE_NAME, number = w.QUANTITY }).ToList();
             return accessories;
         }
 
@@ -118,6 +119,7 @@ namespace DBCourseDesign.Controllers
             WAREHOUSE targetWarehouse;
             try
             {
+                input.id = input.id.Substring(2);
                 originalWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.from);
                 targetWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.to);
                 if (originalWarehouse == null || targetWarehouse == null)

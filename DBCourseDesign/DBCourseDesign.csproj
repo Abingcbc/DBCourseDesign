@@ -222,6 +222,7 @@
     <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
     <Compile Include="Models\DTO\NotificationDto.cs" />
     <Compile Include="Models\DTO\repairSheetDto.cs" />
+    <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\staffSheetDto.cs" />
     <Compile Include="Models\DTO\eqInUseDto.cs" />
     <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
@@ -261,7 +262,7 @@
     </Compile>
     <Compile Include="Models\DTO\accessoryStorageDto.cs" />
     <Compile Include="Models\DTO\eqStoredDto.cs" />
-    <Compile Include="Models\DTO\returnDto.cs" />
+    <Compile Include="Models\DTO\stringReceiver.cs" />
     <Compile Include="Models\DTO\mapDto.cs" />
     <Compile Include="Models\DTO\UserInfoDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
@@ -329,6 +330,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequireHttpsAttribute.cs" />
+    <Compile Include="Utilities\idDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
