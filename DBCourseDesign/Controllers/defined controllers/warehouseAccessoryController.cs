@@ -27,13 +27,13 @@ namespace DBCourseDesign.Controllers
             var result = db.ACCESSORY_STORED.Include(acSt => acSt.ACCESSORY).Include(acSt => acSt.WAREHOUSE).Select
                 ((acSt) => new detailedAccessoryStorageDto()
                 {
-                    key = acSt.ACCESSORY_ID,
+                    key = "AC" + acSt.ACCESSORY_ID,
                     num = acSt.QUANTITY,
                     model = acSt.ACCESSORY.MODEL_NUMBER,
                     type = acSt.ACCESSORY.TYPE_NAME,
                     price = acSt.ACCESSORY.PRICE,
                     warehouse = acSt.WAREHOUSE.NAME,
-                    warehouseID = acSt.WAREHOUSE_ID
+                    warehouseID = "WH" + acSt.WAREHOUSE_ID
                 }).ToList();
             return Ok(returnHelper.make(result));
         }
@@ -54,9 +54,9 @@ namespace DBCourseDesign.Controllers
                     db.ACCESSORY_STORED.Add(
                         new ACCESSORY_STORED
                         {
-                            ACCESSORY_ID = input.accessoryID,
+                            ACCESSORY_ID = "AC" + input.accessoryID,
                             QUANTITY = input.num,
-                            WAREHOUSE_ID = targetWarehouse.ID,
+                            WAREHOUSE_ID = "WH" + targetWarehouse.ID,
                         });
                 else
                     AccessoriesInTarget.QUANTITY += input.num;
@@ -97,7 +97,7 @@ namespace DBCourseDesign.Controllers
         public async Task<IHttpActionResult> GetAllAcKind()
         {
             //without distinct to check errors
-            var result = db.ACCESSORY.Select(a => new modelIdMappingDto() { accessory = a.ID, model = a.MODEL_NUMBER + "(" + a.TYPE_NAME + ")" }).ToList();
+            var result = db.ACCESSORY.Select(a => new modelIdMappingDto() { accessory = "AC" + a.ID, model = a.MODEL_NUMBER + "(" + a.TYPE_NAME + ")" }).ToList();
             return Ok(returnHelper.make(result));
         }
     }

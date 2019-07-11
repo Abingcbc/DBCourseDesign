@@ -23,7 +23,7 @@ namespace DBCourseDesign.Controllers
         public returnDto<IQueryable<WAREHOUSEPreviewDto>> GetPriveiw()
         {
             var warehouse = db.WAREHOUSE.Include(b => b.AREA).Select<WAREHOUSE, WAREHOUSEPreviewDto>
-                (e => new WAREHOUSEPreviewDto { id = e.ID, name = e.NAME, address = e.REGION.COUNTY });
+                (e => new WAREHOUSEPreviewDto { id = "WH" + e.ID, name = e.NAME, address = e.REGION.COUNTY });
             return returnHelper.make(warehouse);
         }
 
@@ -32,7 +32,7 @@ namespace DBCourseDesign.Controllers
         [ResponseType(typeof(returnDto<WAREHOUSEDetailDto>))]
         public async Task<IHttpActionResult> GetDetail(stringReceiver sR)
         {
-            var warehouse = await db.WAREHOUSE.FindAsync(sR.id);
+            var warehouse = await db.WAREHOUSE.FindAsync(sR.decoded());
             if (warehouse == null)
                 return NotFound();
             db.Entry(warehouse).Reference(p => p.REGION).Load();
@@ -73,7 +73,7 @@ namespace DBCourseDesign.Controllers
         public async Task<IHttpActionResult> GetStorage(stringReceiver sR)
         {
             //without distinct to check errors
-            var warehouse = await db.WAREHOUSE.FindAsync(sR.id);
+            var warehouse = await db.WAREHOUSE.FindAsync(sR.decoded());
             if (warehouse == null)
                 return NotFound();
             var warehouseTable = new List<WAREHOUSE>();
@@ -94,7 +94,7 @@ namespace DBCourseDesign.Controllers
             warehouseTable.Add(warehouse);
             var eqs = warehouseTable.Join(db.EQ_STORED, w => w.ID, g => g.WAREHOUSE_ID,
                 (w, g) => new { g.ID, g.EQ_TYPE_ID }).Join(db.EQ_TYPE, w => w.EQ_TYPE_ID, e => e.ID,
-                (w, e) => new EQStorageDto() { id = w.ID, model = e.MODEL_NUMBER, type = e.TYPE_NAME }).ToList();
+                (w, e) => new EQStorageDto() { id = "WH" + w.ID, model = e.MODEL_NUMBER, type = e.TYPE_NAME }).ToList();
             return eqs;
         }
 
@@ -104,7 +104,7 @@ namespace DBCourseDesign.Controllers
             warehouseTable.Add(warehouse);
             var accessories = warehouseTable.Join(db.ACCESSORY_STORED, w => w.ID, g => g.WAREHOUSE_ID,
                 (w, g) => new { g.ACCESSORY_ID, g.QUANTITY }).Join(db.ACCESSORY, w => w.ACCESSORY_ID, a => a.ID,
-                (w, a) => new ACCESSORYStorageDto() { id = w.ACCESSORY_ID, model = a.MODEL_NUMBER, type = a.TYPE_NAME, number = w.QUANTITY }).ToList();
+                (w, a) => new ACCESSORYStorageDto() { id = "AC" + w.ACCESSORY_ID, model = a.MODEL_NUMBER, type = a.TYPE_NAME, number = w.QUANTITY }).ToList();
             return accessories;
         }
 
@@ -146,9 +146,9 @@ namespace DBCourseDesign.Controllers
                         db.ACCESSORY_STORED.Add(
                             new ACCESSORY_STORED
                             {
-                                ACCESSORY_ID = input.id,
+                                ACCESSORY_ID = "AC" + input.id,
                                 QUANTITY = input.num,
-                                WAREHOUSE_ID = targetWarehouse.ID,
+                                WAREHOUSE_ID = "WH" + targetWarehouse.ID,
                                 INSERT_TIME = record.INSERT_TIME,
                                 INSERT_BY = record.INSERT_BY
                             });

@@ -29,11 +29,11 @@ namespace DBCourseDesign.Controllers
                 (db.STAFF, w => w.w.DISPATCHER_ID, s => s.ID, (w, dispatcher) => new { w, dispatcher }).Join
                 (db.EQ_IN_USE, w => w.w.w.EQ_ID, e => e.ID, (w, e) => new workSheetDto()
                 {
-                    id = w.w.w.ID,
+                    id = "WS" + w.w.w.ID,
                     dispatcherID = w.w.w.DISPATCHER_ID,
-                    equipID = w.w.w.EQ_ID,
+                    equipID = "EQ" + w.w.w.EQ_ID,
                     repairArea = e.ADDRESS,
-                    repairerID = w.w.w.REPAIRER_ID,
+                    repairerID = "ST" + w.w.w.REPAIRER_ID,
                     status = w.w.w.STATUS,
                     work_picture = w.w.w.WORK_PICTURE,
                     repairerName = w.w.repairer.NAME,
@@ -48,11 +48,11 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("api/sheets/workSheetRow")]
-        public async Task<IHttpActionResult> deleteWorkSheet(string id)
+        public async Task<IHttpActionResult> deleteWorkSheet(stringReceiver id)
         {
             try
             {
-                WORK_ORDER wORK_ORDER = await db.WORK_ORDER.FindAsync(id);
+                WORK_ORDER wORK_ORDER = await db.WORK_ORDER.FindAsync(id.decoded());
                 if (wORK_ORDER == null)
                 {
                     throw new ApplicationException();

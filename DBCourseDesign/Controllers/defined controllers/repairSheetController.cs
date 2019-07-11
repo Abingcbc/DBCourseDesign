@@ -21,16 +21,22 @@ namespace DBCourseDesign.Controllers
         [Route("api/repairSheet/allRepairSheet")]
         public returnDto<List<repairSheetDto>> GetAllRepairSheets()
         {
-            var result = db.REPAIR_ORDER.Select(r => new repairSheetDto
+            var result = new List<repairSheetDto>();
+            foreach (var r in db.REPAIR_ORDER)
             {
-                cover = r.REPORT_PICTURE,
-                id = r.ID,
-                state = "状态：" + r.STATUS,
-                title = "ID：" + r.ID,
-                type = "维修类型：" + r.REPAIR_TYPE
-            }).ToList();
+                var details = r.DESCRIPTION.Split((char)30);
+                result.Add(new repairSheetDto()
+                {
+                    title = "RS" + r.ID,
+                    cover = r.REPORT_PICTURE,
+                    state = r.STATUS,
+                    type = "维修类型：" + r.REPAIR_TYPE,
+                    details = details[0],
+                    stuffNeeded = details.Count() <= 1 ? null : details[1],
+                    telNumber = r.TEL_NUMBER
+                });
+            }
             return returnHelper.make(result);
-
         }
     }
 }

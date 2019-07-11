@@ -13,6 +13,8 @@
         public string detailedAddress { get; set; }
         public string type { get; set; }
         public string model { get; set; }
+        public string pic { get; set; }
+        public string qrCode { get; set; }
     }
 
     public partial class MapWarehouseDto

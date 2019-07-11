@@ -221,7 +221,7 @@
     <Compile Include="Models\DTO\MobileWorkOrderDto.cs" />
     <Compile Include="Models\DTO\MobileWorkOrderReciever.cs" />
     <Compile Include="Models\DTO\repairSheetDto.cs" />
-    <Compile Include="Models\DTO\StringReceiver.cs" />
+    <Compile Include="Models\DTO\returnDto.cs" />
     <Compile Include="Models\DTO\staffSheetDto.cs" />
     <Compile Include="Models\DTO\eqInUseDto.cs" />
     <Compile Include="Controllers\defined controllers\warehouseAccessoryController.cs" />
@@ -261,7 +261,7 @@
     </Compile>
     <Compile Include="Models\DTO\accessoryStorageDto.cs" />
     <Compile Include="Models\DTO\eqStoredDto.cs" />
-    <Compile Include="Models\DTO\returnDto.cs" />
+    <Compile Include="Models\DTO\stringReceiver.cs" />
     <Compile Include="Models\DTO\mapDto.cs" />
     <Compile Include="Models\DTO\UserInfoDto.cs" />
     <Compile Include="Models\DTO\warehouseDto.cs" />
@@ -329,6 +329,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequireHttpsAttribute.cs" />
+    <Compile Include="Utilities\returnDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -346,7 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\FEMSModel.edmx">

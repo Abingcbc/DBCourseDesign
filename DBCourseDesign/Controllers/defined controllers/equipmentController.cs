@@ -26,7 +26,7 @@ namespace DBCourseDesign.Controllers
                 (e => new detailedEQStorageDto
                 {
                     icon = e.EQ_TYPE.PICTURE,
-                    id = e.ID,
+                    id = "EQ" + e.ID,
                     model = e.EQ_TYPE.MODEL_NUMBER,
                     name = e.EQ_TYPE.TYPE_NAME,
                     price = e.EQ_TYPE.PRICE.ToString(),
@@ -45,7 +45,7 @@ namespace DBCourseDesign.Controllers
             var result = db.EQ_IN_USE.Include(e => e.EQ_TYPE).Select<EQ_IN_USE, EqInUseDto>
                 (e => new EqInUseDto
                 {
-                    id = e.ID,
+                    id = "EQ" + e.ID,
                     type = e.EQ_TYPE.TYPE_NAME,
                     status = e.STATUS,
                     model = e.EQ_TYPE.MODEL_NUMBER,
@@ -58,9 +58,9 @@ namespace DBCourseDesign.Controllers
         [HttpPost]
         [Route("api/equipment/detail")]
         [ResponseType(typeof(returnDto<detailedEqInUseDto>))]
-        public async Task<IHttpActionResult> GetEqUsingDetail(string id)
+        public async Task<IHttpActionResult> GetEqUsingDetail(stringReceiver id)
         {
-            var eq = await db.EQ_IN_USE.Include(e => e.EQ_TYPE).FirstOrDefaultAsync(e => e.ID == id);
+            var eq = await db.EQ_IN_USE.Include(e => e.EQ_TYPE).FirstOrDefaultAsync(e => e.ID == id.id);
             var result = new detailedEqInUseDto()
             {
                 name = eq.EQ_TYPE.TYPE_NAME,
@@ -88,8 +88,8 @@ namespace DBCourseDesign.Controllers
             {
                 PRODUCT_TIME = input.productTime,
                 STATUS = "0",
-                EQ_TYPE_ID = type.ID,
-                WAREHOUSE_ID = warehouse.ID,
+                EQ_TYPE_ID = "EQ" + type.ID,
+                WAREHOUSE_ID = "WH" + warehouse.ID,
                 ID = "placeHolder"
             };
             db.EQ_STORED.Add(result);
