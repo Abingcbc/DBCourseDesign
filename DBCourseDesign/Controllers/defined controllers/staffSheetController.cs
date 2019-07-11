@@ -82,12 +82,13 @@ namespace DBCourseDesign.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/staff/staffSheet")]
-        public async Task<IHttpActionResult> deleteStaffSheetRow(stringReceiver id)
+        [Route("api/staff/staffSheetDelete")]
+        public async Task<IHttpActionResult> deleteStaffSheetRow(stringReceiver sR)
         {
+            string id = sR.decoded();
             try
             {
-                var staff = await db.STAFF.FindAsync(id.decoded());
+                var staff = await db.STAFF.FindAsync(id);
                 if (staff == null || staff.IS_SUPER != "0")
                     throw new Exception();
                 staff.IS_SUPER = "-1";
@@ -105,18 +106,22 @@ namespace DBCourseDesign.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/staff/staffSheet")]
+        [Route("api/staff/staffSheetModify")]
         public async Task<IHttpActionResult> modifyStaff(staffModifyReceiver input)
         {
+            input.id = input.id.Substring(2);
             try
             {
-                var staff = await db.STAFF.FindAsync(input.id.Substring(2));
+                var staff = await db.STAFF.FindAsync(input.id);
                 //cannot modify info about a super manager or an expelled
                 if (staff == null || staff.IS_SUPER != "0")
                     throw new Exception();
                 //repeated id
-                if (db.STAFF.Count(s => s.ACCOUNT_ID == input.accountID) > 0)
-                    throw new Exception();
+                if (input.accountID != staff.ACCOUNT_ID)
+                {
+                    if (db.STAFF.Count(s => s.ACCOUNT_ID == input.accountID) > 0)
+                        throw new Exception();
+                }
 
                 staff.NAME = input.name;
                 staff.PASSWORD = input.password;
@@ -156,9 +161,10 @@ namespace DBCourseDesign.Controllers
                 await db.SaveChangesAsync();
                 return Ok(returnHelper.make(getDtoList()));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return Ok(returnHelper.fail());
+                //return Ok(returnHelper.fail());
+                throw;
             }
         }
 
@@ -226,6 +232,21 @@ namespace DBCourseDesign.Controllers
             {
                 return Ok(returnHelper.fail());
             }
+        }
+
+        /// <summary>
+        /// modify password
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/user/modifyPassword")]
+        public async Task<IHttpActionResult> modifyPassword(passwordModifyDto input)
+        {
+            string id = input.id.Substring(2);
+            var person = await db.STAFF.FindAsync(input.id);
+            person.PASSWORD = input.newPassword;
+            await db.SaveChangesAsync();
+            return Ok(returnHelper.make(""));
         }
     }
 }

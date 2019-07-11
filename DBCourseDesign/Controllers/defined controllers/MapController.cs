@@ -40,7 +40,8 @@ namespace DBCourseDesign.Controllers
                 model = e.EQ_TYPE.MODEL_NUMBER,
                 type = e.EQ_TYPE.TYPE_NAME,
                 qrCode = e.QR_CODE,
-                pic = e.EQ_TYPE.PICTURE
+                pic = e.EQ_TYPE.PICTURE,
+                id = e.ID
             }).ToList();
             return returnHelper.make(result);
         }

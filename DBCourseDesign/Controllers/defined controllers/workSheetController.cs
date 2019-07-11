@@ -53,7 +53,7 @@ namespace DBCourseDesign.Controllers
         /// remove target workSheet from Database
         /// </summary>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPost]
         [Route("api/sheets/workSheetRow")]
         public async Task<IHttpActionResult> deleteWorkSheet(stringReceiver sR)
         {

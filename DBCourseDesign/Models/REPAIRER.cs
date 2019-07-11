@@ -29,8 +29,8 @@ namespace DBCourseDesign.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPAIRER_REGION> REPAIRER_REGION { get; set; }
-        public virtual STAFF STAFF { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WORK_ORDER> WORK_ORDER { get; set; }
+        public virtual STAFF STAFF { get; set; }
     }
 }

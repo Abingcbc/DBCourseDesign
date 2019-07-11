@@ -29,10 +29,10 @@ namespace DBCourseDesign.Models
         public Nullable<System.DateTime> UPDATE_TIME { get; set; }
         public Nullable<System.DateTime> INSERT_TIME { get; set; }
     
-        public virtual STAFF STAFF { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PATROL_LOG> PATROL_LOG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PATROL_REGION> PATROL_REGION { get; set; }
+        public virtual STAFF STAFF { get; set; }
     }
 }

@@ -40,8 +40,8 @@ namespace DBCourseDesign.Models
         public virtual DbSet<REPAIR_ORDER> REPAIR_ORDER { get; set; }
         public virtual DbSet<REPAIRER> REPAIRER { get; set; }
         public virtual DbSet<REPAIRER_REGION> REPAIRER_REGION { get; set; }
-        public virtual DbSet<STAFF> STAFF { get; set; }
         public virtual DbSet<WAREHOUSE> WAREHOUSE { get; set; }
         public virtual DbSet<WORK_ORDER> WORK_ORDER { get; set; }
+        public virtual DbSet<STAFF> STAFF { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCESSORY">
           <Key>
             <PropertyRef Name="ID" />
@@ -55,8 +55,8 @@
           <Property Name="MANAGER" Type="varchar2" MaxLength="128" Nullable="false" />
           <Property Name="STATUS" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="ADDRESS" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="LONGITUDE" Type="number" Precision="13" Scale="10" />
           <Property Name="LATITUDE" Type="number" Precision="13" Scale="10" />
+          <Property Name="LONGITUDE" Type="number" Precision="13" Scale="10" />
           <Property Name="QR_CODE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
@@ -141,7 +141,7 @@
           <Property Name="EQ_ID" Type="varchar2" MaxLength="32" />
           <Property Name="PATROL_TIME" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="PATROL_RESULT" Type="varchar2" MaxLength="32" Nullable="false" />
-          <Property Name="PATROL_PICTURE" Type="varchar2" MaxLength="255" />
+          <Property Name="PATROL_PICTURE" Type="varchar2" MaxLength="512" />
           <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
           <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
           <Property Name="INSERT_TIME" Type="date" />
@@ -173,7 +173,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
-          <Property Name="REPORT_PICTURE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="REPORT_PICTURE" Type="varchar2" MaxLength="512" Nullable="false" />
           <Property Name="REPAIR_TYPE" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="DESCRIPTION" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="STATUS" Type="varchar2" MaxLength="255" Nullable="false" />
@@ -214,7 +214,7 @@
           <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="varchar2" MaxLength="128" Nullable="false" />
           <Property Name="ACCOUNT_ID" Type="varchar2" MaxLength="32" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="PASSWORD" Type="varchar2" MaxLength="18" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="64" Nullable="false" />
           <Property Name="TEL_NUMBER" Type="varchar2" MaxLength="32" />
           <Property Name="ID_CARD_NUMBER" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="IS_SUPER" Type="varchar2" MaxLength="32" />
@@ -232,8 +232,8 @@
           <Property Name="REGION_ID" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="LOCATION" Type="varchar2" MaxLength="128" Nullable="false" />
           <Property Name="AREA" Type="number" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="LONGITUDE" Type="number" Precision="13" Scale="10" />
           <Property Name="LATITUDE" Type="number" Precision="13" Scale="10" />
+          <Property Name="LONGITUDE" Type="number" Precision="13" Scale="10" />
           <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
           <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
           <Property Name="INSERT_TIME" Type="date" />
@@ -247,7 +247,7 @@
           <Property Name="STATUS" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="REPAIRER_ID" Type="varchar2" MaxLength="32" />
           <Property Name="DISPATCHER_ID" Type="varchar2" MaxLength="32" />
-          <Property Name="WORK_PICTURE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="WORK_PICTURE" Type="varchar2" MaxLength="512" Nullable="false" />
           <Property Name="EQ_ID" Type="varchar2" MaxLength="32" />
           <Property Name="INSERT_BY" Type="varchar2" MaxLength="32" />
           <Property Name="UPDATE_BY" Type="varchar2" MaxLength="32" />
@@ -746,8 +746,7 @@
             <End Role="STAFF1" EntitySet="STAFF" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -795,8 +794,8 @@
           <Property Name="INSERT_TIME" Type="DateTime" />
           <Property Name="UPDATE_TIME" Type="DateTime" />
           <NavigationProperty Name="REPAIR_ORDER" Relationship="Self.FK_DISPATCHER_ID" FromRole="DISPATCHER" ToRole="REPAIR_ORDER" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK_DISPATCHER_STAFF_1" FromRole="DISPATCHER" ToRole="STAFF" />
           <NavigationProperty Name="WORK_ORDER" Relationship="Self.FK_WORK_ORDER__DISPATCHER_1" FromRole="DISPATCHER" ToRole="WORK_ORDER" />
+          <NavigationProperty Name="STAFF" Relationship="Model.FK_DISPATCHER_STAFF_1" FromRole="DISPATCHER" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="EQ_IN_USE">
           <Key>
@@ -900,9 +899,9 @@
           <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_TIME" Type="DateTime" />
           <Property Name="INSERT_TIME" Type="DateTime" />
-          <NavigationProperty Name="STAFF" Relationship="Self.fk_PATROL" FromRole="PATROL" ToRole="STAFF" />
           <NavigationProperty Name="PATROL_LOG" Relationship="Self.FK_PATROL_LOG_PATROL_1" FromRole="PATROL" ToRole="PATROL_LOG" />
           <NavigationProperty Name="PATROL_REGION" Relationship="Self.FK_PATROL_REGION_PATROL_1" FromRole="PATROL" ToRole="PATROL_REGION" />
+          <NavigationProperty Name="STAFF" Relationship="Model.fk_PATROL" FromRole="PATROL" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="PATROL_LOG">
           <Key>
@@ -977,8 +976,8 @@
           <Property Name="INSERT_TIME" Type="DateTime" />
           <Property Name="UPDATE_TIME" Type="DateTime" />
           <NavigationProperty Name="REPAIRER_REGION" Relationship="Self.fk_REPAIRER_REGION" FromRole="REPAIRER" ToRole="REPAIRER_REGION" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK_REPAIRER_STAFF_1" FromRole="REPAIRER" ToRole="STAFF" />
           <NavigationProperty Name="WORK_ORDER" Relationship="Self.FK_WORK_ORDER__REPAIRER_1" FromRole="REPAIRER" ToRole="WORK_ORDER" />
+          <NavigationProperty Name="STAFF" Relationship="Model.FK_REPAIRER_STAFF_1" FromRole="REPAIRER" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="REPAIRER_REGION">
           <Key>
@@ -993,29 +992,6 @@
           <Property Name="UPDATE_TIME" Type="DateTime" />
           <NavigationProperty Name="REGION" Relationship="Self.FK_REPAI1" FromRole="REPAIRER_REGION" ToRole="REGION" />
           <NavigationProperty Name="REPAIRER" Relationship="Self.fk_REPAIRER_REGION" FromRole="REPAIRER_REGION" ToRole="REPAIRER" />
-        </EntityType>
-        <EntityType Name="STAFF">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACCOUNT_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PASSWORD" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TEL_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="ID_CARD_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IS_SUPER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="UPDATE_TIME" Type="DateTime" />
-          <Property Name="INSERT_TIME" Type="DateTime" />
-          <NavigationProperty Name="DISPATCHER" Relationship="Self.FK_DISPATCHER_STAFF_1" FromRole="STAFF" ToRole="DISPATCHER" />
-          <NavigationProperty Name="PATROL" Relationship="Self.fk_PATROL" FromRole="STAFF" ToRole="PATROL" />
-          <NavigationProperty Name="REPAIRER" Relationship="Self.FK_REPAIRER_STAFF_1" FromRole="STAFF" ToRole="REPAIRER" />
-          <NavigationProperty Name="STAFF1" Relationship="Self.STAFF_SUPER_ADMIN__fk" FromRole="STAFF" ToRole="STAFF1" />
-          <NavigationProperty Name="STAFF2" Relationship="Self.STAFF_SUPER_ADMIN__fk" FromRole="STAFF1" ToRole="STAFF" />
-          <NavigationProperty Name="STAFF11" Relationship="Self.STAFF_SUPER_ADMIN__fk_1" FromRole="STAFF" ToRole="STAFF1" />
-          <NavigationProperty Name="STAFF3" Relationship="Self.STAFF_SUPER_ADMIN__fk_1" FromRole="STAFF1" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="WAREHOUSE">
           <Key>
@@ -1119,20 +1095,6 @@
             </Principal>
             <Dependent Role="REPAIR_ORDER">
               <PropertyRef Name="DISPATCHER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DISPATCHER_STAFF_1">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DISPATCHER" Type="Self.DISPATCHER" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="DISPATCHER">
-              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1268,20 +1230,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_PATROL">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PATROL" Type="Self.PATROL" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PATROL">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PATROL_LOG_PATROL_1">
           <End Role="PATROL" Type="Self.PATROL" Multiplicity="0..1" />
           <End Role="PATROL_LOG" Type="Self.PATROL_LOG" Multiplicity="*" />
@@ -1364,20 +1312,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_REPAIRER_STAFF_1">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="REPAIRER" Type="Self.REPAIRER" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="REPAIRER">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WORK_ORDER__REPAIRER_1">
           <End Role="REPAIRER" Type="Self.REPAIRER" Multiplicity="0..1" />
           <End Role="WORK_ORDER" Type="Self.WORK_ORDER" Multiplicity="*" />
@@ -1387,34 +1321,6 @@
             </Principal>
             <Dependent Role="WORK_ORDER">
               <PropertyRef Name="REPAIRER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="STAFF_SUPER_ADMIN__fk">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="STAFF1" Type="Self.STAFF" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="STAFF1">
-              <PropertyRef Name="INSERT_BY" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="STAFF_SUPER_ADMIN__fk_1">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="STAFF1" Type="Self.STAFF" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="STAFF1">
-              <PropertyRef Name="UPDATE_BY" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1434,7 +1340,6 @@
           <EntitySet Name="REPAIR_ORDER" EntityType="Self.REPAIR_ORDER" />
           <EntitySet Name="REPAIRER" EntityType="Self.REPAIRER" />
           <EntitySet Name="REPAIRER_REGION" EntityType="Self.REPAIRER_REGION" />
-          <EntitySet Name="STAFF" EntityType="Self.STAFF" />
           <EntitySet Name="WAREHOUSE" EntityType="Self.WAREHOUSE" />
           <EntitySet Name="WORK_ORDER" EntityType="Self.WORK_ORDER" />
           <AssociationSet Name="fk_ACCESSORY" Association="Self.fk_ACCESSORY">
@@ -1456,10 +1361,6 @@
           <AssociationSet Name="FK_DISPATCHER_ID" Association="Self.FK_DISPATCHER_ID">
             <End Role="DISPATCHER" EntitySet="DISPATCHER" />
             <End Role="REPAIR_ORDER" EntitySet="REPAIR_ORDER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DISPATCHER_STAFF_1" Association="Self.FK_DISPATCHER_STAFF_1">
-            <End Role="STAFF" EntitySet="STAFF" />
-            <End Role="DISPATCHER" EntitySet="DISPATCHER" />
           </AssociationSet>
           <AssociationSet Name="FK_WORK_ORDER__DISPATCHER_1" Association="Self.FK_WORK_ORDER__DISPATCHER_1">
             <End Role="DISPATCHER" EntitySet="DISPATCHER" />
@@ -1501,10 +1402,6 @@
             <End Role="EQ_TYPE" EntitySet="EQ_TYPE" />
             <End Role="EQ_TYPE_ACCESSORY" EntitySet="EQ_TYPE_ACCESSORY" />
           </AssociationSet>
-          <AssociationSet Name="fk_PATROL" Association="Self.fk_PATROL">
-            <End Role="STAFF" EntitySet="STAFF" />
-            <End Role="PATROL" EntitySet="PATROL" />
-          </AssociationSet>
           <AssociationSet Name="FK_PATROL_LOG_PATROL_1" Association="Self.FK_PATROL_LOG_PATROL_1">
             <End Role="PATROL" EntitySet="PATROL" />
             <End Role="PATROL_LOG" EntitySet="PATROL_LOG" />
@@ -1529,23 +1426,125 @@
             <End Role="REPAIRER" EntitySet="REPAIRER" />
             <End Role="REPAIRER_REGION" EntitySet="REPAIRER_REGION" />
           </AssociationSet>
-          <AssociationSet Name="FK_REPAIRER_STAFF_1" Association="Self.FK_REPAIRER_STAFF_1">
-            <End Role="STAFF" EntitySet="STAFF" />
-            <End Role="REPAIRER" EntitySet="REPAIRER" />
-          </AssociationSet>
           <AssociationSet Name="FK_WORK_ORDER__REPAIRER_1" Association="Self.FK_WORK_ORDER__REPAIRER_1">
             <End Role="REPAIRER" EntitySet="REPAIRER" />
             <End Role="WORK_ORDER" EntitySet="WORK_ORDER" />
           </AssociationSet>
-          <AssociationSet Name="STAFF_SUPER_ADMIN__fk" Association="Self.STAFF_SUPER_ADMIN__fk">
+          <EntitySet Name="STAFF" EntityType="Model.STAFF" />
+          <AssociationSet Name="FK_DISPATCHER_STAFF_1" Association="Model.FK_DISPATCHER_STAFF_1">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="DISPATCHER" EntitySet="DISPATCHER" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PATROL" Association="Model.fk_PATROL">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="PATROL" EntitySet="PATROL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIRER_STAFF_1" Association="Model.FK_REPAIRER_STAFF_1">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="REPAIRER" EntitySet="REPAIRER" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_SUPER_ADMIN__fk" Association="Model.STAFF_SUPER_ADMIN__fk">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="STAFF1" EntitySet="STAFF" />
           </AssociationSet>
-          <AssociationSet Name="STAFF_SUPER_ADMIN__fk_1" Association="Self.STAFF_SUPER_ADMIN__fk_1">
+          <AssociationSet Name="STAFF_SUPER_ADMIN__fk_1" Association="Model.STAFF_SUPER_ADMIN__fk_1">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="STAFF1" EntitySet="STAFF" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ACCOUNT_ID" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="TEL_NUMBER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CARD_NUMBER" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IS_SUPER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="INSERT_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_BY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_TIME" Type="DateTime" />
+          <Property Name="INSERT_TIME" Type="DateTime" />
+          <NavigationProperty Name="DISPATCHER" Relationship="Model.FK_DISPATCHER_STAFF_1" FromRole="STAFF" ToRole="DISPATCHER" />
+          <NavigationProperty Name="PATROL" Relationship="Model.fk_PATROL" FromRole="STAFF" ToRole="PATROL" />
+          <NavigationProperty Name="REPAIRER" Relationship="Model.FK_REPAIRER_STAFF_1" FromRole="STAFF" ToRole="REPAIRER" />
+          <NavigationProperty Name="STAFF1" Relationship="Model.STAFF_SUPER_ADMIN__fk" FromRole="STAFF" ToRole="STAFF1" />
+          <NavigationProperty Name="STAFF2" Relationship="Model.STAFF_SUPER_ADMIN__fk" FromRole="STAFF1" ToRole="STAFF" />
+          <NavigationProperty Name="STAFF11" Relationship="Model.STAFF_SUPER_ADMIN__fk_1" FromRole="STAFF" ToRole="STAFF1" />
+          <NavigationProperty Name="STAFF3" Relationship="Model.STAFF_SUPER_ADMIN__fk_1" FromRole="STAFF1" ToRole="STAFF" />
+        </EntityType>
+        <Association Name="FK_DISPATCHER_STAFF_1">
+          <End Type="Model.STAFF" Role="STAFF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.DISPATCHER" Role="DISPATCHER" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DISPATCHER">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PATROL">
+          <End Type="Model.STAFF" Role="STAFF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.PATROL" Role="PATROL" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PATROL">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIRER_STAFF_1">
+          <End Type="Model.STAFF" Role="STAFF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.REPAIRER" Role="REPAIRER" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REPAIRER">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_SUPER_ADMIN__fk">
+          <End Type="Model.STAFF" Role="STAFF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.STAFF" Role="STAFF1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF1">
+              <PropertyRef Name="INSERT_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_SUPER_ADMIN__fk_1">
+          <End Type="Model.STAFF" Role="STAFF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.STAFF" Role="STAFF1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF1">
+              <PropertyRef Name="UPDATE_BY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1765,23 +1764,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="STAFF">
-            <EntityTypeMapping TypeName="Model.STAFF">
-              <MappingFragment StoreEntitySet="STAFF">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="TEL_NUMBER" ColumnName="TEL_NUMBER" />
-                <ScalarProperty Name="ID_CARD_NUMBER" ColumnName="ID_CARD_NUMBER" />
-                <ScalarProperty Name="IS_SUPER" ColumnName="IS_SUPER" />
-                <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
-                <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
-                <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
-                <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WAREHOUSE">
             <EntityTypeMapping TypeName="Model.WAREHOUSE">
               <MappingFragment StoreEntitySet="WAREHOUSE">
@@ -1812,6 +1794,23 @@
                 <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
                 <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
                 <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF">
+            <EntityTypeMapping TypeName="Model.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="INSERT_TIME" ColumnName="INSERT_TIME" />
+                <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+                <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+                <ScalarProperty Name="INSERT_BY" ColumnName="INSERT_BY" />
+                <ScalarProperty Name="IS_SUPER" ColumnName="IS_SUPER" />
+                <ScalarProperty Name="ID_CARD_NUMBER" ColumnName="ID_CARD_NUMBER" />
+                <ScalarProperty Name="TEL_NUMBER" ColumnName="TEL_NUMBER" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
