@@ -22,6 +22,7 @@ namespace DBCourseDesign.Models.DTO
             device_id = _device_id;
             address = _address;
             url = _url;
+            position = new Dictionary<string, decimal?>();
             position.Add("latitude", _latitude);
             position.Add("longtitude", _longtitude);
             device_type = _device_type;

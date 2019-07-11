@@ -164,7 +164,7 @@ namespace DBCourseDesign.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("api/mobile/delete")]
         public IHttpActionResult DeleteRepairOrder(MobileRepairOrderDeleteReciever reciever)
         {
@@ -251,7 +251,7 @@ namespace DBCourseDesign.Controllers
             {
                 List<MobileWorkOrderDto> result = work_orders.Select(r => new MobileWorkOrderDto(
                     r.ID, r.EQ_ID, r.EQ_IN_USE.ADDRESS, r.EQ_IN_USE.LONGITUDE, r.EQ_IN_USE.LATITUDE, r.WORK_PICTURE, 
-                    db.EQ_TYPE.Find(r.EQ_IN_USE.EQ_TYPE).TYPE_NAME, db.EQ_TYPE.Find(r.EQ_IN_USE.EQ_TYPE).MODEL_NUMBER)).ToList();
+                    db.EQ_TYPE.Find(r.EQ_IN_USE.TYPE_ID).TYPE_NAME, db.EQ_TYPE.Find(r.EQ_IN_USE.TYPE_ID).MODEL_NUMBER)).ToList();
                 return Ok(returnHelper.make(result));
             }
         }
