@@ -41,7 +41,7 @@ namespace DBCourseDesign.Controllers
                 {
                     id = "ST" + r.ID,
                     name = r.STAFF.NAME,
-                    accountID = "ST" + r.STAFF.ACCOUNT_ID,
+                    accountID = r.STAFF.ACCOUNT_ID,
                     password = r.STAFF.PASSWORD,
                     status = "1",
                     detail = StaffItem.makeRow(r.STAFF.TEL_NUMBER, r.STAFF.ID_CARD_NUMBER,
@@ -110,7 +110,7 @@ namespace DBCourseDesign.Controllers
         {
             try
             {
-                var staff = await db.STAFF.FindAsync(input.id);
+                var staff = await db.STAFF.FindAsync(input.id.Substring(2));
                 //cannot modify info about a super manager or an expelled
                 if (staff == null || staff.IS_SUPER != "0")
                     throw new Exception();

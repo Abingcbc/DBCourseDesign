@@ -23,22 +23,29 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/sheets/workSheet")]
-        public returnDto<IQueryable<workSheetDto>> GetWorkSheets()
+        public returnDto<List<workSheetDto>> GetWorkSheets()
         {
             var workSheets = db.WORK_ORDER.Join(db.STAFF, w => w.REPAIRER_ID, s => s.ID, (w, repairer) => new { w, repairer }).Join
                 (db.STAFF, w => w.w.DISPATCHER_ID, s => s.ID, (w, dispatcher) => new { w, dispatcher }).Join
                 (db.EQ_IN_USE, w => w.w.w.EQ_ID, e => e.ID, (w, e) => new workSheetDto()
                 {
-                    id = "WS" + w.w.w.ID,
+                    id =  w.w.w.ID,
                     dispatcherID = w.w.w.DISPATCHER_ID,
-                    equipID = "EQ" + w.w.w.EQ_ID,
+                    equipID = w.w.w.EQ_ID,
                     repairArea = e.ADDRESS,
-                    repairerID = "ST" + w.w.w.REPAIRER_ID,
-                    status = w.w.w.STATUS,
+                    repairerID = w.w.w.REPAIRER_ID,
+                    statue = w.w.w.STATUS,
                     work_picture = w.w.w.WORK_PICTURE,
                     repairerName = w.w.repairer.NAME,
                     dispatcherName = w.dispatcher.NAME
-                });
+                }).ToList();
+            foreach (var record in workSheets)
+            {
+                record.id = "WS" + record.id;
+                record.equipID = "EQ" + record.equipID;
+                record.dispatcherID = "ST" + record.dispatcherID;
+                record.repairerID = "ST" + record.repairerID;
+            }
             return returnHelper.make(workSheets);
         }
 

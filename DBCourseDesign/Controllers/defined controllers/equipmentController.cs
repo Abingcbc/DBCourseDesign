@@ -58,9 +58,10 @@ namespace DBCourseDesign.Controllers
         [HttpPost]
         [Route("api/equipment/detail")]
         [ResponseType(typeof(returnDto<detailedEqInUseDto>))]
-        public async Task<IHttpActionResult> GetEqUsingDetail(stringReceiver id)
+        public async Task<IHttpActionResult> GetEqUsingDetail(stringReceiver sR)
         {
-            var eq = await db.EQ_IN_USE.Include(e => e.EQ_TYPE).FirstOrDefaultAsync(e => e.ID == id.id);
+            var id = sR.decoded();
+            var eq = await db.EQ_IN_USE.Include(e => e.EQ_TYPE).FirstOrDefaultAsync(e => e.ID == id);
             var result = new detailedEqInUseDto()
             {
                 name = eq.EQ_TYPE.TYPE_NAME,
@@ -88,8 +89,8 @@ namespace DBCourseDesign.Controllers
             {
                 PRODUCT_TIME = input.productTime,
                 STATUS = "0",
-                EQ_TYPE_ID = "EQ" + type.ID,
-                WAREHOUSE_ID = "WH" + warehouse.ID,
+                EQ_TYPE_ID = type.ID,
+                WAREHOUSE_ID = warehouse.ID,
                 ID = "placeHolder"
             };
             db.EQ_STORED.Add(result);

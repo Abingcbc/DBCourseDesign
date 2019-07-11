@@ -9,7 +9,7 @@
         public string equipID { get; set; }
         public string repairerID { get; set; }
         public string repairArea { get; set; }
-        public string status { get; set; }
+        public string statue { get; set; }
         public string dispatcherID { get; set; }
         public string work_picture { get; set; }
         public string dispatcherName { get; set; }

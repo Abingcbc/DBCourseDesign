@@ -49,14 +49,14 @@ namespace DBCourseDesign.Controllers
                 targetWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.warehouse);
                 if (targetWarehouse == null)
                     throw new ApplicationException();
-                var AccessoriesInTarget = await db.ACCESSORY_STORED.FirstOrDefaultAsync(e => e.WAREHOUSE_ID == targetWarehouse.ID && e.ACCESSORY_ID == input.accessoryID);
+                var AccessoriesInTarget = await db.ACCESSORY_STORED.FirstOrDefaultAsync(e => e.WAREHOUSE_ID == targetWarehouse.ID && e.ACCESSORY_ID == input.accessoryID.Substring(2));
                 if (AccessoriesInTarget == null)
                     db.ACCESSORY_STORED.Add(
                         new ACCESSORY_STORED
                         {
-                            ACCESSORY_ID = "AC" + input.accessoryID,
+                            ACCESSORY_ID = input.accessoryID.Substring(2),
                             QUANTITY = input.num,
-                            WAREHOUSE_ID = "WH" + targetWarehouse.ID,
+                            WAREHOUSE_ID = targetWarehouse.ID,
                         });
                 else
                     AccessoriesInTarget.QUANTITY += input.num;
@@ -76,7 +76,7 @@ namespace DBCourseDesign.Controllers
         {
             //without distinct to check errors
             var result = db.WAREHOUSE.Select(e => e.NAME)
-            .OrderBy(item => item).ToList();
+            .OrderBy(item => item).Distinct().ToList();
             return Ok(returnHelper.make(result));
         }
 
@@ -87,7 +87,7 @@ namespace DBCourseDesign.Controllers
         {
             //without distinct to check errors
             var result = db.ACCESSORY.Select(a => a.TYPE_NAME)
-            .OrderBy(item => item).ToList();
+            .OrderBy(item => item).Distinct().ToList();
             return Ok(returnHelper.make(result));
         }
 

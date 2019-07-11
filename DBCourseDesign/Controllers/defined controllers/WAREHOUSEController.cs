@@ -56,13 +56,14 @@ namespace DBCourseDesign.Controllers
             return Ok(returnHelper.make(result));
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/WAREHOUSE/allWarehouse")]
         [ResponseType(typeof(returnDto<List<string>>))]
-        public async Task<IHttpActionResult> GetAllWarehouses()
+        public async Task<IHttpActionResult> GetAllWarehouses(stringReceiver sR)
         {
+            string id = sR.decoded();
             //without distinct to check errors
-            var result = db.WAREHOUSE.Select(e => e.NAME)
+            var result = db.WAREHOUSE.Where(e=>e.ID != id).Select(e => e.NAME)
             .OrderBy(item => item).ToList();
             return Ok(returnHelper.make(result));
         }
@@ -118,6 +119,7 @@ namespace DBCourseDesign.Controllers
             WAREHOUSE targetWarehouse;
             try
             {
+                input.id = input.id.Substring(2);
                 originalWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.from);
                 targetWarehouse = await db.WAREHOUSE.FirstAsync(e => e.NAME == input.to);
                 if (originalWarehouse == null || targetWarehouse == null)
@@ -146,9 +148,9 @@ namespace DBCourseDesign.Controllers
                         db.ACCESSORY_STORED.Add(
                             new ACCESSORY_STORED
                             {
-                                ACCESSORY_ID = "AC" + input.id,
+                                ACCESSORY_ID = input.id,
                                 QUANTITY = input.num,
-                                WAREHOUSE_ID = "WH" + targetWarehouse.ID,
+                                WAREHOUSE_ID = targetWarehouse.ID,
                                 INSERT_TIME = record.INSERT_TIME,
                                 INSERT_BY = record.INSERT_BY
                             });

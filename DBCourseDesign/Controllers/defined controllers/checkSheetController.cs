@@ -33,8 +33,8 @@ namespace DBCourseDesign.Controllers
                     checkPic = p.p.PATROL_PICTURE,
                     checkTime = p.p.PATROL_TIME,
                     eqID = "EQ" + EQ.ID,
-                    patrolID = "ST" + p.staff.ID,
-                    patrolName = p.staff.NAME
+                    potrolID = "ST" + p.staff.ID,
+                    potrolName = p.staff.NAME
                 });
             return returnHelper.make(checkSheets);
         }
@@ -45,11 +45,12 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/sheets/checkSheetRow")]
-        public async Task<IHttpActionResult> DeleteCheckSheet(stringReceiver id)
+        public async Task<IHttpActionResult> DeleteCheckSheet(stringReceiver sR)
         {
             try
             {
-                PATROL_LOG patrol_log = await db.PATROL_LOG.FindAsync(id.decoded());
+                string id = sR.decoded();
+                PATROL_LOG patrol_log = await db.PATROL_LOG.FindAsync(id);
                 if (patrol_log == null)
                 {
                     throw new ApplicationException();
