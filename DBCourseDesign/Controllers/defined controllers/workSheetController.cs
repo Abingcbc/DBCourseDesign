@@ -55,11 +55,12 @@ namespace DBCourseDesign.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("api/sheets/workSheetRow")]
-        public async Task<IHttpActionResult> deleteWorkSheet(stringReceiver id)
+        public async Task<IHttpActionResult> deleteWorkSheet(stringReceiver sR)
         {
+            string id = sR.decoded();
             try
             {
-                WORK_ORDER wORK_ORDER = await db.WORK_ORDER.FindAsync(id.decoded());
+                WORK_ORDER wORK_ORDER = await db.WORK_ORDER.FindAsync(id);
                 if (wORK_ORDER == null)
                 {
                     throw new ApplicationException();
