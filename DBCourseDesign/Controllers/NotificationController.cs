@@ -17,27 +17,22 @@ namespace DBCourseDesign.Controllers
 {
     public class NotificationController : ApiController
     {
-        public static ConcurrentBag<StreamWriter> clients;
-
-        static NotificationController()
-        {
-            clients = new ConcurrentBag<StreamWriter>();
-        }
+        public static ConcurrentQueue<StreamWriter> clients = new ConcurrentQueue<StreamWriter>();
         
-        public static async Task NotificationCallbackMsg(string operation, string description)
+        
+        public static void NotificationCallbackMsg(string operation, string description)
         {
             foreach (var client in clients)
             {
                 try
                 {
-                    await client.WriteAsync(JsonConvert.SerializeObject(returnHelper.make(new NotificationDto(operation, description))));
-                    await client.FlushAsync();
+                    var a = JsonConvert.SerializeObject(returnHelper.make(new NotificationDto(operation, description)));
+                    client.WriteLine(JsonConvert.SerializeObject(returnHelper.make(new NotificationDto(operation, description))));
+                    client.Flush();
                     client.Dispose();
                 }
                 catch (Exception)
                 {
-                    StreamWriter ignore;
-                    clients.TryTake(out ignore);
                 }
             }
         }
@@ -56,7 +51,7 @@ namespace DBCourseDesign.Controllers
         private void OnStreamAvailable (Stream stream, HttpContent content, TransportContext context)
         {
             var client = new StreamWriter(stream);
-            clients.Add(client);
+            clients.Enqueue(client);
         }
 
     }
