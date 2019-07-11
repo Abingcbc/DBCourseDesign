@@ -12,12 +12,14 @@
         public string details { get; set; }
         public string stuffNeeded { get; set; }
         public string telNumber { get; set; }
+        public string EqId { get; set; }
     }
 
     public partial class repairSheetReceiver
     {
         public string RSTid { get; set; }
         public string stfId { get; set; }
+        public string DSTid { get; set; }
         public List<repairRequiredStuff> ls { get; set; }
     }
 

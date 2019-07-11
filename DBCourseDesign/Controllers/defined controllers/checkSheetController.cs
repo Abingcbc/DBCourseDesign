@@ -40,7 +40,6 @@ namespace DBCourseDesign.Controllers
         }
 
         /// <summary>
-        /// remove target workSheet from Database
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -57,6 +56,7 @@ namespace DBCourseDesign.Controllers
                 }
                 db.PATROL_LOG.Remove(patrol_log);
                 await db.SaveChangesAsync();
+                NotificationController.NotificationCallbackMsg("删", "巡检单" + sR.decoded());
                 var checkSheets = GetCheckSheets().data.ToList();
                 return Ok(returnHelper.make(checkSheets));
             }

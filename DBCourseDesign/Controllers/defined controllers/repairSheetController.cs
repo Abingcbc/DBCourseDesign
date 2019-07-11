@@ -32,7 +32,8 @@ namespace DBCourseDesign.Controllers
                     type = "维修类型：" + r.REPAIR_TYPE,
                     details = details[0],
                     stuffNeeded = details.Count() <= 1 ? null : details[1],
-                    telNumber = r.TEL_NUMBER
+                    telNumber = r.TEL_NUMBER,
+                    EqId = "EQ" + r.EQ_ID
                 });
             }
             return returnHelper.make(result);
@@ -47,6 +48,10 @@ namespace DBCourseDesign.Controllers
             {
                 input.stfId = input.stfId.Substring(2);
                 input.RSTid = input.RSTid.Substring(2);
+                //since staff id is not prefixed when logging in
+                //there's no need to decode DSTid
+                //input.DSTid = input.DSTid.Substring(2);
+                var dispatcher = db.STAFF.Find(input.DSTid);
                 var repairSheet = await db.REPAIR_ORDER.FindAsync(input.RSTid);
                 if (repairSheet == null)
                     throw new Exception();
@@ -100,10 +105,10 @@ namespace DBCourseDesign.Controllers
                 var workSheet = new WORK_ORDER
                 {
                     ID = "0",
-                    DISPATCHER_ID = repairSheet.DISPATCHER_ID,
+                    DISPATCHER_ID = dispatcher.IS_SUPER=="1"?null:dispatcher.ID,
                     EQ_ID = repairSheet.EQ_ID,
                     INSERT_TIME = DateTime.Now,
-                    INSERT_BY = repairSheet.DISPATCHER_ID,
+                    INSERT_BY = dispatcher.ID,
                     REPAIRER_ID = input.stfId,
                     WORK_PICTURE = dbConsts.unUploadUrl,
                     STATUS = "0"
@@ -111,9 +116,10 @@ namespace DBCourseDesign.Controllers
                 db.WORK_ORDER.Add(workSheet);
                 repairSheet.STATUS = "2";
                 await db.SaveChangesAsync();
+                NotificationController.NotificationCallbackMsg("维修器件" + repairSheet.EQ_ID);
                 return Ok(returnHelper.make(""));
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 return (Ok(returnHelper.fail()));
             }

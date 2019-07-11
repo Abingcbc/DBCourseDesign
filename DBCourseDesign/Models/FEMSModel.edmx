@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="ID" Type="varchar2" MaxLength="32" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PRODUCT_TIME" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="STATUS" Type="varchar2" MaxLength="32" Nullable="false" />
           <Property Name="EQ_TYPE_ID" Type="varchar2" MaxLength="32" Nullable="false" />
@@ -827,7 +827,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PRODUCT_TIME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="STATUS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EQ_TYPE_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
