@@ -163,7 +163,8 @@ namespace DBCourseDesign.Controllers
                         //not sure if the change will be saved to database
                         record.QUANTITY -= input.num;
                 }
-                await db.SaveChangesAsync();  
+                await db.SaveChangesAsync();
+                NotificationController.NotificationCallbackMsg("调货从 " + input.from + " 到 " + input.to);
                 if (input.type.ToLower() == "equipment")
                 {
                     return Ok(returnHelper.make(GetStoredEQ(originalWarehouse)));

@@ -29,7 +29,7 @@ namespace DBCourseDesign.Controllers
                     lat = e.LATITUDE,
                     lon = e.LONGITUDE,
                     detailedAddress = e.LOCATION,
-                    id = "EQ" + e.ID,
+                    id = "WA" + e.ID,
                     name = e.NAME
                 }).ToList();
             result.usingEquipment = db.EQ_IN_USE.Include(e => e.EQ_TYPE).Select(e => new MapEqDto()
@@ -40,7 +40,8 @@ namespace DBCourseDesign.Controllers
                 model = e.EQ_TYPE.MODEL_NUMBER,
                 type = e.EQ_TYPE.TYPE_NAME,
                 qrCode = e.QR_CODE,
-                pic = e.EQ_TYPE.PICTURE
+                pic = e.EQ_TYPE.PICTURE,
+                id = "EQ" + e.ID
             }).ToList();
             return returnHelper.make(result);
         }

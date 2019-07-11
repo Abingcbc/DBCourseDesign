@@ -20,7 +20,7 @@ namespace DBCourseDesign.Controllers
         public static ConcurrentQueue<StreamWriter> clients = new ConcurrentQueue<StreamWriter>();
         
         
-        public static void NotificationCallbackMsg(string operation, string description)
+        public static void NotificationCallbackMsg(string operation, string description = " ")
         {
             WebApiConfig.log.Info(operation + " " + description);
         }

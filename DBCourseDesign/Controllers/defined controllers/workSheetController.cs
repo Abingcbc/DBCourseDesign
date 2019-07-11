@@ -26,11 +26,13 @@ namespace DBCourseDesign.Controllers
         public returnDto<List<workSheetDto>> GetWorkSheets()
         {
             var workSheets = db.WORK_ORDER.Join(db.STAFF, w => w.REPAIRER_ID, s => s.ID, (w, repairer) => new { w, repairer }).Join
-                (db.STAFF, w => w.w.DISPATCHER_ID, s => s.ID, (w, dispatcher) => new { w, dispatcher }).Join
+                (db.STAFF, w => w.w.INSERT_BY, s => s.ID, (w, dispatcher) => new { w, dispatcher }).Join
                 (db.EQ_IN_USE, w => w.w.w.EQ_ID, e => e.ID, (w, e) => new workSheetDto()
                 {
-                    id =  w.w.w.ID,
-                    dispatcherID = w.w.w.DISPATCHER_ID,
+                    id = w.w.w.ID,
+                    //not dispatcherId because it is a foreign key to dispatcher
+                    //but super manager is not in the table
+                    dispatcherID = w.w.w.INSERT_BY,
                     equipID = w.w.w.EQ_ID,
                     repairArea = e.ADDRESS,
                     repairerID = w.w.w.REPAIRER_ID,
@@ -53,7 +55,7 @@ namespace DBCourseDesign.Controllers
         /// remove target workSheet from Database
         /// </summary>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPost]
         [Route("api/sheets/workSheetRow")]
         public async Task<IHttpActionResult> deleteWorkSheet(stringReceiver sR)
         {
@@ -68,6 +70,7 @@ namespace DBCourseDesign.Controllers
                 db.WORK_ORDER.Remove(wORK_ORDER);
                 await db.SaveChangesAsync();
                 var workSheets = GetWorkSheets().data.ToList();
+                NotificationController.NotificationCallbackMsg("删除工单" + sR.decoded());
                 return Ok(returnHelper.make(workSheets));
             }
             catch (Exception)

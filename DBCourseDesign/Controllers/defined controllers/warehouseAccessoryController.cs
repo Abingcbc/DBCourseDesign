@@ -61,6 +61,8 @@ namespace DBCourseDesign.Controllers
                 else
                     AccessoriesInTarget.QUANTITY += input.num;
                 await db.SaveChangesAsync();
+                NotificationController.NotificationCallbackMsg("新增零件" + input.accessoryID + "到" + input.warehouse);
+
                 return Ok();
             }
             catch (Exception)

@@ -95,6 +95,7 @@ namespace DBCourseDesign.Controllers
             };
             db.EQ_STORED.Add(result);
             await db.SaveChangesAsync();
+            NotificationController.NotificationCallbackMsg("增", "新增器材" + result.ID + " 种类" + input.name + " " + input.model + " 所在仓库" + input.warehouse);
             return Ok();
         }
 

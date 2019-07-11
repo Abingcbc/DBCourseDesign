@@ -55,4 +55,10 @@
         public string info2 { get; set; }
     }
 
+    public partial class passwordModifyDto
+    {
+        public string id { get; set; }
+        public string newPassword { get; set; }
+    }
+
 }

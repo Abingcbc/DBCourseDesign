@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="Model.REPAIR_ORDER" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.REPAIRER" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.REPAIRER_REGION" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.STAFF" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.WAREHOUSE" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.WORK_ORDER" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
         <AssociationConnector Association="Model.fk_ACCESSORY" ManuallyRouted="false" />
@@ -28,7 +27,6 @@
         <AssociationConnector Association="Model.fk_EQ_TYPE_ACCESSORY_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_ACCESSORY_STORED_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_DISPATCHER_ID" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_DISPATCHER_STAFF_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_WORK_ORDER__DISPATCHER_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_EQ_IN_USE_EQ_IN_USE_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_EQ_IN_USE_EQ_IN_USE_2" ManuallyRouted="false" />
@@ -39,18 +37,20 @@
         <AssociationConnector Association="Model.fk_EQ_STORED_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_EQ_TYPE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_EQ_TYPE_ACCESSORY" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.fk_PATROL" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_PATROL_LOG_PATROL_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_PATROL_REGION_PATROL_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_STA" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_REPAI1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_WAREHOUSE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_REPAIRER_REGION" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_REPAIRER_STAFF_1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_WORK_ORDER__REPAIRER_1" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.STAFF_SUPER_ADMIN__fk" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.STAFF_SUPER_ADMIN__fk_1" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="Model.STAFF" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="Model.FK_DISPATCHER_STAFF_1" />
+        <AssociationConnector Association="Model.fk_PATROL" />
+        <AssociationConnector Association="Model.FK_REPAIRER_STAFF_1" />
+        <AssociationConnector Association="Model.STAFF_SUPER_ADMIN__fk" />
+        <AssociationConnector Association="Model.STAFF_SUPER_ADMIN__fk_1" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
