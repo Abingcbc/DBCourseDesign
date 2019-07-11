@@ -188,6 +188,7 @@ namespace DBCourseDesign.Controllers
                 {
                     NotificationController.NotificationCallbackMsg("删", repair_order.INSERT_BY+"删除了保修单");
                     db.REPAIR_ORDER.Remove(repair_order);
+                    db.EQ_IN_USE.Find(repair_order.EQ_ID).STATUS = "0";
                     db.SaveChanges();
                     return Ok(returnHelper.make("success"));
                 }
